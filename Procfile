@@ -1,1 +1,1 @@
-web: gunicorn heroku.wsgi:application --log-file -
+web: gunicorn domainsell.wsgi:application --log-file -
