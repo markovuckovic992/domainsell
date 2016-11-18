@@ -20,7 +20,7 @@ import mails.views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     #  mails
-    url(r'^offer/', 'mails.views.receive_mails'),
-    url(r'^process_offer/', 'mails.views.process_offer'),
-    url(r'^contact/', 'mails.views.contact'),
+    url(r'^offer/', mails.views.receive_mails),
+    url(r'^process_offer/', mails.views.process_offer),
+    url(r'^contact/', mails.views.contact),
 ]
