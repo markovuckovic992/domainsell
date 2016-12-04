@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Monitoring</title>
+        <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/static/css/ui.css">
+        <script src="/static/js/jquery-1.12.4.js"></script>
+        <script src="/static/js/jquery-ui.js"></script>
+        <script type="text/javascript" src="/static/js/index.js"></script>
+        <script src="/static/js/sorttable.js"></script>
+    </head>
+    <body>
+        <a href="/logout/">Logout</a>
+        <div>
+            <table id="mytable" class="sortable">
+                <thead>
+                    <tr>
+                        <td>Lead</td>
+                        <td>Dropping domain</td>
+                        <td>Amount</td>
+                        <td>Date</td>
+                        <td>Revert</td>
+                        <td>Email</td>
+                        <td>Phone</td>
+                    </tr>
+                </thead>
+            {% for offer in offers %}
+                <tr>
+                    <td>{{offer.lead}}</td>
+                    <td>{{offer.drop}}</td>
+                    <td>{{offer.amount}}</td>
+                    <td>{{offer.date}}</td>
+                    {% if offer.sale %}
+                        <td id="state_field{{offer.id}}">
+                            Sale:
+                            <button onclick="revert_state({{offer.id}}, 0)">
+                                Revert
+                            </button>
+                        </td>  
+                    {% else %}
+                        <td id="state_field{{offer.id}}">
+                            Offer:
+                            <button onclick="revert_state({{offer.id}}, 1)">
+                                Revert
+                            </button>
+                        </td>  
+                    {% endif %}
+                    <td>{{offer.email}}</td>
+                    <td>{{offer.contact}}</td>
+                </tr>
+            {% endfor %}
+            </table>
+        </div>
+    </body>
+</html>

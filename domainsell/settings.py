@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'u#qw5o#+i8p$2e+w6z-5a4=!-v5r*+9t5mxp*dl2@(bok-yfek'
 
-#  LOGIN_URL = '/home_login/'
+LOGIN_URL = '/home_login/'
 #  SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 #  AUTHENTICATION_BACKENDS = ('administration.user_profile.UserProfile', )
 

@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Offer Page</title>
-    <script type="text/javascript" src="/static/js/jquery-ui.min.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript" src="/static/js/index.js"></script>
 </head>
 <body>
     <h1>{{ lead }}</h1>
     <input type="text" placeholder="type your offer..." id="lead_offer"/>
-    <button onClick="make_offer({{base_id}})">make offer</button>
+    <button onClick="make_offer({{base_id}}, '{{hash}}')">make offer</button>
 </body>
 </html>

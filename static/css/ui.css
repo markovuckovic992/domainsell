@@ -1,0 +1,65 @@
+#cover {
+	position: fixed;
+	padding: 0;
+	margin: 0;
+
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+
+	width: 100%;
+	height: 100%;
+
+	opacity: 0.80;
+	background: #aaa !important;
+	z-index: 10;
+	display: none;
+}
+
+.hide {
+    display: none;
+}
+
+/* Sortable tables */
+table.sortable {
+  border-collapse: separate; 
+}
+
+table.sortable thead {
+    background-color:#eee;
+    color:#666666;
+    font-weight: bold;
+    cursor: default;
+}
+
+table.sortable > tbody > tr > td, table.sortable > thead > tr > td {
+	padding-left: 10px;
+  border:1px solid red
+}
+
+th {
+    text-align: center;
+}
+
+#log_div { 
+  background-color: #333;
+  color: white;
+  height: 200px;
+  width: 200px;
+  z-index: 9999;
+  margin-top: 0px;
+  position: absolute;
+  top:0;
+  right:0;
+  text-align: left;
+  padding-left: 5px;
+}
+
+table.sortable > tbody {
+    counter-reset: rowNumber;
+}
+
+table.sortable > tbody > tr {
+    counter-increment: rowNumber;
+}

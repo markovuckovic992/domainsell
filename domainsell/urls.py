@@ -16,11 +16,23 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 import mails.views
+import maintenance.views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    #  login
+    url(r'^home_login/', maintenance.views.Login),
+    url(r'^logout/', maintenance.views.homeLogout),
     #  mails
     url(r'^offer/', mails.views.receive_mails),
     url(r'^process_offer/', mails.views.process_offer),
+    url(r'^process_offer_redirect/', mails.views.process_offer_redirect),
     url(r'^contact/', mails.views.contact),
+    url(r'^farewell/', mails.views.farewell),
+    # add offer
+    url(r'^add_offer/', mails.views.addoffer),
+    # maintenance
+    url(r'^maintenance/', maintenance.views.monitoring),
+    url(r'^revert_state/', maintenance.views.revert_state),
+    url(r'^zakazani_delete_for_old_datas__/', maintenance.views.delete_old_data)
 ]
