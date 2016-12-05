@@ -8,7 +8,7 @@ class Offer(models.Model):
     offer_id = models.CharField(max_length=10)
     base_id = models.IntegerField()
     hash_base_id = models.CharField(max_length=32, unique=True)
-    email = models.CharField(max_length=50, blank=True, null=True)
+    email = models.CharField(max_length=320, blank=True, null=True)
     contact = models.CharField(max_length=50, blank=True, null=True)
     sale = models.SmallIntegerField(default=0)
 
