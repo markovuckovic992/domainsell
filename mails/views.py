@@ -1,10 +1,10 @@
 from django.shortcuts import render_to_response, HttpResponseRedirect, HttpResponse
-from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 import hashlib, random, requests
 from datetime import datetime
 from mails.models import Offer
 
-
+@ensure_csrf_cookie
 def receive_mails(request):
     try:
         hash_base_id = request.GET['id']
