@@ -10,6 +10,7 @@
         <script src="/static/js/sorttable.js"></script>
     </head>
     <body>
+        {% csrf_token %}
         <a href="/logout/">Logout</a>
         <div>
             <table id="mytable" class="sortable">

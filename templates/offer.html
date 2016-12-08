@@ -8,7 +8,8 @@
     <script type="text/javascript" src="/static/js/index.js"></script>
 </head>
 <body>
-    <h1>{{ lead }}</h1>
+	{% csrf_token %}
+    <h1>{{ drop }}</h1>
     <input type="text" placeholder="type your offer..." id="lead_offer"/>
     <button onClick="make_offer({{base_id}}, '{{hash}}')">make offer</button>
 </body>

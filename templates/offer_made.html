@@ -8,6 +8,7 @@
     <script type="text/javascript" src="/static/js/index.js"></script>
 </head>
 <body>
+	{% csrf_token %}
     <h1>Your offer id is: {{ offer_id }}</h1>
     <input type="text" placeholder="email..." id="email_offer"/>
     <input type="text" placeholder="phone number..." id="phone_offer"/>
