@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 import hashlib, random, requests
 from datetime import datetime, timedelta
 from mails.models import Offer, BlackList
+from django.core import serializers
 
 def Login(request):
     if request.method == 'POST':
