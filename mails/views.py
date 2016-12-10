@@ -43,7 +43,8 @@ def farewell(request):
 
 def unsubscribe(request):
     hash_base_id = request.GET['id']
-    entry = BlackList.objects.filter(hash_base_id=hash_base_id)
+    email = Offer.objects.get(hash_base_id=hash_base_id).email
+    entry = BlackList.objects.filter(email=email)
     if not entry.exists():
         email = Offer.objects.get(hash_base_id=hash_base_id).email
         new = BlackList(email=email)
