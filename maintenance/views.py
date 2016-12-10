@@ -39,8 +39,4 @@ def delete_old_data(request):
     Offer.objects.filter(date__lt=date).delete()    
 
     serialized_obj = serializers.serialize('json', BlackList.objects.all())
-    response = {
-        'items': serialized_obj,
-        'number': len(list(BlackList.objects.all())),
-    }
-    return HttpResponse(json.dumps(response), content_type="application/json")
+    return HttpResponse(serialized_obj, content_type="application/json")
