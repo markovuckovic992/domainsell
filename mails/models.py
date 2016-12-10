@@ -15,3 +15,11 @@ class Offer(models.Model):
     date = models.DateField(default=timezone.now)
     class Meta:
         db_table = 'offers'
+
+
+class BlackList(models.Model):
+    email = models.CharField(max_length=320, blank=True, null=True)
+
+    class Meta:
+        db_table = 'blacklist'
+

@@ -2,7 +2,7 @@ from django.shortcuts import render_to_response, HttpResponseRedirect, HttpRespo
 from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 import hashlib, random, requests
 from datetime import datetime
-from mails.models import Offer
+from mails.models import Offer, Blacklist
 
 @ensure_csrf_cookie
 def receive_mails(request):
@@ -40,6 +40,16 @@ def contact(request):
 def farewell(request):
     hash_base_id = request.GET['id']
     return render_to_response('offer_farewell.html', {'offer_id': Offer.objects.get(hash_base_id=hash_base_id).offer_id, 'again': 0})
+
+def unsubscribe(request):
+    hash_base_id = request.GET['id']
+    entry = Blacklist.objects.filter(hash_base_id=hash_base_id)
+    if not entry.exists():
+        email = Offer.objects.get(hash_base_id=hash_base_id).email
+        new = Blacklist(email=email)
+        new.save()
+    Offer.objects.filter(hash_base_id=hash_base_id).delete()
+    return render(request, 'unsubscribe.html', {})
 
 @csrf_exempt
 def addoffer(request):
