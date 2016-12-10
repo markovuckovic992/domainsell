@@ -18,7 +18,7 @@ class Offer(models.Model):
 
 
 class BlackList(models.Model):
-    email = models.CharField(max_length=320, blank=True, null=True)
+    lead = models.CharField(max_length=100)
 
     class Meta:
         db_table = 'blacklist'
