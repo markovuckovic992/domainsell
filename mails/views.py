@@ -1,4 +1,4 @@
-from django.shortcuts import render_to_response, HttpResponseRedirect, HttpResponse
+from django.shortcuts import render_to_response, HttpResponseRedirect, HttpResponse, render
 from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 import hashlib, random, requests
 from datetime import datetime
