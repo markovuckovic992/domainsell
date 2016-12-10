@@ -4,7 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate, login, logout
 import hashlib, random, requests
 from datetime import datetime, timedelta
-from mails.models import Offer, Blacklist
+from mails.models import Offer, BlackList
 
 def Login(request):
     if request.method == 'POST':
@@ -36,7 +36,7 @@ def delete_old_data(request):
     date = datetime.now().date() - timedelta(days=20)
     Offer.objects.filter(date__lt=date).delete()    
 
-    serialized_obj = serializers.serialize('json', Blacklist.objects.all(), fields=['email'])
+    serialized_obj = serializers.serialize('json', BlackList.objects.all(), fields=['email'])
     response = {
         'items': serialized_obj,
     }
