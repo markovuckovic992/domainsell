@@ -6,6 +6,7 @@ import hashlib, random, requests
 from datetime import datetime, timedelta
 from mails.models import Offer, BlackList
 from django.core import serializers
+import json
 
 def Login(request):
     if request.method == 'POST':
@@ -40,5 +41,6 @@ def delete_old_data(request):
     serialized_obj = serializers.serialize('json', BlackList.objects.all())
     response = {
         'items': serialized_obj,
+        'number': len(list(BlackList.objects.all())),
     }
-    return HttpResponse(response, content_type="application/json")
+    return HttpResponse(json.dumps(response), content_type="application/json")
