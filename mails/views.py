@@ -11,12 +11,7 @@ def receive_mails(request):
         entry = Offer.objects.get(hash_base_id=hash_base_id)
     except:
         return render_to_response('404.html', {})
-    if entry.email:
-        return render_to_response('offer_farewell.html', {'offer_id': entry.offer_id, 'again': 1})
-    elif entry.offer_id:
-        return render_to_response('offer_made.html', {'offer_id': entry.offer_id, 'again': 1})
-    else:
-        return render_to_response('index.html', {'drop': entry.drop, 'base_id': entry.base_id, 'hash': hash_base_id})
+    return render_to_response('index.html', {'drop': entry.drop, 'base_id': entry.base_id, 'hash': hash_base_id})
 
 def process_offer(request):
     base_id = request.POST['base_id']
