@@ -16,14 +16,24 @@ def receive_mails(request):
     elif entry.offer_id:
         return render_to_response('offer_made.html', {'offer_id': entry.offer_id, 'again': 1})
     else:
-        return render_to_response('offer.html', {'drop': entry.drop, 'base_id': entry.base_id, 'hash': hash_base_id})
+        return render_to_response('index.html', {'drop': entry.drop, 'base_id': entry.base_id, 'hash': hash_base_id})
 
 def process_offer(request):
     base_id = request.POST['base_id']
     amount = request.POST['amount']
+    name = request.POST['name']
+    email = request.POST['email']
+    contact = request.POST['contact']
     offer_id = random.randint(1000000, 9999999)
     date = datetime.now().date()
-    Offer.objects.filter(base_id=base_id).update(amount=amount, offer_id=offer_id, date=date)
+    Offer.objects.filter(base_id=base_id).update(
+        amount=amount, 
+        offer_id=offer_id, 
+        date=date,
+        name=name,
+        email=email,
+        contact=contact,
+    )
     return HttpResponse('{"status": "success"}', content_type="application/json")
 
 def process_offer_redirect(request):

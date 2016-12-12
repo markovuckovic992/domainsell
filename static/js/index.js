@@ -17,17 +17,22 @@ function getCookie(name) {
 var csrftoken = getCookie('csrftoken');
 
 make_offer = function (base_id, hash) {
-	amount = $("#lead_offer").val()
+    amount = $("#lead_offer").val()
+    name = $("#txtname").val()
+    contact = $("#txtphone").val()
+	email = $("#txtemail").val()
+    console.log(amount, name, contact, email)
     $.ajax({
 		type: "POST",
 		url: "/process_offer/",
-		data: "base_id=" + base_id + "&amount=" + amount,
+		data: "base_id=" + base_id 
+        + "&amount=" + amount
+        + "&name=" + name
+        + "&contact=" + contact
+        + "&email=" + email,
 		headers: {
             'X-CSRFToken': csrftoken,
         },
-		success: function(msg) {
-			window.location=('/process_offer_redirect/?id=' + hash)
-		}
 	})
 }
 

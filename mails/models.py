@@ -10,6 +10,7 @@ class Offer(models.Model):
     hash_base_id = models.CharField(max_length=32, unique=True)
     email = models.CharField(max_length=320, blank=True, null=True)
     contact = models.CharField(max_length=50, blank=True, null=True)
+    name = models.CharField(max_length=50, blank=True, null=True)
     sale = models.SmallIntegerField(default=0)
 
     date = models.DateField(default=timezone.now)
