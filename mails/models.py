@@ -13,7 +13,7 @@ class Offer(models.Model):
     name = models.CharField(max_length=50, blank=True, null=True)
     sale = models.SmallIntegerField(default=0)
 
-    date = models.DateField(default=timezone.now)
+    date = models.DateField(blank=True, null=True)
     class Meta:
         db_table = 'offers'
 
