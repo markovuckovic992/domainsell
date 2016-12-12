@@ -23,7 +23,7 @@ def homeLogout(request):
 
 @login_required
 def monitoring(request):
-    offers = Offer.objects.filter(date__isnull=False)[0:5000]
+    offers = Offer.objects.filter(date__isnull=False)[0:2000]
     return render_to_response('monitoring.html', {'offers': offers})
 
 @login_required
