@@ -16,7 +16,7 @@ function getCookie(name) {
 
 var csrftoken = getCookie('csrftoken');
 
-make_offer = function (base_id, hash) {
+make_offer = function (base_id, hash, ip) {
     amount = $("#lead_offer").val()
     name = $("#txtname").val()
     contact = $("#txtphone").val()
@@ -29,7 +29,8 @@ make_offer = function (base_id, hash) {
         + "&amount=" + amount
         + "&name=" + name
         + "&contact=" + contact
-        + "&email=" + email,
+        + "&email=" + email
+        + "&ip=" + ip,
 		headers: {
             'X-CSRFToken': csrftoken,
         },

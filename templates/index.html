@@ -503,23 +503,21 @@ Looking to boost traffic for your business? We've managed millions of dollars in
 
 <script>
 $(document).ready(function(){
-
 $("#submit_offer").click(function(e){
-if(!($.isNumeric($("#lead_offer").val())) || $("#lead_offer").val()<100)
-{
-$("#msg").html("Sorry, but your offer is too low. Please try again.");
-}
-else
-{
-
-	$('.modal').modal('show') ;
-}
+    if(!($.isNumeric($("#lead_offer").val())) || $("#lead_offer").val()<100){
+        $("#msg").html("Sorry, but your offer is too low. Please try again.");
+    } else {
+	   $('.modal').modal('show');
+    }
 
 });
 
 $("#userinfo").submit(function(e){
 e.preventDefault();
-make_offer({{base_id}}, '{{hash}}')
+$.get("http://ipinfo.io", function(response) {
+    make_offer({{base_id}}, '{{hash}}', response.ip)
+}, "jsonp");
+
 $("#userinfoform").html("Thank you for submitting your offer. One of our Domain Experts will get in touch with you within the next 24 hours.");
 });
 

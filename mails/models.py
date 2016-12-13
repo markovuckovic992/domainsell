@@ -9,6 +9,7 @@ class Offer(models.Model):
     base_id = models.IntegerField()
     hash_base_id = models.CharField(max_length=32, unique=True)
     email = models.CharField(max_length=320, blank=True, null=True)
+    remail = models.CharField(max_length=320, blank=True, null=True)
     contact = models.CharField(max_length=50, blank=True, null=True)
     name = models.CharField(max_length=50, blank=True, null=True)
     sale = models.SmallIntegerField(default=0)
@@ -19,7 +20,7 @@ class Offer(models.Model):
 
 
 class BlackList(models.Model):
-    lead = models.CharField(max_length=100)
+    email = models.CharField(max_length=320, blank=True, null=True)
 
     class Meta:
         db_table = 'blacklist'

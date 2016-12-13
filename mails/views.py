@@ -1,7 +1,8 @@
 from django.shortcuts import render_to_response, HttpResponseRedirect, HttpResponse, render
 from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
-import hashlib, random, requests
+import hashlib, random, requests, traceback
 from datetime import datetime
+from geoip import geolite2
 from mails.models import Offer, BlackList
 
 @ensure_csrf_cookie
@@ -10,6 +11,7 @@ def receive_mails(request):
         hash_base_id = request.GET['id']
         entry = Offer.objects.get(hash_base_id=hash_base_id)
     except:
+        print traceback.format_exc()
         return render_to_response('404.html', {})
     return render_to_response('index.html', {'drop': entry.drop, 'base_id': entry.base_id, 'hash': hash_base_id})
 
@@ -19,6 +21,9 @@ def process_offer(request):
     name = request.POST['name']
     email = request.POST['email']
     contact = request.POST['contact']
+
+    match = geolite2.lookup(request.POST['ip'])
+    print match.country + ' ' + match.timezone
     offer_id = random.randint(1000000, 9999999)
     date = datetime.now().date()
     Offer.objects.filter(base_id=base_id).update(
@@ -48,11 +53,11 @@ def farewell(request):
 
 def unsubscribe(request):
     hash_base_id = request.GET['id']
-    lead = Offer.objects.get(hash_base_id=hash_base_id).lead
-    entry = BlackList.objects.filter(lead=lead)
+    email = Offer.objects.get(hash_base_id=hash_base_id).remail
+    entry = BlackList.objects.filter(email=email)
     if not entry.exists():
         lead = Offer.objects.get(hash_base_id=hash_base_id).lead
-        new = BlackList(lead=lead)
+        new = BlackList(email=email)
         new.save()
     Offer.objects.filter(hash_base_id=hash_base_id).delete()
     return render(request, 'unsubscribe.html', {})
@@ -63,7 +68,8 @@ def addoffer(request):
     lead = request.POST['lead']
     drop = request.POST['drop']
     hash_base_id = request.POST['hash_base_id']
-    offer = Offer(base_id=base_id, lead=lead, drop=drop, hash_base_id=hash_base_id)
+    remail = request.POST['remail']
+    offer = Offer(base_id=base_id, lead=lead, drop=drop, hash_base_id=hash_base_id, remail=remail)
     offer.save()
     return HttpResponse('{"status": "success"}', content_type="application/json")
 
