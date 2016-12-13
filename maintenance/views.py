@@ -51,7 +51,7 @@ def main_status():
         while uslov:
             try:
                 tube = popen("whois '" + str(
-                    (offer.remail).replace('\n', '').replace('\r', '')) + "' | egrep -i 'Status'",
+                    (offer.lead).replace('\n', '').replace('\r', '')) + "' | egrep -i 'Status'",
                              'r')
                 status = tube.read()
                 status = status.replace('Status: ', '').replace('\n', '').replace('\r', '')
