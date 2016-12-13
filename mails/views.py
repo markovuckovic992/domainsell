@@ -50,7 +50,7 @@ def process_offer(request):
         "Domain offer",  # Title
         "",  # Body
         settings.EMAIL_HOST_USER,
-        ['markovuckovic992@yahoo.com'],
+        ['rongax@gmail.com'],
         fail_silently=True,
         html_message=msg,
     )
