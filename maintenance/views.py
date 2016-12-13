@@ -50,7 +50,7 @@ def main_status():
         status = None
         while uslov:
             try:
-                tube = whois.whois(offer.lead)
+                tube = whois.whois(offer.drop)
                 status = str(tube['status'])
                 break
             except:
