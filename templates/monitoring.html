@@ -49,9 +49,9 @@
                     <td>{{offer.email}}</td>
                     <td>{{offer.contact}}</td>
                     {% if offer.status %}
-                        <td style="background: green">{{offer.redemptionPeriod}}</td>
+                        <td style="background: green">{{offer.updated}}</td>
                     {% else %}
-                        <td>{{offer.redemptionPeriod}}</td>
+                        <td>{{offer.updated}}</td>
                     {% endif %}
                 </tr>
             {% endfor %}
