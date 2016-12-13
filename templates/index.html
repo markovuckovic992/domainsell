@@ -473,15 +473,15 @@ Looking to boost traffic for your business? We've managed millions of dollars in
 	  
         <div class="row" style="margin-top: 10px;">
           <div class="col-md-4">Name</div>
-          <div class="col-md-8"><input type="text" id="txtname" name="txtname" required/></div>
+          <div class="col-md-8"><input type="text" id="txtname" required/></div>
         </div>
 		<div class="row" style="margin-top: 10px;">
           <div class="col-md-4">Email </div>
-          <div class="col-md-8"><input type="email" id="txtemail" name="txtemail" required/></div>
+          <div class="col-md-8"><input type="email" id="txtemail" required/></div>
         </div>
 		<div class="row" style="margin-top: 10px;">
           <div class="col-md-4">Phone</div>
-          <div class="col-md-8"><input type="text" id="txtphone" name="txtphone" required/></div>
+          <div class="col-md-8"><input type="text" id="txtphone" required/></div>
         </div>
 		</form>
       </div>
@@ -512,10 +512,20 @@ $("#submit_offer").click(function(e){
 
 });
 
-$("#userinfo").submit(function(e){
+$("#userinfo").submit(function(e) {
 e.preventDefault();
+var name = $("#txtname").val()
+var contact = $("#txtphone").val()
+var email = $("#txtemail").val()
 $.get("http://ipinfo.io", function(response) {
-    make_offer({{base_id}}, '{{hash}}', response.ip)
+    make_offer(
+        {{base_id}}, 
+        '{{hash}}', 
+        response.ip,
+        name,
+        contact,
+        email
+    )
 }, "jsonp");
 
 $("#userinfoform").html("Thank you for submitting your offer. One of our Domain Experts will get in touch with you within the next 24 hours.");

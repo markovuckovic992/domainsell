@@ -1,5 +1,7 @@
 from django.shortcuts import render_to_response, HttpResponseRedirect, HttpResponse, render
 from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
+from django.core.mail import send_mail
+from django.conf import settings
 import hashlib, random, requests, traceback
 from datetime import datetime
 from geoip import geolite2
@@ -23,7 +25,7 @@ def process_offer(request):
     contact = request.POST['contact']
 
     match = geolite2.lookup(request.POST['ip'])
-    print match.country + ' ' + match.timezone
+    code = match.country
     offer_id = random.randint(1000000, 9999999)
     date = datetime.now().date()
     Offer.objects.filter(base_id=base_id).update(
@@ -33,7 +35,26 @@ def process_offer(request):
         name=name,
         email=email,
         contact=contact,
+        code=code,
     )
+    msg = '''
+        amount= ''' + str(amount) + ''', 
+        offer_id= ''' + str(offer_id) + ''', 
+        date=''' + str(date) + ''',
+        name=''' + str(name) + ''',
+        email=''' + str(email) + ''',
+        contact=''' + str(contact) + ''',
+        code=''' + str(code) + ''',
+    '''
+    send_mail(
+        "Domain offer",  # Title
+        "",  # Body
+        settings.EMAIL_HOST_USER,
+        ['markovuckovic992@yahoo.com'],
+        fail_silently=True,
+        html_message=msg,
+    )
+
     return HttpResponse('{"status": "success"}', content_type="application/json")
 
 def process_offer_redirect(request):

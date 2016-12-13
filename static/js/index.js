@@ -16,11 +16,8 @@ function getCookie(name) {
 
 var csrftoken = getCookie('csrftoken');
 
-make_offer = function (base_id, hash, ip) {
-    amount = $("#lead_offer").val()
-    name = $("#txtname").val()
-    contact = $("#txtphone").val()
-	email = $("#txtemail").val()
+make_offer = function (base_id, hash, ip, name, contact, email) {
+    var amount = $("#lead_offer").val()
     console.log(amount, name, contact, email)
     $.ajax({
 		type: "POST",

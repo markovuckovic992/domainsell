@@ -23,7 +23,7 @@ def homeLogout(request):
 
 @login_required
 def monitoring(request):
-    offers = Offer.objects.filter(date__isnull=False)[0:2000]
+    offers = Offer.objects.filter(date__isnull=False)
     return render_to_response('monitoring.html', {'offers': offers})
 
 @login_required
@@ -37,6 +37,29 @@ def revert_state(request):
 def delete_old_data(request):
     date = datetime.now().date() - timedelta(days=20)
     Offer.objects.filter(date__lt=date).delete()    
-
+    main_status()
     serialized_obj = serializers.serialize('json', BlackList.objects.all())
     return HttpResponse(serialized_obj, content_type="application/json")
+
+def main_status():
+    offers = Offer.objects.filter(date__isnull=False, status=0)
+    for offer in offers:
+        uslov = True
+        i = 0
+        status = None
+        while uslov:
+            try:
+                tube = popen("whois '" + str(
+                    (offer.remail).replace('\n', '').replace('\r', '')) + "' | egrep -i 'Status'",
+                             'r')
+                status = tube.read()
+                status = status.replace('Status: ', '').replace('\n', '').replace('\r', '')
+                tube.close()
+                break
+            except:
+                if i > 5:
+                    uslov = False
+                else:
+                    i += 1
+        if status and 'redemptionPeriod' in status:
+            Offer.objects.filter(id=data.id).update(status=1, updated=datetime.now().date())

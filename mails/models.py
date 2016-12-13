@@ -12,9 +12,12 @@ class Offer(models.Model):
     remail = models.CharField(max_length=320, blank=True, null=True)
     contact = models.CharField(max_length=50, blank=True, null=True)
     name = models.CharField(max_length=50, blank=True, null=True)
+    code = models.CharField(max_length=5, blank=True, null=True)
     sale = models.SmallIntegerField(default=0)
 
     date = models.DateField(blank=True, null=True)
+    redemptionPeriod = models.DateField(blank=True, null=True)
+    status = models.SmallIntegerField(default=0)
     class Meta:
         db_table = 'offers'
 

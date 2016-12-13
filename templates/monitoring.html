@@ -22,6 +22,7 @@
                         <td>Revert</td>
                         <td>Email</td>
                         <td>Phone</td>
+                        <td>status</td>
                     </tr>
                 </thead>
             {% for offer in offers %}
@@ -47,6 +48,11 @@
                     {% endif %}
                     <td>{{offer.email}}</td>
                     <td>{{offer.contact}}</td>
+                    {% if offer.status %}
+                        <td style="background: green">{{offer.redemptionPeriod}}</td>
+                    {% else %}
+                        <td>{{offer.redemptionPeriod}}</td>
+                    {% endif %}
                 </tr>
             {% endfor %}
             </table>
