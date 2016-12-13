@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render_to_response, HttpResponseRedirect, HttpResponse, render
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate, login, logout
-import hashlib, random, requests
+import hashlib, random, requests, traceback
 from datetime import datetime, timedelta
 from mails.models import Offer, BlackList
 from django.core import serializers
@@ -57,6 +57,7 @@ def main_status():
                 tube.close()
                 break
             except:
+                print traceback.format_exc()
                 if i > 5:
                     uslov = False
                 else:
