@@ -16,7 +16,7 @@ class Offer(models.Model):
     sale = models.SmallIntegerField(default=0)
 
     date = models.DateField(blank=True, null=True)
-    redemptionPeriod = models.DateField(blank=True, null=True)
+    updated = models.DateField(blank=True, null=True)
     status = models.SmallIntegerField(default=0)
     class Meta:
         db_table = 'offers'
