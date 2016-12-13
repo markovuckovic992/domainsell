@@ -51,7 +51,7 @@ def main_status():
         while uslov:
             try:
                 tube = whois.whois(offer.lead)
-                status = tube['status']
+                status = str(tube['status'])
                 break
             except:
                 print traceback.format_exc()
