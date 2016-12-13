@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 from mails.models import Offer, BlackList
 from django.core import serializers
 import json
-from os import popen
+import whois
 
 def Login(request):
     if request.method == 'POST':
@@ -50,12 +50,8 @@ def main_status():
         status = None
         while uslov:
             try:
-                tube = popen("whois '" + str(
-                    (offer.lead).replace('\n', '').replace('\r', '')) + "' | egrep -i 'Status'",
-                             'r')
-                status = tube.read()
-                status = status.replace('Status: ', '').replace('\n', '').replace('\r', '')
-                tube.close()
+                tube = whois.whois(offer.lead)
+                status = tube['status']
                 break
             except:
                 print traceback.format_exc()
@@ -63,5 +59,5 @@ def main_status():
                     uslov = False
                 else:
                     i += 1
-        if status and 'redemptionPeriod' in status:
-            Offer.objects.filter(id=data.id).update(status=1, updated=datetime.now().date())
+        if status and 'pendingDelete' in status:
+            Offer.objects.filter(id=data.id).update(status=1, updated=tube['updated_date'][0].date())
