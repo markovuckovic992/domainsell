@@ -10,3 +10,5 @@ static3==0.7.0
 wsgiref==0.1.2
 whitenoise==3.2.2
 requests==2.12.3
+python-geoip==1.2
+python-geoip-geolite2==2015.0303
