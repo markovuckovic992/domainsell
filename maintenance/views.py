@@ -60,4 +60,4 @@ def main_status():
                 else:
                     i += 1
         if status and 'pendingDelete' in status:
-            Offer.objects.filter(id=data.id).update(status=1, updated=tube['updated_date'][0].date())
+            Offer.objects.filter(id=offer.id).update(status=1, updated=tube['updated_date'][0].date())
