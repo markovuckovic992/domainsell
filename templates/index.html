@@ -485,9 +485,8 @@ Looking to boost traffic for your business? We've managed millions of dollars in
         </div>
 		</form>
       </div>
-      <div class="modal-footer">
-        
-        <input type="submit" class="btn btn-primary">
+      <div class="modal-footer">        
+        <input type="submit" id="submit_id___" class="btn btn-primary">
       </div>
 	  </form>
     </div><!-- /.modal-content -->
@@ -513,24 +512,27 @@ $("#submit_offer").click(function(e){
 });
 
 $("#userinfo").submit(function(e) {
-e.preventDefault();
-var name = $("#txtname").val()
-var contact = $("#txtphone").val()
-var email = $("#txtemail").val()
-$.get("http://ipinfo.io", function(response) {
-    make_offer(
-        {{base_id}}, 
-        '{{hash}}', 
-        response.ip,
-        name,
-        contact,
-        email
-    )
-}, "jsonp");
+    e.preventDefault();
+    var name = $("#txtname").val()
+    var contact = $("#txtphone").val()
+    var email = $("#txtemail").val()
+    $.get("http://ipinfo.io", function(response) {
+        make_offer(
+            {{base_id}}, 
+            '{{hash}}', 
+            response.ip,
+            name,
+            contact,
+            email
+        )
+    }, "jsonp");
 
-$("#userinfoform").html("Thank you for submitting your offer. One of our Domain Experts will get in touch with you within the next 24 hours.");
-});
+    $("#userinfoform").html("Thank you for submitting your offer. One of our Domain Experts will get in touch with you within the next 24 hours.");
+    });
 
+    $("#submit_id___").click(function(e) {
+        $(this).hide()
+    });
 });
 </script>
 </body>

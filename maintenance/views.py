@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render_to_response, HttpResponseRedirect, HttpResponse, render
-from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 from django.contrib.auth import authenticate, login, logout
 import hashlib, random, requests, traceback
 from datetime import datetime, timedelta
@@ -9,13 +9,17 @@ from django.core import serializers
 import json
 import whois
 
+@ensure_csrf_cookie
 def Login(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(username=username, password=password)
-        login(request, user)
-        return HttpResponseRedirect("/maintenance/")
+        if user is not None and user.is_active:
+            login(request, user)
+            return HttpResponseRedirect("/maintenance/")
+        else:
+            return render(request, 'login.html')
     return render(request, 'login.html')
 
 def homeLogout(request):
