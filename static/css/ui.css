@@ -64,7 +64,7 @@ table.sortable > tbody > tr {
     counter-increment: rowNumber;
 }
 
-#submit_id__{
+#submit_id__ {
   position: absolute; 
   left: 10px; 
   color: #FF851B;
