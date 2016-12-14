@@ -58,6 +58,14 @@ def process_offer(request):
     offer = Offer.objects.get(base_id=base_id)
     msg = form_a_msg(offer.drop, name)
 
+    send_mail(
+        msg[0],  # Title
+        potential_profit.name_zone,  # Body
+        settings.EMAIL_HOST_USER,
+        [potential_profit.mail],
+        fail_silently=True,
+        html_message=msg[1],
+    )
     return HttpResponse('{"status": "success"}', content_type="application/json")
 
 def process_offer_redirect(request):
