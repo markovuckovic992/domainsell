@@ -486,7 +486,7 @@ Looking to boost traffic for your business? We've managed millions of dollars in
 		</form>
       </div>
       <div class="modal-footer" style="position: relative;">   
-        <span style="position: absolute; left: 2px; color: #FF851B;">* All fields are required</span>    
+        <span id="submit_id__" style="position: absolute; left: 2px; color: #FF851B;">* All fields are required</span>    
         <input type="submit" id="submit_id___" class="btn btn-primary">
       </div>
 	  </form>
@@ -527,6 +527,7 @@ $("#userinfo").submit(function(e) {
             email
         )
         $("#submit_id___").hide()        
+        $("#submit_id__").hide()        
     }, "jsonp");
 
     $("#userinfoform").html("Thank you for submitting your offer. One of our Domain Experts will get in touch with you within the next 24 hours.");
