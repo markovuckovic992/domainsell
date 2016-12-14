@@ -17,7 +17,7 @@ def form_a_msg(domain_name, name):
     msg += '<br/>' 
     msg += 'You will learn How To Double Your Traffic In Less Than A Month For FREE!'
     msg += '<br/>'
-    msg += 'We’ve not only helped our clients get the best possible domains for their brands, but also showed them how to drive an enormous amount of traffic to their sites.' 
+    msg += 'We have not only helped our clients get the best possible domains for their brands, but also showed them how to drive an enormous amount of traffic to their sites.' 
     msg += '<br/>' 
     msg += 'I have received your offer for the domain ' + domain_name + ' and together with my team will do our best to ensure you receive this valuable domain. ' 
     msg += '<br/>' 
