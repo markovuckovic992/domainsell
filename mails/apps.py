@@ -8,9 +8,6 @@ class MailsConfig(AppConfig):
 
 def form_a_msg(domain_name, name):  
     domain_name = domain_name.upper() 
-    line_offer = "<a href='" + str(link) + "'>OFFER PAGE LINK</a>"
-    link_un = "<a href='" + unsubscribe + "'>[LINK]</a>"
-
     subject = 'Thank you for showing interest in ' + domain_name + '  Your free report is ready'
     msg =  'Hi, ' + name  
     msg += '<br/>'
