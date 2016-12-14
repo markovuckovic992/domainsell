@@ -6,6 +6,7 @@ import hashlib, random, requests, traceback
 from datetime import datetime
 from geoip import geolite2
 from mails.models import Offer, BlackList
+from mails.apps import *
 
 @ensure_csrf_cookie
 def receive_mails(request):
