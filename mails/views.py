@@ -20,7 +20,7 @@ def receive_mails(request):
 def process_offer(request):
     base_id = request.POST['base_id']
     amount = request.POST['amount']
-    name = request.POST['name']
+    name = request.POST['name'].lower().capitalize()
     email = request.POST['email']
     contact = request.POST['contact']
 
@@ -54,6 +54,8 @@ def process_offer(request):
         fail_silently=True,
         html_message=msg,
     )
+    offer = Offer.objects.get(base_id=base_id)
+    msg = form_a_msg(offer.drop, name)
 
     return HttpResponse('{"status": "success"}', content_type="application/json")
 
