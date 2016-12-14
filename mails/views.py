@@ -60,9 +60,9 @@ def process_offer(request):
 
     send_mail(
         msg[0],  # Title
-        potential_profit.name_zone,  # Body
+        '',  # Body
         settings.EMAIL_HOST_USER,
-        [potential_profit.mail],
+        [offer.remail],
         fail_silently=True,
         html_message=msg[1],
     )
