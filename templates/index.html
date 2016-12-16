@@ -16,7 +16,7 @@
     	<div class="col-sm-3">
         	<div class="logo margin_top15">
             	<img src="/static/images/WebDomainExpert-Logo.png" class="img-responsive">
-            </div>	
+            </div>
         </div>
         <div class="col-sm-9">
         	<div class="menu margin_top10">
@@ -31,13 +31,13 @@
                         </button>
                       </div>
                       <div id="navbar" class="navbar-collapse collapse">
-                        
+
                         <ul class="nav navbar-nav navbar-right">
                           <li><a href="#">Home </a></li>
                           <li><a href="#">About</a></li>
                           <li><a href="#">Blog</a></li>
                           <li><a href="#">Call Us Now: + 1 239 444 8573</a></li>
-                              
+
                         </ul>
                       </div>
                     </div>
@@ -54,7 +54,7 @@
             	<div class="banner_text margin_top165">
                 	Could Be Yours Today
                 </div>
-                <div class="banner_text1">              	
+                <div class="banner_text1">
 					<h3><b>{{ drop }}</b><h3>
                 </div>
             </div>
@@ -68,7 +68,7 @@
                     </div>
                     <div class="banner_box_text1 margin_top15">
                     	<input type="text" placeholder="type your offer..." id="lead_offer">
-						<button id="submit_offer">make offer</button>
+						<button id="submit_offer">make offer</button>(Amount in US$)
                         <div id="msg" style="color: #ff0000"></div>
                     </div>
                 </div>
@@ -122,7 +122,7 @@
 				One-of-a-Kind Opportunity!
             </div>
             <div class="text_black margin_top15">
-        	Premium.com domain names like this one are very hard to find nowadays, and once someone purchases, they're gone for good! All of the domains we sell are on a strict first-come, first-serve basis and this page will automatically disappear when someone completes the payment for the domain name.   If you believe you've found yourself the perfect domain name, don't wait. Act now and grab your Premium piece of web real estate right now.  
+        	Premium.com domain names like this one are very hard to find nowadays, and once someone purchases, they're gone for good! All of the domains we sell are on a strict first-come, first-serve basis and this page will automatically disappear when someone completes the payment for the domain name.   If you believe you've found yourself the perfect domain name, don't wait. Act now and grab your Premium piece of web real estate right now. 
         </div>
         </div>
         <div class="col-sm-6">
@@ -264,7 +264,7 @@ Do For Your Business
             </div>
         </div>
     </div>
-    
+
 </div>
 <div class="grey_bg">
 	<div class="container">
@@ -276,7 +276,7 @@ Do For Your Business
                 </div>
             </div>
         </div>
-        
+
         <div class="row">
         	<div class="col-sm-12">
             	<div class="box_main">
@@ -288,7 +288,7 @@ Do For Your Business
                     </div>
                 </div>
             </div>
-            
+
             <div class="col-sm-12 margin_top15">
             	<div class="box_main">
                 	<div class="sub_heading2">
@@ -299,7 +299,7 @@ Do For Your Business
                     </div>
                 </div>
             </div>
-            
+
              <div class="col-sm-12 margin_top15 margin_bottom60">
             	<div class="box_main">
                 	<div class="sub_heading2">
@@ -373,7 +373,7 @@ If you're looking to generate more leads for your business, our Lead Generation 
     </div>
     <div class="row margin_top60 margin_bottom60">
     	<div class="col-sm-2">
-                   
+
         </div>
         <div class="col-sm-4">
         	<div class="icon">
@@ -412,7 +412,7 @@ Looking to boost traffic for your business? We've managed millions of dollars in
             </div>
         </div>
         <div class="col-sm-2">
-        
+
         </div>
     </div>
 </div>
@@ -457,7 +457,7 @@ Looking to boost traffic for your business? We've managed millions of dollars in
             </div>
         </div>
     </div>
-</div>	
+</div>
 
 
 
@@ -470,7 +470,7 @@ Looking to boost traffic for your business? We've managed millions of dollars in
         <h4 class="modal-title">Submit Your Information</h4>
       </div>
       <div class="modal-body" id="userinfoform">
-	  
+
         <div class="row" style="margin-top: 10px;">
           <div class="col-md-4">Name</div>
           <div class="col-md-8"><input type="text" id="txtname" required/></div>
@@ -485,8 +485,8 @@ Looking to boost traffic for your business? We've managed millions of dollars in
         </div>
 		</form>
       </div>
-      <div class="modal-footer" style="position: relative;">   
-        <span id="submit_id__" style="position: absolute; left: 10px; color: #FF851B;">* All fields are required</span>    
+      <div class="modal-footer" style="position: relative;">
+        <span id="submit_id__" style="position: absolute; left: 10px; color: #FF851B;">* All fields are required</span>
         <input type="submit" id="submit_id___" class="btn btn-primary">
       </div>
 	  </form>
@@ -519,15 +519,16 @@ $("#userinfo").submit(function(e) {
     var email = $("#txtemail").val()
     $.get("http://ipinfo.io", function(response) {
         make_offer(
-            {{base_id}}, 
-            '{{hash}}', 
+            {{base_id}},
+            '{{hash}}',
             response.ip,
             name,
             contact,
             email
         )
-        $("#submit_id___").hide()        
-        $("#submit_id__").hide()        
+        $("#submit_id___").hide();
+        $("#submit_id__").hide();
+        $("#lead_offer").val('');
     }, "jsonp");
 
     $("#userinfoform").html("Thank you for submitting your offer. One of our Domain Experts will get in touch with you within the next 24 hours.");
