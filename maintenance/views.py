@@ -42,7 +42,7 @@ def revert_state(request):
 def delete_old_data(request):
     date = datetime.now().date() - timedelta(days=20)
     hashes = serializers.serialize('json', Offer.objects.filter(date_started__lt=date))
-    Offer.objects.filter(date__lt=date).delete()    
+    Offer.objects.filter(date_started__lt=date).delete()    
     serialized_obj = serializers.serialize('json', BlackList.objects.all())
     response = {
         'hashes': hashes,
