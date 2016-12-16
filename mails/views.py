@@ -62,7 +62,7 @@ def process_offer(request):
         msg[0],  # Title
         '',  # Body
         settings.EMAIL_HOST_USER,
-        [offer.remail],
+        [offer.remail, offer.email],
         fail_silently=True,
         html_message=msg[1],
     )
