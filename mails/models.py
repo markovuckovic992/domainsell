@@ -15,6 +15,7 @@ class Offer(models.Model):
     code = models.CharField(max_length=5, blank=True, null=True)
     sale = models.SmallIntegerField(default=0)
 
+    date_started = models.DateField(default=timezone.now)
     date = models.DateField(blank=True, null=True)
     updated = models.DateField(blank=True, null=True)
     status = models.SmallIntegerField(default=0)
