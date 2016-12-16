@@ -48,4 +48,4 @@ def delete_old_data(request):
         'hashes': hashes,
         'blk': serialized_obj,
     }
-    return HttpResponse(json.dumps(response), content_type="application/json")
+    return HttpResponse(response, content_type="application/json")
