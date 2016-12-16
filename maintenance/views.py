@@ -43,33 +43,9 @@ def delete_old_data(request):
     date = datetime.now().date() - timedelta(days=20)
     hashes = serializers.serialize('json', Offer.objects.filter(date__lt=date))
     Offer.objects.filter(date__lt=date).delete()    
-    main_status()
     serialized_obj = serializers.serialize('json', BlackList.objects.all())
     response = {
         'hashes': hashes,
         'blk': serialized_obj,
     }
-    return HttpResponse(response, content_type="application/json")
-
-def main_status():
-    offers = Offer.objects.filter(date__isnull=False, status=0)
-    for offer in offers:
-        uslov = True
-        i = 0
-        status = None
-        while uslov:
-            try:
-                tube = whois.whois(offer.drop)
-                status = str(tube['status'])
-                break
-            except:
-                print traceback.format_exc()
-                if i > 5:
-                    uslov = False
-                else:
-                    i += 1
-        if status and 'pendingDelete' in status:
-            try:
-                Offer.objects.filter(id=offer.id).update(status=1, updated=tube['updated_date'][0].date())
-            except:
-                Offer.objects.filter(id=offer.id).update(status=1, updated=tube['updated_date'].date())
+    return HttpResponse(json.dumps(response), content_type="application/json")
