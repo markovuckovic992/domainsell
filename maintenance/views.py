@@ -41,10 +41,15 @@ def revert_state(request):
 @csrf_exempt
 def delete_old_data(request):
     date = datetime.now().date() - timedelta(days=20)
+    hashes = serializers.serialize('json', Offer.objects.filter(date__lt=date))
     Offer.objects.filter(date__lt=date).delete()    
     main_status()
     serialized_obj = serializers.serialize('json', BlackList.objects.all())
-    return HttpResponse(serialized_obj, content_type="application/json")
+    response = {
+        'hashes': hashes,
+        'blk': serialized_obj,
+    }
+    return HttpResponse(response, content_type="application/json")
 
 def main_status():
     offers = Offer.objects.filter(date__isnull=False, status=0)
