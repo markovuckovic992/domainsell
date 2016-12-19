@@ -65,5 +65,5 @@ table.sortable > tbody > tr {
 }
 
 .h1, h1 {
-    font-size: 39px;
+    font-size: 39px !important;
 }
