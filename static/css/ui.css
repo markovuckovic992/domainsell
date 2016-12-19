@@ -64,4 +64,6 @@ table.sortable > tbody > tr {
     counter-increment: rowNumber;
 }
 
-h1 { font-size: 38px; }
+.h1, h1 {
+    font-size: 39px;
+}
