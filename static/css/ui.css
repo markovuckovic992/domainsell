@@ -23,7 +23,7 @@
 
 /* Sortable tables */
 table.sortable {
-  border-collapse: separate; 
+  border-collapse: separate;
 }
 
 table.sortable thead {
@@ -42,7 +42,7 @@ th {
     text-align: center;
 }
 
-#log_div { 
+#log_div {
   background-color: #333;
   color: white;
   height: 200px;
@@ -63,3 +63,5 @@ table.sortable > tbody {
 table.sortable > tbody > tr {
     counter-increment: rowNumber;
 }
+
+h1 { font-size: 38px; }
