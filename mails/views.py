@@ -30,8 +30,8 @@ def process_offer(request):
     offer_id = random.randint(1000000, 9999999)
     date = datetime.now().date()
     Offer.objects.filter(base_id=base_id).update(
-        amount=amount, 
-        offer_id=offer_id, 
+        amount=amount,
+        offer_id=offer_id,
         date=date,
         name=name,
         email=email,
@@ -39,10 +39,11 @@ def process_offer(request):
         code=code,
     )
     msg = '''
-        amount= ''' + str(amount) + ''', 
-        offer_id= ''' + str(offer_id) + ''', 
+        amount= ''' + str(amount) + ''',
+        offer_id= ''' + str(offer_id) + ''',
         date=''' + str(date) + ''',
         name=''' + str(name) + ''',
+        whois email=''' + str(remail) + ''',
         email=''' + str(email) + ''',
         contact=''' + str(contact) + ''',
         code=''' + str(code) + ''',
