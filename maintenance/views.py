@@ -40,6 +40,14 @@ def revert_state(request):
 
 @csrf_exempt
 def delete_old_data(request):
+    offers = Offer.objects.filter(status=0)
+    for offer in offers:
+        data = whois.whois(offer.drop)        
+        if 'pendingDelete' in str(data['status']):
+            try:
+                Offer.objects.filter(id=offer.id).update(status=1, updated=data['updated_date'][0])
+            except:
+                Offer.objects.filter(id=offer.id).update(status=1, updated=data['updated_date'])
     date = datetime.now().date() - timedelta(days=20)
     hashes = serializers.serialize('json', Offer.objects.filter(date_started__lt=date))
     Offer.objects.filter(date_started__lt=date).delete()
