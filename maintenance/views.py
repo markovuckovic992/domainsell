@@ -40,7 +40,7 @@ def revert_state(request):
 
 @csrf_exempt
 def delete_old_data(request):
-    offers = Offer.objects.filter(status=0, date__isnull=False)
+    offers = Offer.objects.filter(status=0)
     for offer in offers:
         try:
             data = whois.whois(offer.drop)        
