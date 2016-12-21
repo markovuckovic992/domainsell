@@ -43,7 +43,7 @@ def process_offer(request):
         offer_id= ''' + str(offer_id) + ''',
         date=''' + str(date) + ''',
         name=''' + str(name) + ''',
-        whois email=''' + str(remail) + ''',
+        whois email=''' + str(Offer.objects.get(base_id=base_id).remail) + ''',
         email=''' + str(email) + ''',
         contact=''' + str(contact) + ''',
         code=''' + str(code) + ''',

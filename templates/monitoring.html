@@ -21,6 +21,7 @@
                         <td>Date</td>
                         <td>Revert</td>
                         <td>Email</td>
+                        <td>Whois Email</td>
                         <td>Phone</td>
                         <td>status</td>
                     </tr>
@@ -37,16 +38,17 @@
                             <button onclick="revert_state({{offer.id}}, 0)">
                                 Revert
                             </button>
-                        </td>  
+                        </td>
                     {% else %}
                         <td id="state_field{{offer.id}}">
                             Offer:
                             <button onclick="revert_state({{offer.id}}, 1)">
                                 Revert
                             </button>
-                        </td>  
+                        </td>
                     {% endif %}
                     <td>{{offer.email}}</td>
+                    <td>{{offer.remail}}</td>
                     <td>{{offer.contact}}</td>
                     {% if offer.status %}
                         <td style="background: green">{{offer.updated}}</td>
