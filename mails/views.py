@@ -51,7 +51,7 @@ def process_offer(request):
     send_mail(
         "Domain offer",  # Title
         "",  # Body
-        'Web Domain Expert <' + settings.EMAIL_HOST_USER + '>',
+        'Report <' + settings.EMAIL_HOST_USER + '>',
         ['rongax@gmail.com'],
         fail_silently=True,
         html_message=msg,
@@ -62,7 +62,7 @@ def process_offer(request):
     send_mail(
         msg[0],  # Title
         '',  # Body
-        settings.EMAIL_HOST_USER,
+        'Web Domain Expert <' + settings.EMAIL_HOST_USER + '>',
         [offer.remail, offer.email],
         fail_silently=True,
         html_message=msg[1],
