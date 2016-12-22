@@ -50,8 +50,10 @@
                     <td>{{offer.email}}</td>
                     <td>{{offer.remail}}</td>
                     <td>{{offer.contact}}</td>
-                    {% if offer.status %}
+                    {% if offer.status == 1%}
                         <td style="background: green">{{offer.updated}}</td>
+                    {% elif offer.status == 2 %}
+                        <td>Error on whois</td>
                     {% else %}
                         <td>{{offer.updated}}</td>
                     {% endif %}
