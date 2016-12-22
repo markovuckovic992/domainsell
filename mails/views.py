@@ -59,6 +59,10 @@ def process_offer(request):
     offer = Offer.objects.get(base_id=base_id)
     msg = form_a_msg(offer.drop, name)
 
+    if offer.email != offer.remail:
+        sender = [offer.remail, offer.email]
+    else:
+        sender = [offer.remail]
     send_mail(
         msg[0],  # Title
         '',  # Body
