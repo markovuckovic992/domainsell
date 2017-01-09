@@ -43,7 +43,7 @@ def delete_old_data(request):
     offers = Offer.objects.filter(status=0, date__isnull=False)
     for offer in offers:
         try:
-            data = whois.whois(offer.drop)        
+            data = whois.whois(offer.drop)
             if 'pendingDelete' in str(data['status']):
                 try:
                     Offer.objects.filter(id=offer.id).update(status=1, updated=data['updated_date'][0])
@@ -52,8 +52,8 @@ def delete_old_data(request):
         except:
             Offer.objects.filter(id=offer.id).update(status=2)
     date = datetime.now().date() - timedelta(days=20)
-    hashes = serializers.serialize('json', Offer.objects.filter(date_started__lt=date))
-    Offer.objects.filter(date_started__lt=date).delete()
+    hashes = serializers.serialize('json', Offer.objects.filter(date_started__lt=date, , amount__isnull=True))
+    Offer.objects.filter(date_started__lt=date, amount__isnull=True).delete()
     serialized_obj = serializers.serialize('json', BlackList.objects.all())
     response = {
         'hashes': hashes,
