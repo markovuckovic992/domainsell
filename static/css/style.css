@@ -89,14 +89,14 @@
 .banner_text
 {
 	font-family: 'LatoRegular';
-	font-size:20px;
+	font-size:18px;
 	font-weight:bold;
 	color:#FFF;
 }
 .banner_text span
 {
 	font-family: 'LatoRegular';
-	font-size:20px;
+	font-size:18px;
 	font-weight:bold;
 	color:#3498db;
 }
@@ -112,7 +112,7 @@
 .banner_text1
 {
 	font-family: 'LatoRegular';
-	font-size: 65px;
+	font-size: 50px;
 	color: #FFF;
 }
 .copyright
