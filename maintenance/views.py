@@ -52,7 +52,7 @@ def delete_old_data(request):
         except:
             Offer.objects.filter(id=offer.id).update(status=2)
     date = datetime.now().date() - timedelta(days=20)
-    hashes = serializers.serialize('json', Offer.objects.filter(date_started__lt=date, , amount__isnull=True))
+    hashes = serializers.serialize('json', Offer.objects.filter(date_started__lt=date, amount__isnull=True))
     Offer.objects.filter(date_started__lt=date, amount__isnull=True).delete()
     serialized_obj = serializers.serialize('json', BlackList.objects.all())
     response = {
