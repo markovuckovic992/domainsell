@@ -40,9 +40,3 @@ urlpatterns = [
     url(r'^revert_state/', maintenance.views.revert_state),
     url(r'^zakazani_delete_for_old_datas__/', maintenance.views.delete_old_data)
 ]
-
-
-if not settings.DEBUG:
-    urlpatterns.append(
-        (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
-    )
