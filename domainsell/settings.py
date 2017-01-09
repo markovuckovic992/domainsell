@@ -31,7 +31,8 @@ LOGIN_URL = '/home_login/'
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    'webdomainexpert.pw'
+    'webdomainexpert.pw',
+    'www.webdomainexpert.pw'
 ]
 
 
