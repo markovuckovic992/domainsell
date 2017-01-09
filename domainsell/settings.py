@@ -28,7 +28,7 @@ LOGIN_URL = '/home_login/'
 #  AUTHENTICATION_BACKENDS = ('administration.user_profile.UserProfile', )
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     'webdomainexpert.pw',
