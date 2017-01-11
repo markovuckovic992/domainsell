@@ -1,6 +1,7 @@
 from django.shortcuts import render_to_response, HttpResponseRedirect, HttpResponse, render
 from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 from django.core.mail import send_mail
+from django.core import mail
 from django.conf import settings
 import hashlib, random, requests, traceback
 from datetime import datetime
@@ -56,6 +57,7 @@ def process_offer(request):
         fail_silently=True,
         html_message=msg,
     )
+
     offer = Offer.objects.get(base_id=base_id)
     msg = form_a_msg(offer.drop, name)
 
@@ -63,14 +65,32 @@ def process_offer(request):
         sender = [offer.remail, offer.email]
     else:
         sender = [offer.remail]
-    send_mail(
+    # send_mail(
+    #     msg[0],  # Title
+    #     '',  # Body
+    #     'Web Domain Expert <' + settings.EMAIL_HOST_USER + '>',
+    #     [offer.remail, offer.email],
+    #     fail_silently=True,
+    #     html_message=msg[1],
+    #     reply_to=("edomainexpert@gmail.com", ),
+    # )
+    connection = mail.get_connection()
+    connection.open()
+    emails = []
+
+    email = mail.EmailMultiAlternatives(
         msg[0],  # Title
         '',  # Body
         'Web Domain Expert <' + settings.EMAIL_HOST_USER + '>',
         [offer.remail, offer.email],
-        fail_silently=True,
-        html_message=msg[1],
+        reply_to=("edomainexpert@gmail.com", ),
     )
+    email.attach_alternative(msg[1], "text/html")
+    emails.append(email)
+
+    connection.send_messages(emails)
+    connection.close()
+
     return HttpResponse('{"status": "success"}', content_type="application/json")
 
 def process_offer_redirect(request):
