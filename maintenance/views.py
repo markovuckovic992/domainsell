@@ -56,10 +56,10 @@ def check_status(request):
                 Offer.objects.filter(id=offer.id).update(status=0)
         except:
             statuses = 'ERROR'
-            msg += (traceback.format_exc() + '\n')
+            # msg += (traceback.format_exc() + '\n')
             Offer.objects.filter(id=offer.id).update(status=2)
-        msg += ('DROP: ' + str(offer.drop) + str(statuses))
-        msg += '\n --------------------- \n'
+        # msg += ('DROP: ' + str(offer.drop) + str(statuses))
+        # msg += '\n --------------------- \n'
     return HttpResponse('{"status": ' + msg + '}', content_type="application/json")
 
 @csrf_exempt
