@@ -8,7 +8,7 @@ from datetime import datetime, timedelta
 from mails.models import Offer, BlackList
 from django.core import serializers
 import json
-import whois
+import popen
 
 @ensure_csrf_cookie
 def Login(request):
@@ -45,18 +45,19 @@ def check_status(request):
     msg = ''
     for offer in offers:
         try:
-            data = whois.whois(offer.drop)
-            if 'pendingDelete' in str(data['status']):
-                try:
-                    Offer.objects.filter(id=offer.id).update(status=1, updated=data['updated_date'][0])
-                except:
-                    Offer.objects.filter(id=offer.id).update(status=1, updated=data['updated_date'])
+            tube = popen("whois '" + str(offer.drop) + "' | egrep -i 'Status'", 'r')
+            resp = tube.read()
+            resp = email.replace('Status:', '').replace('\n', '').replace('\r', '')
+            tube.close()
+            statuses = resp.split(' ')
+            if 'pendingDelete' in str(statuses):
+                Offer.objects.filter(id=offer.id).update(status=1, updated=datetime.now().date())
             else:
                 Offer.objects.filter(id=offer.id).update(status=0)
         except:
             msg += (traceback.format_exc() + '\n')
             Offer.objects.filter(id=offer.id).update(status=2)
-        msg += ('DROP: ' + str(offer.drop))
+        msg += ('DROP: ' + str(offer.drop) + statuses)
         msg += '\n --------------------- \n'
     return HttpResponse('{"status": ' + msg + '}', content_type="application/json")
 
