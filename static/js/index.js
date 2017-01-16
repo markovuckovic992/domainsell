@@ -83,9 +83,6 @@ check_status = function() {
         headers: {
             'X-CSRFToken': csrftoken,
         },
-        success: function(msg) {
-            console.log('asdasdasdasdasda');
-            location.reload();
-        }
-    })
+    });
+    location.reload();
 }
