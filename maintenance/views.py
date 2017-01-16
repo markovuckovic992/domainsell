@@ -52,8 +52,13 @@ def check_status(request):
                 except:
                     Offer.objects.filter(id=offer.id).update(status=1, updated=data['updated_date'])
         except:
-            msg += (traceback.format_exc() + '\n')
-            Offer.objects.filter(id=offer.id).update(status=2)
+            if 'pendingDelete' in str(traceback.format_exc()):
+                try:
+                    Offer.objects.filter(id=offer.id).update(status=1, updated=data['updated_date'][0])
+                except:
+                    Offer.objects.filter(id=offer.id).update(status=1, updated=data['updated_date'])
+            else:
+                Offer.objects.filter(id=offer.id).update(status=2)
         msg += ('DROP: ' + str(offer.drop))
         msg += '\n --------------------- \n'
     return HttpResponse('{"status": ' + msg + '}', content_type="application/json")
