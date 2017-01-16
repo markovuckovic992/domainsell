@@ -45,7 +45,7 @@ def check_status(request):
     msg = ''
     for offer in offers:
         try:
-            tube = popen("whois '" + str(offer.drop) + "' | egrep -i 'Status' | egrep -i 'Updated Date'", 'r')
+            tube = popen("whois '" + str(offer.drop) + "' | egrep -i 'Status|Updated Date'", 'r')
             resp = tube.read()
             resp = resp.replace('Status:', '').replace('\n', '').replace('\r', '')
             tube.close()
