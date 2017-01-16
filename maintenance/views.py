@@ -55,6 +55,7 @@ def check_status(request):
             else:
                 Offer.objects.filter(id=offer.id).update(status=0)
         except:
+            statuses = 'ERROR'
             msg += (traceback.format_exc() + '\n')
             Offer.objects.filter(id=offer.id).update(status=2)
         msg += ('DROP: ' + str(offer.drop) + statuses)
