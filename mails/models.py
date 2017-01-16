@@ -19,6 +19,8 @@ class Offer(models.Model):
     date = models.DateField(blank=True, null=True)
     updated = models.DateField(blank=True, null=True)
     status = models.SmallIntegerField(default=0)
+    stage = models.SmallIntegerField(default=0)
+    
     class Meta:
         db_table = 'offers'
 
