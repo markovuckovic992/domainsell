@@ -22,7 +22,7 @@ make_offer = function (base_id, hash, ip, name, contact, email) {
     $.ajax({
 		type: "POST",
 		url: "/process_offer/",
-		data: "base_id=" + base_id 
+		data: "base_id=" + base_id
         + "&amount=" + amount
         + "&name=" + name
         + "&contact=" + contact
@@ -62,7 +62,7 @@ revert_state = function(id, control) {
         html += '<button onclick="revert_state(' + id + ', 0)">';
         html += 'Revert';
         html += '</button>';
-    } 
+    }
     $.ajax({
         type: "POST",
         url: "/revert_state/",
@@ -72,6 +72,19 @@ revert_state = function(id, control) {
         },
         success: function(msg) {
             $("#state_field" + id).html(html)
+        }
+    })
+}
+
+check_status = function() {
+    $.ajax({
+        type: "POST",
+        url: "/check_status/",
+        headers: {
+            'X-CSRFToken': csrftoken,
+        },
+        success: function(msg) {
+            window.location.reload();
         }
     })
 }

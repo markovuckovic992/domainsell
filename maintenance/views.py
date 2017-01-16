@@ -38,9 +38,24 @@ def revert_state(request):
     Offer.objects.filter(id=offer_id).update(sale=control)
     return HttpResponse('{"status": "success"}', content_type="application/json")
 
+@login_required
+def check_status(request):
+    offers = Offer.objects.filter(status__in=[0, 2], date__isnull=False)
+    for offer in offers:
+        try:
+            data = whois.whois(offer.drop)
+            if 'pendingDelete' in str(data['status']):
+                try:
+                    Offer.objects.filter(id=offer.id).update(status=1, updated=data['updated_date'][0])
+                except:
+                    Offer.objects.filter(id=offer.id).update(status=1, updated=data['updated_date'])
+        except:
+            Offer.objects.filter(id=offer.id).update(status=2)
+    return HttpResponse('{"status": "success"}', content_type="application/json")
+
 @csrf_exempt
 def delete_old_data(request):
-    offers = Offer.objects.filter(status=0, date__isnull=False)
+    offers = Offer.objects.filter(status__in=[0, 2], date__isnull=False)
     for offer in offers:
         try:
             data = whois.whois(offer.drop)

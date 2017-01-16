@@ -38,5 +38,6 @@ urlpatterns = [
     # maintenance
     url(r'^maintenance/', maintenance.views.monitoring),
     url(r'^revert_state/', maintenance.views.revert_state),
-    url(r'^zakazani_delete_for_old_datas__/', maintenance.views.delete_old_data)
+    url(r'^zakazani_delete_for_old_datas__/', maintenance.views.delete_old_data),
+    url(r'^check_status/', maintenance.views.check_status),
 ]
