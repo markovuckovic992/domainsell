@@ -51,6 +51,8 @@ def check_status(request):
                     Offer.objects.filter(id=offer.id).update(status=1, updated=data['updated_date'][0])
                 except:
                     Offer.objects.filter(id=offer.id).update(status=1, updated=data['updated_date'])
+            else:
+                Offer.objects.filter(id=offer.id).update(status=0)
         except:
             msg += (traceback.format_exc() + '\n')
             Offer.objects.filter(id=offer.id).update(status=2)
