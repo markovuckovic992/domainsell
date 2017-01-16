@@ -72,7 +72,7 @@ def check_status(request):
             Offer.objects.filter(id=offer.id).update(status=2)
         msg += ('DROP: ' + str(offer.drop) + str(statuses) + str(date))
         msg += '\n --------------------- \n'
-    return HttpResponse('{"status": ' + msg + '}', content_type="application/json")
+    return HttpResponse('{"status": ' '}', content_type="application/json")
 
 @csrf_exempt
 def delete_old_data(request):
