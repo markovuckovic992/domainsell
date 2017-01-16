@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 from django.shortcuts import render_to_response, HttpResponseRedirect, HttpResponse, render
 from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 from django.contrib.auth import authenticate, login, logout
@@ -40,7 +41,8 @@ def revert_state(request):
 
 @login_required
 def check_status(request):
-    offers = Offer.objects.filter(status__in=[0, 2], date__isnull=False)
+    offers = Offer.objects.filter(~Q(status=1), date__isnull=False)
+    msg = ''
     for offer in offers:
         try:
             data = whois.whois(offer.drop)
@@ -50,12 +52,14 @@ def check_status(request):
                 except:
                     Offer.objects.filter(id=offer.id).update(status=1, updated=data['updated_date'])
         except:
+            msg += (traceback.format_exc() + '\n')
             Offer.objects.filter(id=offer.id).update(status=2)
-    return HttpResponse('{"status": "success"}', content_type="application/json")
+        msg += str(offer)
+    return HttpResponse('{"status": ' + msg + '}', content_type="application/json")
 
 @csrf_exempt
 def delete_old_data(request):
-    offers = Offer.objects.filter(status__in=[0, 2], date__isnull=False)
+    offers = Offer.objects.filter(~Q(status=1), date__isnull=False)
     for offer in offers:
         try:
             data = whois.whois(offer.drop)
