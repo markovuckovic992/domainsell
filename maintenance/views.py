@@ -47,7 +47,7 @@ def check_status(request):
         try:
             tube = popen("whois '" + str(offer.drop) + "' | egrep -i 'Status'", 'r')
             resp = tube.read()
-            resp = email.replace('Status:', '').replace('\n', '').replace('\r', '')
+            resp = resp.replace('Status:', '').replace('\n', '').replace('\r', '')
             tube.close()
             statuses = resp.split(' ')
             if 'pendingDelete' in str(statuses):
