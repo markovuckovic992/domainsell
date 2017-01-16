@@ -50,6 +50,15 @@ def check_status(request):
             resp = resp.replace('Status:', '').replace('\n', '').replace('\r', '')
             tube.close()
             statuses = resp.split(' ')
+
+
+            index = len(statuses) - 1 - statuses[::-1].index("Date:")
+            try:
+                date = (statuses[index + 1])[0:10]
+            except:
+                date = None
+
+
             if 'pendingDelete' in str(statuses):
                 Offer.objects.filter(id=offer.id).update(status=1, updated=datetime.now().date())
             else:
@@ -58,7 +67,7 @@ def check_status(request):
             statuses = 'ERROR'
             msg += (traceback.format_exc() + '\n')
             Offer.objects.filter(id=offer.id).update(status=2)
-        msg += ('DROP: ' + str(offer.drop) + str(statuses))
+        msg += ('DROP: ' + str(offer.drop) + str(statuses) + date)
         msg += '\n --------------------- \n'
     return HttpResponse('{"status": ' + msg + '}', content_type="application/json")
 
