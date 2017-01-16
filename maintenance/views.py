@@ -8,7 +8,7 @@ from datetime import datetime, timedelta
 from mails.models import Offer, BlackList
 from django.core import serializers
 import json
-import popen
+from os import popen
 
 @ensure_csrf_cookie
 def Login(request):
