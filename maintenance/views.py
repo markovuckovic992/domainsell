@@ -54,7 +54,7 @@ def check_status(request):
 
             index = len(statuses) - 1 - statuses[::-1].index('Date:')
             try:
-                date = (statuses[index + 1])[0:10]
+                date = datetime.strptime((statuses[index + 1])[0:10], '%Y-%m-%d')
             except:
                 date = None
 
