@@ -58,11 +58,14 @@ def check_status(request):
             except:
                 date = None
 
-
             if 'pendingDelete' in str(statuses):
-                Offer.objects.filter(id=offer.id).update(status=1, updated=datetime.now().date())
+                if date:
+                    Offer.objects.filter(id=offer.id).update(status=1, updated=date)
+                else:
+                    Offer.objects.filter(id=offer.id).update(status=1, updated=datetime.now().date())
             else:
                 Offer.objects.filter(id=offer.id).update(status=0)
+
         except:
             statuses = 'ERROR'
             msg += (traceback.format_exc() + '\n')
@@ -74,16 +77,37 @@ def check_status(request):
 @csrf_exempt
 def delete_old_data(request):
     offers = Offer.objects.filter(~Q(status=1), date__isnull=False)
+
     for offer in offers:
         try:
-            data = whois.whois(offer.drop)
-            if 'pendingDelete' in str(data['status']):
-                try:
-                    Offer.objects.filter(id=offer.id).update(status=1, updated=data['updated_date'][0])
-                except:
-                    Offer.objects.filter(id=offer.id).update(status=1, updated=data['updated_date'])
+            tube = popen("whois '" + str(offer.drop) + "' | egrep -i 'Status|Updated Date'", 'r')
+            resp = tube.read()
+            resp = resp.replace('Status:', '').replace('\n', '').replace('\r', '')
+            tube.close()
+            statuses = resp.split(' ')
+
+
+            index = len(statuses) - 1 - statuses[::-1].index('Date:')
+            try:
+                date = datetime.strptime((statuses[index + 1])[0:10], '%Y-%m-%d').date()
+            except:
+                date = None
+
+            if 'pendingDelete' in str(statuses):
+                if date:
+                    Offer.objects.filter(id=offer.id).update(status=1, updated=date)
+                else:
+                    Offer.objects.filter(id=offer.id).update(status=1, updated=datetime.now().date())
+            else:
+                Offer.objects.filter(id=offer.id).update(status=0)
+
         except:
+            statuses = 'ERROR'
+            msg += (traceback.format_exc() + '\n')
             Offer.objects.filter(id=offer.id).update(status=2)
+        msg += ('DROP: ' + str(offer.drop) + str(statuses) + str(date))
+        msg += '\n --------------------- \n'
+
     date = datetime.now().date() - timedelta(days=20)
     hashes = serializers.serialize('json', Offer.objects.filter(date_started__lt=date, amount__isnull=True))
     Offer.objects.filter(date_started__lt=date, amount__isnull=True).delete()
