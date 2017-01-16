@@ -52,7 +52,7 @@ def check_status(request):
             statuses = resp.split(' ')
 
 
-            index = len(statuses) - 1 - statuses[::-1].index("Date:")
+            index = len(statuses) - 1 - statuses[::-1].index('Date:')
             try:
                 date = (statuses[index + 1])[0:10]
             except:
