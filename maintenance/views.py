@@ -58,7 +58,7 @@ def check_status(request):
             statuses = 'ERROR'
             msg += (traceback.format_exc() + '\n')
             Offer.objects.filter(id=offer.id).update(status=2)
-        msg += ('DROP: ' + str(offer.drop) + statuses)
+        msg += ('DROP: ' + str(offer.drop) + str(statuses))
         msg += '\n --------------------- \n'
     return HttpResponse('{"status": ' + msg + '}', content_type="application/json")
 
