@@ -54,7 +54,7 @@ def check_status(request):
 
             index = len(statuses) - 1 - statuses[::-1].index('Date:')
             try:
-                date = datetime.strptime((statuses[index + 1])[0:10], '%Y-%m-%d')
+                date = datetime.strptime((statuses[index + 1])[0:10], '%Y-%m-%d').date()
             except:
                 date = None
 
@@ -67,7 +67,7 @@ def check_status(request):
             statuses = 'ERROR'
             msg += (traceback.format_exc() + '\n')
             Offer.objects.filter(id=offer.id).update(status=2)
-        msg += ('DROP: ' + str(offer.drop) + str(statuses) + date)
+        msg += ('DROP: ' + str(offer.drop) + str(statuses) + str(date))
         msg += '\n --------------------- \n'
     return HttpResponse('{"status": ' + msg + '}', content_type="application/json")
 
