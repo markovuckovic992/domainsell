@@ -24,15 +24,15 @@ class CronJobs:
             if offer.phase == 1:
                 to_send = sequnce_1(offer.stage, offer.last_email_date)
                 if to_send:
-                    sub, msg = eval(to_send + '(' + offer.drop + ', ' + offer.name + ')')
+                    sub, msg = eval(to_send + '("' + offer.drop + '", "' + offer.name + '")')
             elif offer.phase == 2:
                 to_send = sequnce_2(offer.stage, offer.last_email_date)
                 if to_send:
-                    sub, msg = eval(to_send + '(' + offer.drop + ', ' + offer.name + ')')
+                    sub, msg = eval(to_send + '("' + offer.drop + '", "' + offer.name + '")')
             elif offer.phase == 3:
                 to_send = sequnce_3(offer.stage, offer.last_email_date)
                 if to_send:
-                    sub, msg = eval(to_send + '(' + offer.drop + ', ' + offer.name + ')')
+                    sub, msg = eval(to_send + '("' + offer.drop + '", "' + offer.name + '")')
             else:
                 to_send = None
 
