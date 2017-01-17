@@ -55,7 +55,10 @@ def check_status(request):
             try:
                 date = datetime.strptime((statuses[index + 1])[0:10], '%Y-%m-%d').date()
             except:
-                date = None
+                try:
+                    date = datetime.strptime((statuses[index + 1])[0:11], '%d-%b-%Y').date()
+                except:
+                    date = None
 
             if 'pendingDelete' in str(statuses):
                 if date:
