@@ -42,7 +42,7 @@ def form_a_msg2(domain_name, name):
 def form_a_msg3(domain_name, name):
     domain_name = domain_name.upper()
 
-    subject = domain_name + ' - Have questions regarding domain acquisition? Let’s set up a meeting'
+    subject = domain_name + ' - Have questions regarding domain acquisition? Let\'s set up a meeting'
     file = codecs.open(settings.EMAIL_TEMPLATES + '/pr3.html', 'r')
     content = file.read()
     htmly = Template(content)
