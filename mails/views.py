@@ -120,4 +120,3 @@ def addoffer(request):
     offer = Offer(base_id=base_id, lead=lead, drop=drop, hash_base_id=hash_base_id, remail=remail)
     offer.save()
     return HttpResponse('{"status": "success"}', content_type="application/json")
-

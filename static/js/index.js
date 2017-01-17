@@ -84,7 +84,7 @@ check_status = function() {
             'X-CSRFToken': csrftoken,
         },
         success: function(msg) {
-            location.reload();
+            window.location.reload();
         }
     })
 }
