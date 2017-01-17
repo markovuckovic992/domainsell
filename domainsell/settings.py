@@ -31,7 +31,8 @@ DEBUG = False
 
 ALLOWED_HOSTS = [
     'webdomainexpert.pw',
-    'www.webdomainexpert.pw'
+    'www.webdomainexpert.pw',
+    '136.243.171.155',
 ]
 
 
