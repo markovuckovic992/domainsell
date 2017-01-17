@@ -6,7 +6,7 @@ from django.core import mail
 os.environ['DJANGO_SETTINGS_MODULE'] = 'domainsell.settings'
 django.setup()
 
-from domain.models import Offer
+from mails.models import Offer
 from django.conf import settings
 from maintenance.lib import *
 
