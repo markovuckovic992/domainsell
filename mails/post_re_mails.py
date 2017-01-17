@@ -79,7 +79,7 @@ def form_a_msg5(domain_name, name):
     domain_name = domain_name.upper()
 
     subject = name + ', We want you to cut a Sweet Deal'
-    file = codecs.open(settings.EMAIL_TEMPLATES + '/pr51.html', 'r')
+    file = codecs.open(settings.EMAIL_TEMPLATES + '/pr5.html', 'r')
     content = file.read()
     htmly = Template(content)
     d = {
