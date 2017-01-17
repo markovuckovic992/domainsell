@@ -2,12 +2,12 @@ from datetime import datetime, timedelta
 from mails.post_re_mails import *
 
 
-def sequnce_1(stege, last_email_date):
+def sequnce_1(stage, last_email_date):
     today = datetime.now()
-    if stege == 1:
+    if stage == 1:
         return "form_a_msg1"
 
-    elif stege == 2:
+    elif stage == 2:
         margin = (today - timedelta(days=2)).date()
         if margin > last_email_date:
             return "form_a_msg2"
