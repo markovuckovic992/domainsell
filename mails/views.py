@@ -53,7 +53,7 @@ def process_offer(request):
         "Domain offer",  # Title
         msg,  # Body
         'Report <' + settings.EMAIL_HOST_USER + '>',
-        ['rongax@gmail.com', 'markovuckovic992@yahoo.com'],
+        ['rongax@gmail.com'],
         fail_silently=False,
     )
 
