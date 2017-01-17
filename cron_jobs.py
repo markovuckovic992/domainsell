@@ -33,6 +33,8 @@ class CronJobs:
                 to_send = sequnce_3(offer.stage, offer.last_email_date)
                 if to_send:
                     sub, msg = eval(to_send + '(' + offer.drop + ', ' + offer.name + ')')
+            else:
+                to_send = None
 
             if to_send:
                 email = mail.EmailMultiAlternatives(
