@@ -3,7 +3,7 @@ import django
 import sys, traceback
 import os
 from django.core import mail
-os.environ['DJANGO_SETTINGS_MODULE'] = 'DomainScript.settings'
+os.environ['DJANGO_SETTINGS_MODULE'] = 'domainsell.settings'
 django.setup()
 
 from domain.models import Offer
