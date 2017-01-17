@@ -47,7 +47,7 @@ class CronJobs:
                 email.attach_alternative(msg, "text/html")
                 emails.append(email)
                 stage = offer.stage + 1
-                Offer.objects.filter(id=offer.id).update(stage=stage)
+                Offer.objects.filter(id=offer.id).update(stage=stage, last_email_date=datetime.now().date())
 
         connection.send_messages(emails)
         connection.close()
