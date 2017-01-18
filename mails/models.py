@@ -19,8 +19,11 @@ class Offer(models.Model):
     date = models.DateField(blank=True, null=True)
     updated = models.DateField(blank=True, null=True)
     status = models.SmallIntegerField(default=0)
-    stage = models.SmallIntegerField(default=0)
-    
+
+    stage = models.SmallIntegerField(default=1)
+    phase = models.SmallIntegerField(default=1)
+    last_email_date = models.DateField(blank=True, null=True)
+
     class Meta:
         db_table = 'offers'
 
@@ -30,4 +33,3 @@ class BlackList(models.Model):
 
     class Meta:
         db_table = 'blacklist'
-

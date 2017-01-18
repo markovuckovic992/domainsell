@@ -51,11 +51,10 @@ def process_offer(request):
     '''
     send_mail(
         "Domain offer",  # Title
-        "",  # Body
+        msg,  # Body
         'Report <' + settings.EMAIL_HOST_USER + '>',
         ['rongax@gmail.com'],
-        fail_silently=True,
-        html_message=msg,
+        fail_silently=False,
     )
 
     offer = Offer.objects.get(base_id=base_id)
@@ -65,15 +64,7 @@ def process_offer(request):
         sender = [offer.remail, offer.email]
     else:
         sender = [offer.remail]
-    # send_mail(
-    #     msg[0],  # Title
-    #     '',  # Body
-    #     'Web Domain Expert <' + settings.EMAIL_HOST_USER + '>',
-    #     [offer.remail, offer.email],
-    #     fail_silently=True,
-    #     html_message=msg[1],
-    #     reply_to=("edomainexpert@gmail.com", ),
-    # )
+
     connection = mail.get_connection()
     connection.open()
     emails = []
@@ -129,4 +120,3 @@ def addoffer(request):
     offer = Offer(base_id=base_id, lead=lead, drop=drop, hash_base_id=hash_base_id, remail=remail)
     offer.save()
     return HttpResponse('{"status": "success"}', content_type="application/json")
-

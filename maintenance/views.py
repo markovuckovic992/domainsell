@@ -51,12 +51,14 @@ def check_status(request):
             tube.close()
             statuses = resp.split(' ')
 
-
             index = len(statuses) - 1 - statuses[::-1].index('Date:')
             try:
                 date = datetime.strptime((statuses[index + 1])[0:10], '%Y-%m-%d').date()
             except:
-                date = None
+                try:
+                    date = datetime.strptime((statuses[index + 1])[0:11], '%d-%b-%Y').date()
+                except:
+                    date = None
 
             if 'pendingDelete' in str(statuses):
                 if date:
@@ -72,7 +74,7 @@ def check_status(request):
             Offer.objects.filter(id=offer.id).update(status=2)
         msg += ('DROP: ' + str(offer.drop) + str(statuses) + str(date))
         msg += '\n --------------------- \n'
-    return HttpResponse('{"status": ' '}', content_type="application/json")
+    return HttpResponse(json.dumps({"status": "success"}), content_type="application/json")
 
 @csrf_exempt
 def delete_old_data(request):

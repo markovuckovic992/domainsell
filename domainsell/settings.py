@@ -31,7 +31,8 @@ DEBUG = False
 
 ALLOWED_HOSTS = [
     'webdomainexpert.pw',
-    'www.webdomainexpert.pw'
+    'www.webdomainexpert.pw',
+    '136.243.171.155',
 ]
 
 
@@ -144,7 +145,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 ###
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.premium-web-domain.com'
