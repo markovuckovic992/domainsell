@@ -8,6 +8,8 @@ class MailsConfig(AppConfig):
 
 def form_a_msg(domain_name, name):
     domain_name = domain_name.upper()
+    name = name.split()[0]
+
     subject = 'Thank you for showing interest in ' + domain_name + '  Your free report is ready'
     msg =  'Hi, ' + name
     msg += '<br/>'
