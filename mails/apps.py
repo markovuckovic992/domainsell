@@ -11,7 +11,7 @@ def form_a_msg(domain_name, name):
     name = name.split()[0]
 
     subject = 'Thank you for showing interest in ' + domain_name + '  Your free report is ready'
-    msg =  'Hi, ' + name
+    msg =  'Hi ' + name + ', '
     msg += '<br/>'
     msg += '<br/>'
     msg += 'Congratulations on making the right choice for your business. Thousands of entrepreneurs have <br/> successfully turned their businesses around using Web Domain Expert is unique domain service. '
