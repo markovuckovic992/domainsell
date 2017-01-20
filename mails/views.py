@@ -117,6 +117,7 @@ def addoffer(request):
     drop = request.POST['drop']
     hash_base_id = request.POST['hash_base_id']
     remail = request.POST['remail']
-    offer = Offer(base_id=base_id, lead=lead, drop=drop, hash_base_id=hash_base_id, remail=remail)
-    offer.save()
+    if not Offer.objects.filter(base_id=base_id, lead=lead, drop=drop, hash_base_id=hash_base_id, remail=remail).exists():
+        offer = Offer(base_id=base_id, lead=lead, drop=drop, hash_base_id=hash_base_id, remail=remail)
+        offer.save()
     return HttpResponse('{"status": "success"}', content_type="application/json")
