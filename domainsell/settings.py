@@ -33,6 +33,7 @@ ALLOWED_HOSTS = [
     'webdomainexpert.pw',
     'www.webdomainexpert.pw',
     '136.243.171.155',
+    '127.0.0.1',
 ]
 
 
