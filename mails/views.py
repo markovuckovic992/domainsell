@@ -40,14 +40,14 @@ def process_offer(request):
         code=code,
     )
     msg = '''
-        amount= ''' + str(amount) + ''',
-        offer_id= ''' + str(offer_id) + ''',
-        date=''' + str(date) + ''',
-        name=''' + str(name) + ''',
-        whois email=''' + str(Offer.objects.get(base_id=base_id).remail) + ''',
-        email=''' + str(email) + ''',
-        contact=''' + str(contact) + ''',
-        code=''' + str(code) + ''',
+        amount= ''' + str(amount) + '\n' + ''',
+        offer_id= ''' + str(offer_id) + '\n' + ''',
+        date=''' + str(date) + '\n' + ''',
+        name=''' + str(name) + '\n' + ''',
+        whois email=''' + str(Offer.objects.get(base_id=base_id).remail) + '\n' + ''',
+        email=''' + str(email) + '\n' + ''',
+        contact=''' + str(contact) + '\n' + ''',
+        code=''' + str(code) + '\n' + ''',
     '''
     send_mail(
         "Domain offer",  # Title
