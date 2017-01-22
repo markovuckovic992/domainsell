@@ -25,6 +25,8 @@
                         <td>Whois Email</td>
                         <td>Phone</td>
                         <td>status</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
                     </tr>
                 </thead>
             {% for offer in offers %}
@@ -60,15 +62,15 @@
                     {% endif %}
                     <td>           
                         {% if offer.phase == 2 %}             
-                            <input class=type="button" class="green" onclick="start_post_release({{offer.id}})">Post Release Start</input>
+                            <input type="button" class="green" onclick="start_post_release({{offer.id}})">Post Release Start</input>
                         {% else %}                                   
-                            <input class=type="button" onclick="start_post_release({{offer.id}})">Post Release Start</input>
+                            <input type="button" onclick="start_post_release({{offer.id}})">Post Release Start</input>
                         {% endif %}
                         }
                     </td>
                     <td>
                         {% if offer.phase == 3 %}             
-                            <input class=type="button" class="green" onclick="start_post_sale({{offer.id}})">Post Sale Start</input>
+                            <input type="button" class="green" onclick="start_post_sale({{offer.id}})">Post Sale Start</input>
                         {% else %}                                   
                             <input class=type="button" onclick="start_post_sale({{offer.id}})">Post Sale Start</input>
                         {% endif %}
