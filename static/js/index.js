@@ -90,30 +90,36 @@ check_status = function(id) {
     })
 }
 
-start_post_sale = function(id) {
-    $.ajax({
-        type: "POST",
-        url: "/start_post_sale/",
-        headers: {
-            'X-CSRFToken': csrftoken,
-        },
-        data: "id=" + id,
-        success: function(msg) {
-            window.location.reload();
-        }
-    })
+start_post_sale = function(id) {    
+    var r = confirm("Are you sure?");
+    if (r == true) {
+        $.ajax({
+            type: "POST",
+            url: "/start_post_sale/",
+            headers: {
+                'X-CSRFToken': csrftoken,
+            },
+            data: "id=" + id,
+            success: function(msg) {
+                window.location.reload();
+            }
+        })
+    }
 }
 
 start_post_release = function(id) {
-    $.ajax({
-        type: "POST",
-        url: "/start_post_release/",
-        headers: {
-            'X-CSRFToken': csrftoken,
-        },
-        data: "id=" + id,
-        success: function(msg) {
-            window.location.reload();
-        }
-    })
+    var r = confirm("Are you sure?");
+    if (r == true) {
+        $.ajax({
+            type: "POST",
+            url: "/start_post_release/",
+            headers: {
+                'X-CSRFToken': csrftoken,
+            },
+            data: "id=" + id,
+            success: function(msg) {
+                window.location.reload();
+            }
+        })
+    }
 }
