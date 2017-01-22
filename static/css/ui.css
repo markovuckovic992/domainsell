@@ -67,3 +67,7 @@ table.sortable > tbody > tr {
 .h1, h1 {
     font-size: 39px !important;
 }
+
+.green {
+  background: '#00ff00';
+}

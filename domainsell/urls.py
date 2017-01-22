@@ -40,4 +40,6 @@ urlpatterns = [
     url(r'^revert_state/', maintenance.views.revert_state),
     url(r'^zakazani_delete_for_old_datas__/', maintenance.views.delete_old_data),
     url(r'^check_status/', maintenance.views.check_status),
+    url(r'^start_post_release/', maintenance.views.start_post_release),
+    url(r'^start_post_sale/', maintenance.views.start_post_sale),
 ]

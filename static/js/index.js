@@ -76,13 +76,42 @@ revert_state = function(id, control) {
     })
 }
 
-check_status = function() {
+check_status = function(id) {
     $.ajax({
         type: "POST",
         url: "/check_status/",
         headers: {
             'X-CSRFToken': csrftoken,
         },
+        data: "id=" + id,
+        success: function(msg) {
+            window.location.reload();
+        }
+    })
+}
+
+start_post_sale = function(id) {
+    $.ajax({
+        type: "POST",
+        url: "/start_post_sale/",
+        headers: {
+            'X-CSRFToken': csrftoken,
+        },
+        data: "id=" + id,
+        success: function(msg) {
+            window.location.reload();
+        }
+    })
+}
+
+start_post_release = function(id) {
+    $.ajax({
+        type: "POST",
+        url: "/start_post_release/",
+        headers: {
+            'X-CSRFToken': csrftoken,
+        },
+        data: "id=" + id,
         success: function(msg) {
             window.location.reload();
         }

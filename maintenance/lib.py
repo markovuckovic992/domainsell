@@ -1,8 +1,40 @@
 from datetime import datetime, timedelta
 from mails.post_re_mails import *
 
-
 def sequnce_1(stage, last_email_date):
+    today = datetime.now()
+    if stage == 1:
+        return "po_msg1"
+
+    elif stage == 2:
+        margin = (today - timedelta(days=2)).date()
+        if margin > last_email_date:
+            return "po_msg2"
+        else:
+            return None
+
+    elif stage == 3:
+        margin = (today - timedelta(days=2)).date()
+        if margin > last_email_date:
+            return "po_msg3"
+        else:
+            return None
+
+    elif stage == 4:
+        margin = (today - timedelta(days=2)).date()
+        if margin > last_email_date:
+            return "po_msg4"
+        else:
+            return None
+            
+    elif stage == 5:
+        margin = (today - timedelta(days=2)).date()
+        if margin > last_email_date:
+            return "po_msg5"
+        else:
+            return None
+
+def sequnce_2(stage, last_email_date):
     today = datetime.now()
     if stage == 1:
         return "form_a_msg1"
@@ -27,6 +59,7 @@ def sequnce_1(stage, last_email_date):
             return "form_a_msg4"
         else:
             return None
+
     elif stage == 5:
         margin = (today - timedelta(days=2)).date()
         if margin > last_email_date:

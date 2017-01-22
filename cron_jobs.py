@@ -6,7 +6,7 @@ from django.core import mail
 os.environ['DJANGO_SETTINGS_MODULE'] = 'domainsell.settings'
 django.setup()
 
-from mails.models import Offer
+from mails.models import Offer, Setting
 from django.conf import settings
 from maintenance.lib import *
 
@@ -14,23 +14,30 @@ class CronJobs:
     def __init__(self):
         pass
 
-    def send(self):
-        offers = Offer.objects.filter(amount__isnull=False)[0:15]
+    def send(self):   
+        last_id = Setting.objects.get(id=1).last_id    
+        offers = Offer.objects.filter(amount__isnull=False, id_gt=last_id, done=0)[0:15]
         connection = mail.get_connection()
         connection.open()
         emails = []
 
         for offer in offers:
             name = offer.name.split()[0]
-            if offer.phase == 1:
+            Max = 1
+            if offer.phase == 0:
+                pass
+            elif offer.phase == 1:
+                Max = 5
                 to_send = sequnce_1(offer.stage, offer.last_email_date)
                 if to_send:
-                    sub, msg = eval(to_send + '("' + offer.drop + '", "' + name + '")')
+                    sub, msg = eval(to_send + '("' + offer.drop + '", "' + name + '", "' + offer.date_started.year  '", "' + offer.amount + '")')
             elif offer.phase == 2:
+                Max = 12
                 to_send = sequnce_2(offer.stage, offer.last_email_date)
                 if to_send:
                     sub, msg = eval(to_send + '("' + offer.drop + '", "' + name + '")')
             elif offer.phase == 3:
+                Max = 5
                 to_send = sequnce_3(offer.stage, offer.last_email_date)
                 if to_send:
                     sub, msg = eval(to_send + '("' + offer.drop + '", "' + name + '")')
@@ -48,10 +55,13 @@ class CronJobs:
                 email.attach_alternative(msg, "text/html")
                 emails.append(email)
                 stage = offer.stage + 1
-                Offer.objects.filter(id=offer.id).update(stage=stage, last_email_date=datetime.now().date())
-
+                done = 1 if Max < stage else 0
+                Offer.objects.filter(id=offer.id).update(stage=stage, last_email_date=datetime.now().date(), done=done)
+            tmp = offer.id
         connection.send_messages(emails)
         connection.close()
+        Setting.objects.filter(id=1).update(last_id=tmp)
+
 
 c_j = CronJobs()
 if len(sys.argv) > 1:

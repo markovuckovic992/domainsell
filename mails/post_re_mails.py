@@ -3,7 +3,105 @@ from django.template import Context, Template
 from django.conf import settings
 import codecs
 
+### post offer
+def po_msg1(domain_name, name, year, price):
+    domain_name = domain_name.upper()
 
+    subject = domain_name + ' - Get The Premium Domain Today. Ready for free traffic?'
+    file = codecs.open(settings.EMAIL_TEMPLATES + '/po1.html', 'r')
+    content = file.read()
+    htmly = Template(content)
+    d = {
+        "items": {
+            'domain_name': domain_name,
+            'name': name,
+            'year': year,
+            'price': price,
+        }
+    }
+
+    html_content = htmly.render(Context(d))
+    return [subject, html_content]
+
+def po_msg2(domain_name, name, year, price):
+    domain_name = domain_name.upper()
+
+    subject = domain_name + ' - Increase daily traffic by 81% with this premium name'
+    file = codecs.open(settings.EMAIL_TEMPLATES + '/po2.html', 'r')
+    content = file.read()
+    htmly = Template(content)
+    d = {
+        "items": {
+            'domain_name': domain_name,
+            'name': name,
+            'year': year,
+            'price': price,
+        }
+    }
+
+    html_content = htmly.render(Context(d))
+    return [subject, html_content]
+
+
+def po_msg3(domain_name, name, year, price):
+    domain_name = domain_name.upper()
+
+    subject = domain_name + ' - Have questions regarding domain acquisition? Let\'s set up a meeting'
+    file = codecs.open(settings.EMAIL_TEMPLATES + '/po3.html', 'r')
+    content = file.read()
+    htmly = Template(content)
+    d = {
+        "items": {
+            'domain_name': domain_name,
+            'name': name,
+            'year': year,
+            'price': price,
+        }
+    }
+
+    html_content = htmly.render(Context(d))
+    return [subject, html_content]
+
+
+def po_msg4(domain_name, name, year, price):
+    domain_name = domain_name.upper()
+
+    subject = domain_name + ' - Did you forget something?'
+    file = codecs.open(settings.EMAIL_TEMPLATES + '/po4.html', 'r')
+    content = file.read()
+    htmly = Template(content)
+    d = {
+        "items": {
+            'domain_name': domain_name,
+            'name': name,
+            'year': year,
+            'price': price,
+        }
+    }
+
+    html_content = htmly.render(Context(d))
+    return [subject, html_content]
+
+
+def po_msg5(domain_name, name, year, price):
+    domain_name = domain_name.upper()
+
+    subject = name + ', We want you to cut a Sweet Deal'
+    file = codecs.open(settings.EMAIL_TEMPLATES + '/po5.html', 'r')
+    content = file.read()
+    htmly = Template(content)
+    d = {
+        "items": {
+            'domain_name': domain_name,
+            'name': name,
+            'year': year,
+            'price': price,
+        }
+    }
+
+    html_content = htmly.render(Context(d))
+    return [subject, html_content]
+### post release
 def form_a_msg1(domain_name, name):
     domain_name = domain_name.upper()
 

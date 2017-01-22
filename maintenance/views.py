@@ -119,3 +119,13 @@ def delete_old_data(request):
         'blk': serialized_obj,
     }
     return HttpResponse(json.dumps(response), content_type="application/json")
+
+def start_post_sale(request):
+    id_ = request.POST['id']
+    Offer.objects.filter(id=id_).update(phase=2, stage=1)
+    return HttpResponse(json.dumps({"status": "success"}), content_type="application/json")
+
+def start_post_release(request):
+    id_ = request.POST['id']
+    Offer.objects.filter(id=id_).update(phase=3, stage=1)
+    return HttpResponse(json.dumps({"status": "success"}), content_type="application/json")
