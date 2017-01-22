@@ -69,5 +69,5 @@ table.sortable > tbody > tr {
 }
 
 .green {
-  background: '#00ff00';
+    background: green;
 }
