@@ -20,7 +20,7 @@ class CronJobs:
         connection = mail.get_connection()
         connection.open()
         emails = []
-
+        tmp = 0
         for offer in offers:
             name = offer.name.split()[0]
             Max = 1
