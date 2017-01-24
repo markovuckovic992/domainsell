@@ -14,7 +14,7 @@ def form_a_msg(domain_name, name):
     msg =  'Hi ' + name + ', '
     msg += '<br/>'
     msg += '<br/>'
-    msg += 'Congratulations on making the right choice for your business. Thousands of entrepreneurs have <br/> successfully turned their businesses around using Web Domain Expert is unique domain service. '
+    msg += 'Congratulations on making the right choice for your business. Thousands of entrepreneurs have <br/> successfully turned their businesses around using Web Domain Expert\'s unique domain service. '
     msg += '<br/><br/>'
     msg += 'You get a lot more than just a premium domain. '
     msg += '<br/><br/>'
@@ -36,3 +36,4 @@ def form_a_msg(domain_name, name):
     msg += '<a href="http://webdomainexpert.com/">Web Domain Expert</a>'
 
     return [subject, msg]
+
