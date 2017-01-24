@@ -112,11 +112,13 @@ def unsubscribe(request):
 
 @csrf_exempt
 def addoffer(request):
-    base_id = request.POST['base_id']
+    base_id = int(request.POST['base_id'])
     lead = request.POST['lead']
     drop = request.POST['drop']
     hash_base_id = request.POST['hash_base_id']
     remail = request.POST['remail']
+    if Offer.objects.filter(hash_base_id=hash_base_id).exists():
+        return HttpResponse(status=204)
     if not Offer.objects.filter(base_id=base_id, lead=lead, drop=drop, hash_base_id=hash_base_id, remail=remail).exists():
         offer = Offer(base_id=base_id, lead=lead, drop=drop, hash_base_id=hash_base_id, remail=remail)
         offer.save()
