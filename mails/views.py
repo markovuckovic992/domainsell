@@ -39,12 +39,14 @@ def process_offer(request):
         contact=contact,
         code=code,
     )
+    offr = Offer.objects.get(base_id=base_id)
     msg = '''
+        lead= ''' + str(offr.lead) + '\n' + ''',
         amount= ''' + str(amount) + '\n' + ''',
         offer_id= ''' + str(offer_id) + '\n' + ''',
         date=''' + str(date) + '\n' + ''',
         name=''' + str(name) + '\n' + ''',
-        whois email=''' + str(Offer.objects.get(base_id=base_id).remail) + '\n' + ''',
+        whois email=''' + str(offr.remail) + '\n' + ''',
         email=''' + str(email) + '\n' + ''',
         contact=''' + str(contact) + '\n' + ''',
         code=''' + str(code) + '\n' + ''',
@@ -53,7 +55,7 @@ def process_offer(request):
         "Domain offer",  # Title
         msg,  # Body
         'Report <' + settings.EMAIL_HOST_USER + '>',
-        ['rongax@gmail.com'],
+        ['support@webdomainexpert.com'],
         fail_silently=False,
     )
 
