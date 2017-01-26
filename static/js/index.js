@@ -124,7 +124,7 @@ start_post_release = function(id) {
     }
 }
 
-Del = function (argument) {
+Del = function (id) {
     var r = confirm("Are you sure?");
     if (r == true) {
         $.ajax({
