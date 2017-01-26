@@ -122,6 +122,7 @@ def delete_old_data(request):
 
 def start_post_release(request):
     id_ = request.POST['id']    
+    turn_off = Offer.objects.filter(id=id_).phase
     if turn_off == 2:        
         Offer.objects.filter(id=id_).update(phase=10)
     else:
