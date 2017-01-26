@@ -123,3 +123,20 @@ start_post_release = function(id) {
         })
     }
 }
+
+Del = function (argument) {
+    var r = confirm("Are you sure?");
+    if (r == true) {
+        $.ajax({
+            type: "POST",
+            url: "/del_hash/",
+            headers: {
+                'X-CSRFToken': csrftoken,
+            },
+            data: "id=" + id,
+            success: function(msg) {
+                window.location.reload();
+            }
+        })
+    }
+}

@@ -27,6 +27,7 @@
                         <td>status</td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
+                        <td>&nbsp;</td>
                     </tr>
                 </thead>
             {% for offer in offers %}
@@ -74,6 +75,7 @@
                             <button  onclick="start_post_sale({{offer.id}})">Post Sale Start</button>
                         {% endif %}
                     </td>
+                    <td><button  onclick="Del({{offer.id}})">Del</button></td>
                 </tr>
             {% endfor %}
             </table>
