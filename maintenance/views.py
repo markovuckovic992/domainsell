@@ -121,13 +121,20 @@ def delete_old_data(request):
     return HttpResponse(json.dumps(response), content_type="application/json")
 
 def start_post_release(request):
-    id_ = request.POST['id']
-    Offer.objects.filter(id=id_).update(phase=2, stage=1)
+    id_ = request.POST['id']    
+    if turn_off == 2:        
+        Offer.objects.filter(id=id_).update(phase=10)
+    else:
+        Offer.objects.filter(id=id_).update(phase=2, stage=1) 
     return HttpResponse(json.dumps({"status": "success"}), content_type="application/json")
     
 def start_post_sale(request):
     id_ = request.POST['id']
-    Offer.objects.filter(id=id_).update(phase=3, stage=1)
+    turn_off = Offer.objects.filter(id=id_).phase
+    if turn_off == 3:        
+        Offer.objects.filter(id=id_).update(phase=10)
+    else:
+        Offer.objects.filter(id=id_).update(phase=3, stage=1)        
     return HttpResponse(json.dumps({"status": "success"}), content_type="application/json")
 
 def del_hash(request):
