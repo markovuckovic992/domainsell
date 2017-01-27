@@ -1,5 +1,17 @@
 from datetime import datetime, timedelta
 from mails.post_re_mails import *
+from random import randint
+
+def sequnce_0(stage, last_email_date):
+    today = datetime.now()
+    if stage == 1:
+        margin = (today - timedelta(days=2)).date()
+        if margin > last_email_date:
+            return "pr_msg"
+        else:
+            return None
+    else:
+        return None
 
 def sequnce_1(stage, last_email_date):
     today = datetime.now()

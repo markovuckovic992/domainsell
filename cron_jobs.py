@@ -25,7 +25,12 @@ class CronJobs:
             name = offer.name.split()[0]
             Max = 1
             if offer.phase == 0:
-                pass
+                Max = 1
+                to_send = sequnce_0(offer.stage, offer.last_email_date)
+                if to_send:
+                    link = ('http://www.webdomainexpert.pw/offer/?id=' + str(offer.hash_base_id))
+                    unsubscribe = ('http://www.webdomainexpert.pw/unsubscribe/?id=' + str(offer.hash_base_id))
+                    sub, msg = eval(to_send + '("' + offer.drop + '", "' + name + '", "' + unsubscribe  + '", "' + link + '")')
             elif offer.phase == 1:
                 Max = 5
                 to_send = sequnce_1(offer.stage, offer.last_email_date)
