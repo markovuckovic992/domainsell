@@ -4,10 +4,11 @@ from random import randint
 
 def sequnce_0(stage, last_email_date):
     today = datetime.now()
+    case = randint(1, 10)
     if stage == 1:
         margin = (today - timedelta(days=2)).date()
         if margin > last_email_date:
-            return "pr_msg"
+            return "pr_msg" + case
         else:
             return None
     else:
