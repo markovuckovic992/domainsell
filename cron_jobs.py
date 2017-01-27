@@ -16,7 +16,7 @@ class CronJobs:
 
     def send(self):   
         last_id = Setting.objects.get(id=1).last_id    
-        offers = Offer.objects.filter(amount__isnull=False, id__gt=last_id, done=0)[0:15]
+        offers = Offer.objects.filter(id__gt=last_id, done=0)[0:15]
         connection = mail.get_connection()
         connection.open()
         emails = []
