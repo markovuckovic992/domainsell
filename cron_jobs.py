@@ -22,7 +22,10 @@ class CronJobs:
         emails = []
         tmp = 0
         for offer in offers:
-            name = offer.name.split()[0]
+            try:
+                name = offer.name.split()[0]
+            except:
+                name = ''
             Max = 1
             if offer.phase == 0:
                 Max = 1
