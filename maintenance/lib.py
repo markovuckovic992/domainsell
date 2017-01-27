@@ -8,7 +8,7 @@ def sequnce_0(stage, last_email_date):
     if stage == 1:
         margin = (today - timedelta(days=2)).date()
         if margin > last_email_date:
-            return "pr_msg" + case
+            return "pr_msg" + str(case)
         else:
             return None
     else:
