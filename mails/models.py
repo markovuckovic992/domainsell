@@ -22,7 +22,7 @@ class Offer(models.Model):
 
     stage = models.SmallIntegerField(default=1)
     phase = models.SmallIntegerField(default=0)
-    last_email_date = models.DateField(blank=True, null=True)
+    last_email_date = models.DateField(default=timezone.now)
     done = models.SmallIntegerField(default=0)
 
     class Meta:
@@ -40,4 +40,4 @@ class Setting(models.Model):
     last_id = models.IntegerField(default=0)
 
     class Meta:
-        db_table = 'Setting'    
+        db_table = 'Setting'
