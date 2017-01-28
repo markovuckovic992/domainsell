@@ -38,6 +38,7 @@ def process_offer(request):
         email=email,
         contact=contact,
         code=code,
+        done=1,
     )
     offr = Offer.objects.get(base_id=base_id)
     msg = '''
