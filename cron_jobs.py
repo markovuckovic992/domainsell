@@ -14,8 +14,8 @@ class CronJobs:
     def __init__(self):
         pass
 
-    def send(self):   
-        last_id = Setting.objects.get(id=1).last_id    
+    def send(self):
+        last_id = Setting.objects.get(id=1).last_id
         offers = Offer.objects.filter(id__gt=last_id, done=0)[0:15]
         connection = mail.get_connection()
         connection.open()
@@ -33,12 +33,12 @@ class CronJobs:
                 if to_send:
                     link = ('http://www.webdomainexpert.pw/offer/?id=' + str(offer.hash_base_id))
                     unsubscribe = ('http://www.webdomainexpert.pw/unsubscribe/?id=' + str(offer.hash_base_id))
-                    sub, msg = eval(to_send + '("' + offer.drop + '", "' + name + '", "' + unsubscribe  + '", "' + link + '")')
+                    sub, msg = eval(to_send + '("' + offer.drop + '", "' + name + '", "' + unsubscribe + '", "' + link + '")')
             elif offer.phase == 1:
                 Max = 5
                 to_send = sequnce_1(offer.stage, offer.last_email_date)
                 if to_send:
-                    sub, msg = eval(to_send + '("' + offer.drop + '", "' + name + '", "' + str(offer.date_started.year)  + '", "' + str(offer.amount) + '")')
+                    sub, msg = eval(to_send + '("' + offer.drop + '", "' + name + '", "' + str(offer.date_started.year) + '", "' + str(offer.amount) + '")')
             elif offer.phase == 2:
                 Max = 12
                 to_send = sequnce_2(offer.stage, offer.last_email_date)
