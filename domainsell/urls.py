@@ -43,4 +43,6 @@ urlpatterns = [
     url(r'^start_post_release/', maintenance.views.start_post_release),
     url(r'^start_post_sale/', maintenance.views.start_post_sale),
     url(r'^del_hash/', maintenance.views.del_hash),
+    # sales
+    url(r'^sales/', mails.views.sales_page),
 ]

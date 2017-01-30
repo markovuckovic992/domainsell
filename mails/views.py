@@ -19,6 +19,16 @@ def receive_mails(request):
         return render_to_response('404.html', {})
     return render_to_response('index.html', {'drop': entry.drop, 'base_id': entry.base_id, 'hash': hash_base_id})
 
+@ensure_csrf_cookie
+def sales_page(request):
+    try:
+        hash_base_id = request.GET['id']
+        entry = Offer.objects.get(hash_base_id=hash_base_id)
+    except:
+        print traceback.format_exc()
+        return render_to_response('404.html', {})
+    return render_to_response('sales.html', {'drop': entry.drop, 'base_id': entry.base_id, 'hash': hash_base_id, 'amount':entry.amount})
+
 def process_offer(request):
     base_id = request.POST['base_id']
     amount = request.POST['amount']
