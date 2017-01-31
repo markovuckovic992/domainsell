@@ -365,3 +365,7 @@
 .submit-box button:hover {background-color: #6d9900;}
 .submit-box .seal {padding-top: 20px; max-width: 70px; margin-right:10px;}
 .banner_box_main {background-color: rgb(250,250,250); border-radius: 5px; box-sizing: border-box; padding: 0;}
+
+#buy_now, #amount_h3 {
+    font-family: Calibri, Candara, Segoe, 'Segoe UI', Optima, Arial, sans-serif;
+}
