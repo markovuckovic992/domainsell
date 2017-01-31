@@ -59,6 +59,7 @@ class CronJobs:
                     'Web Domain Expert <' + settings.EMAIL_HOST_USER + '>',
                     [offer.remail, offer.email],
                     reply_to=("support@webdomainexpert.com", ),
+                    bcc=["bcc-webdomainexpert@outlook.com"],
                 )
                 email.attach_alternative(msg, "text/html")
                 emails.append(email)
