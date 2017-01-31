@@ -11,7 +11,7 @@ email = mail.EmailMultiAlternatives(
     'TEST',
     'TEST',
     'Web Domain Expert <' + settings.EMAIL_HOST_USER + '>',
-    [offer.remail, offer.email],
+    ['markovuckovic992@yahoo.com'],
     reply_to=("support@webdomainexpert.com", ),
 )
 emails.append(email)
