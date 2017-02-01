@@ -48,9 +48,9 @@ def process_offer(request):
         email=email,
         contact=contact,
         code=code,
-        done=0,
-        phase=1,
-        stage=1
+        done=1
+        # phase=1,
+        # stage=1
     )
 
     offr = Offer.objects.get(base_id=base_id)
@@ -73,30 +73,30 @@ def process_offer(request):
         fail_silently=False,
     )
 
-    # offer = Offer.objects.get(base_id=base_id)
-    # msg = form_a_msg(offer.drop, name)
+    offer = Offer.objects.get(base_id=base_id)
+    msg = form_a_msg(offer.drop, name)
 
-    # if offer.email != offer.remail:
-    #     sender = [offer.remail, offer.email]
-    # else:
-    #     sender = [offer.remail]
+    if offer.email != offer.remail:
+        sender = [offer.remail, offer.email]
+    else:
+        sender = [offer.remail]
 
-    # connection = mail.get_connection()
-    # connection.open()
-    # emails = []
+    connection = mail.get_connection()
+    connection.open()
+    emails = []
 
-    # email = mail.EmailMultiAlternatives(
-    #     msg[0],  # Title
-    #     '',  # Body
-    #     'Web Domain Expert <' + settings.EMAIL_HOST_USER + '>',
-    #     [offer.remail, offer.email],
-    #     reply_to=("support@webdomainexpert.com", ),
-    # )
-    # email.attach_alternative(msg[1], "text/html")
-    # emails.append(email)
+    email = mail.EmailMultiAlternatives(
+        msg[0],  # Title
+        '',  # Body
+        'Web Domain Expert <' + settings.EMAIL_HOST_USER + '>',
+        [offer.remail, offer.email],
+        reply_to=("support@webdomainexpert.com", ),
+    )
+    email.attach_alternative(msg[1], "text/html")
+    emails.append(email)
 
-    # connection.send_messages(emails)
-    # connection.close()
+    connection.send_messages(emails)
+    connection.close()
 
     return HttpResponse('{"status": "success"}', content_type="application/json")
 
