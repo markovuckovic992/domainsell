@@ -6,7 +6,7 @@ def sequnce_0(stage, last_email_date):
     today = datetime.now()
     case = randint(1, 10)
     if stage == 1:
-        margin = (today - timedelta(days=2)).date()
+        margin = (today - timedelta(days=1)).date()
         if margin > last_email_date:
             return "pr_msg" + str(case)
         else:
@@ -39,7 +39,7 @@ def sequnce_1(stage, last_email_date):
             return "po_msg4"
         else:
             return None
-            
+
     elif stage == 5:
         margin = (today - timedelta(days=2)).date()
         if margin > last_email_date:

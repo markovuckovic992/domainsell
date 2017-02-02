@@ -2,6 +2,7 @@
 import django
 import sys, traceback
 import os
+from datetime import datetime, timedelta
 from django.core import mail
 os.environ['DJANGO_SETTINGS_MODULE'] = 'domainsell.settings'
 django.setup()
@@ -9,14 +10,20 @@ django.setup()
 from mails.models import Offer, Setting
 from django.conf import settings
 from maintenance.lib import *
+from django.db.models import Q
+
 
 class CronJobs:
     def __init__(self):
         pass
 
     def send(self):
+        two_days_ago = (datetime.now() - timedelta(days=1)).date()
         last_id = Setting.objects.get(id=1).last_id
-        offers = Offer.objects.filter(id__gt=last_id, done=0)[0:15]
+        offers = Offer.objects.filter(
+            Q(id__gt=last_id, done=0, phase=0),
+            Q(last_email_date__lt=two_days_ago)
+        )[0:15]  # | Q(phase__in=[1, 2, 3], stage=1)
         connection = mail.get_connection()
         connection.open()
         emails = []
