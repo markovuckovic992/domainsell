@@ -2,6 +2,15 @@
 {
 	
 }
+@media (max-width:768px) 
+{
+	.correction1 {margin-top: 50px; margin-bottom: 50px;}
+.correction2 {margin-top: 50px; margin-bottom: 50px;}
+.correction3 {margin-top: 50px; margin-bottom: 50px;}
+.correction4 {margin-top: 50px; margin-bottom: 50px;}
+.correction5 {margin-top: 50px; margin-bottom: 50px;}
+
+}
 @media (min-width:768px) and (max-width:991px)
 {
 	
