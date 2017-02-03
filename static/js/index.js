@@ -141,14 +141,14 @@ Del = function (id) {
 }
 
 
-change_amount = function () {
-    var html = '<input type="text" id="new_value" placeholder="new offer"/><button onclick="save_new_value">Save</button>';
-    $("#amountfield").html(html);
+change_amount = function (id) {
+    var html = '<input type="text" id="new_value" placeholder="new offer"/><button onclick="save_new_value(' + id + ')">Save</button>';
+    $("#amountfield" + id).html(html);
 }
 
-// save_new_value = function() {
-//     var new_value = $("#amountfield").val()
-//     var html = '<button onclick="change_amount()">' + new_value + '</button>';
-//     $("#amountfield").html = html;
-// }
+save_new_value = function(id) {
+    var new_value = $("#amountfield").val();
+    var html = '<button onclick="change_amount()">' + new_value + '</button>';
+    $("#amountfield" + id).html(html);
+}
 
