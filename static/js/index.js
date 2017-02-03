@@ -155,7 +155,7 @@ save_new_value = function(id) {
         headers: {
             'X-CSRFToken': csrftoken,
         },
-        data: "id=" + id + "&amount=" + new_value,
+        data: "id=" + id + "&amount=" + new_value.toFixed(2),
         success: function(msg) {
             $("#amountfield" + id).html(html);
         }
