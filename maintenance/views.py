@@ -138,8 +138,15 @@ def start_post_sale(request):
         Offer.objects.filter(id=id_).update(phase=3, stage=1, done=0)
     return HttpResponse(json.dumps({"status": "success"}), content_type="application/json")
 
+@login_required
 def del_hash(request):
     id_ = request.POST['id']
     Offer.objects.filter(id=id_).delete()
     return HttpResponse(json.dumps({"status": "success"}), content_type="application/json")
 
+@login_required
+def change_amount(request):
+    id_ = request.POST['id']
+    amount = request.POST['amount']
+    Offer.objects.filter(id=id_).update(amount=amount)
+    return HttpResponse(json.dumps({"status": "success"}), content_type="application/json")

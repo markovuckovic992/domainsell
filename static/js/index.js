@@ -148,7 +148,17 @@ change_amount = function (id) {
 
 save_new_value = function(id) {
     var new_value = $("#new_value").val();
-    var html = '<button onclick="change_amount()">' + new_value + '</button>';
-    $("#amountfield" + id).html(html);
+    var html = '<div onclick="change_amount(' + id + ')">' + new_value + '</div>';
+    $.ajax({
+        type: "POST",
+        url: "/change_amount/",
+        headers: {
+            'X-CSRFToken': csrftoken,
+        },
+        data: "id=" + id + "&amount=" + new_value,
+        success: function(msg) {
+            $("#amountfield" + id).html(html);
+        }
+    });
 }
 
