@@ -142,12 +142,12 @@ Del = function (id) {
 
 
 change_amount = function (id) {
-    var html = '<input type="text" id="new_value" placeholder="new offer"/><button onclick="save_new_value(' + id + ')">Save</button>';
+    var html = '<input type="number" id="new_value" placeholder="new offer"/><button onclick="save_new_value(' + id + ')">Save</button>';
     $("#amountfield" + id).html(html);
 }
 
 save_new_value = function(id) {
-    var new_value = $("#new_value").val();
+    var new_value = parseFloat($("#new_value").val());
     var html = '<div onclick="change_amount(' + id + ')">' + new_value.toFixed(2) + '</div>';
     $.ajax({
         type: "POST",
