@@ -13,7 +13,7 @@
         <a href="/logout/">Logout</a>
         <div>
             <button onclick="check_status()">Refresh Status</button>
-            <table id="mytable">
+            <table id="mytable" class="sortable">
                 <thead>
                     <tr>
                         <td>Lead</td>
@@ -82,8 +82,8 @@
         </div>
     </body>
     <script type="text/javascript">
-        $("#mytable").find('span').click(function (){
-           console.log('handler for click span worked');
+        $("#mytable").on("click", "span", function() {
+            console.log('Pera detlic')
         });
     </script>
 </html>
