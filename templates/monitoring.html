@@ -34,7 +34,7 @@
                 <tr>
                     <td>{{offer.lead}}</td>
                     <td>{{offer.drop}}</td>
-                    <td id="amountfield"><span>{{offer.amount}}</span></td>
+                    <td id="amountfield"><button onclick="change_amount()">{{offer.amount}}</button></td>
                     <td>{{offer.date}}</td>
                     {% if offer.sale %}
                         <td id="state_field{{offer.id}}">
@@ -80,11 +80,5 @@
             {% endfor %}
             </table>
         </div>
-
-        <script type="application/javascript">
-            $("#mytable").on("click", "span", function() {
-                console.log('Pera detlic')
-            });
-        </script>
     </body>
 </html>

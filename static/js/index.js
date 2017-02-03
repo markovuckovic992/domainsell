@@ -149,7 +149,7 @@ change_amount = function () {
 
 save_new_value = function() {
     var new_value = $("#amountfield").val()
-    var html = '<span id="amountfield">' + new_value + '</span>';
+    var html = '<button onclick="change_amount()">' + new_value + '</button>';
     $("#amountfield").html = html;
 }
 
