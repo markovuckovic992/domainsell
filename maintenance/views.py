@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
-from django.shortcuts import render_to_response, HttpResponseRedirect, HttpResponse, render, redirect
+from django.shortcuts import render_to_response, HttpResponseRedirect, HttpResponse, render
 from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 from django.contrib.auth import authenticate, login, logout
 import hashlib, random, requests, traceback
@@ -11,7 +11,7 @@ import json
 from os import popen
 
 def redirect(request):
-    return redirect('http://google.com/')
+    return render(request, 'redirect.html')
 
 @ensure_csrf_cookie
 def Login(request):
