@@ -17,8 +17,7 @@ function getCookie(name) {
 var csrftoken = getCookie('csrftoken');
 
 make_offer = function (base_id, hash, ip, name, contact, email) {
-    var amount = $("#lead_offer").val()
-    console.log(amount, name, contact, email)
+    var amount = parseFloat($("#lead_offer").val());
     $.ajax({
 		type: "POST",
 		url: "/process_offer/",
@@ -90,7 +89,7 @@ check_status = function(id) {
     })
 }
 
-start_post_sale = function(id) {    
+start_post_sale = function(id) {
     var r = confirm("Are you sure?");
     if (r == true) {
         $.ajax({
@@ -140,3 +139,16 @@ Del = function (id) {
         })
     }
 }
+
+
+change_amount = function () {
+    var html = '<input type="text" id="new_value" placeholder="new offer"/><button onclick="save_new_value">Save</button>';
+    $("#amountfield").html = html;
+}
+
+save_new_value = function() {
+    var new_value = $("#amountfield").val()
+    var html = '<span id="amountfield">' + new_value + '</span>';
+    $("#amountfield").html = html;
+}
+

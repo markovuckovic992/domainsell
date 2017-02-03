@@ -90,7 +90,7 @@ check_status = function(id) {
     })
 }
 
-start_post_sale = function(id) {    
+start_post_sale = function(id) {
     var r = confirm("Are you sure?");
     if (r == true) {
         $.ajax({
