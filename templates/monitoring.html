@@ -80,10 +80,11 @@
             {% endfor %}
             </table>
         </div>
+
+        <script type="application/javascript">
+            $("#mytable").on("click", "span", function() {
+                console.log('Pera detlic')
+            });
+        </script>
     </body>
-    <script type="text/javascript">
-        $("#mytable").on("click", "span", function() {
-            console.log('Pera detlic')
-        });
-    </script>
 </html>
