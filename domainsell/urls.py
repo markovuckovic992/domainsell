@@ -23,8 +23,6 @@ import maintenance.views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    # web domain expert
-    url(r'^$', maintenance.views.redirect),
     #  login
     url(r'^home_login/', maintenance.views.Login),
     url(r'^logout/', maintenance.views.homeLogout),
@@ -48,4 +46,6 @@ urlpatterns = [
     url(r'^change_amount/', maintenance.views.change_amount),
     # sales
     url(r'^sales/', mails.views.sales_page),
+    # web domain expert
+    url(r'^', maintenance.views.redirect),
 ]
