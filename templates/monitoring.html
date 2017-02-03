@@ -34,7 +34,7 @@
                 <tr>
                     <td>{{offer.lead}}</td>
                     <td>{{offer.drop}}</td>
-                    <td><div onclick="change_amount()">{{offer.amount}}</div></td>
+                    <td id="amountfield"><div onclick="change_amount()">{{offer.amount}}</div></td>
                     <td>{{offer.date}}</td>
                     {% if offer.sale %}
                         <td id="state_field{{offer.id}}">
