@@ -11,7 +11,7 @@ import json
 from os import popen
 
 def redirect(request):
-    return redirect('http://webdomainexpert.com/')
+    return redirect('http://google.com/')
 
 @ensure_csrf_cookie
 def Login(request):
