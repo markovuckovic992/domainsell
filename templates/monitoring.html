@@ -34,7 +34,7 @@
                 <tr>
                     <td>{{offer.lead}}</td>
                     <td>{{offer.drop}}</td>
-                    <td id="amountfield"><span style="background: blue;" onclick="change_amount()">{{offer.amount}}</span></td>
+                    <td id="amountfield"><span class="amount">{{offer.amount}}</span></td>
                     <td>{{offer.date}}</td>
                     {% if offer.sale %}
                         <td id="state_field{{offer.id}}">
@@ -81,4 +81,9 @@
             </table>
         </div>
     </body>
+    <script type="text/javascript">
+        $("#mytable tbody").find('span.amount').click(function (){
+           console.log('handler for click span worked');
+        });
+    </script>
 </html>
