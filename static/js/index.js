@@ -143,6 +143,7 @@ Del = function (id) {
 
 change_amount = function () {
     var html = '<input type="text" id="new_value" placeholder="new offer"/><button onclick="save_new_value">Save</button>';
+    console.log(html)
     $("#amountfield").html = html;
 }
 
