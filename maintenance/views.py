@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
-from django.shortcuts import render_to_response, HttpResponseRedirect, HttpResponse, render
+from django.shortcuts import render_to_response, HttpResponseRedirect, HttpResponse, render, redirect
 from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 from django.contrib.auth import authenticate, login, logout
 import hashlib, random, requests, traceback
@@ -9,6 +9,9 @@ from mails.models import Offer, BlackList
 from django.core import serializers
 import json
 from os import popen
+
+def redirect(request):
+    return redirect('http://webdomainexpert.com')
 
 @ensure_csrf_cookie
 def Login(request):
