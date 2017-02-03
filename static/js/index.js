@@ -17,7 +17,7 @@ function getCookie(name) {
 var csrftoken = getCookie('csrftoken');
 
 make_offer = function (base_id, hash, ip, name, contact, email) {
-    var amount = parseFloat($("#lead_offer").val());
+    var amount = parseFloat($("#lead_offer").val()).toFixed(2);
     $.ajax({
 		type: "POST",
 		url: "/process_offer/",
@@ -148,7 +148,7 @@ change_amount = function (id) {
 
 save_new_value = function(id) {
     var new_value = $("#new_value").val();
-    var html = '<div onclick="change_amount(' + id + ')">' + new_value + '</div>';
+    var html = '<div onclick="change_amount(' + id + ')">' + new_value.toFixed(2) + '</div>';
     $.ajax({
         type: "POST",
         url: "/change_amount/",
