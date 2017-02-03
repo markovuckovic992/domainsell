@@ -56,6 +56,7 @@ def process_offer(request):
     offr = Offer.objects.get(base_id=base_id)
     msg = '''
         lead= ''' + str(offr.lead) + '\n' + ''',
+        drop= ''' + str(offr.drop) + '\n' + ''',
         amount= ''' + str(amount) + '\n' + ''',
         offer_id= ''' + str(offer_id) + '\n' + ''',
         date=''' + str(date) + '\n' + ''',
