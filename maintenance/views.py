@@ -11,7 +11,7 @@ import json
 from os import popen
 
 def redirect(request):
-    return render(request, 'redirect.html')
+    return render(request, '404.html')
 
 @ensure_csrf_cookie
 def Login(request):
