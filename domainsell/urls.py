@@ -46,6 +46,4 @@ urlpatterns = [
     url(r'^change_amount/', maintenance.views.change_amount),
     # sales
     url(r'^sales/', mails.views.sales_page),
-    # web domain expert
-    url(r'^', maintenance.views.redirect),
 ]
