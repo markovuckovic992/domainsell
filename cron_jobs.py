@@ -26,11 +26,11 @@ class CronJobs:
         )[0:15]  # | Q(phase__in=[1, 2, 3], stage=1)
         connection1 = mail.get_connection()
         connection1.open()
-        connection2 = get_connection(host='smtp.sendgrid.net',
-                                     port=587,
-                                     username='domainexpert',
-                                     password='sbb12345',
-                                     use_tls=True)
+        connection2 = mail.get_connection(host='smtp.sendgrid.net',
+                                          port=587,
+                                          username='domainexpert',
+                                          password='sbb12345',
+                                          use_tls=True)
         emails1 = []
         emails2 = []
 
