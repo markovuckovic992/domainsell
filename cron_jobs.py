@@ -23,14 +23,15 @@ class CronJobs:
         offers = Offer.objects.filter(
             Q(id__gt=last_id, done=0, phase=0, last_email_date__lt=two_days_ago) |
             Q(id__gt=last_id, done=0, phase__in=[1, 2, 3])
-        )[0:15]  # | Q(phase__in=[1, 2, 3], stage=1)
+        )[0:8]  # | Q(phase__in=[1, 2, 3], stage=1)
         connection1 = mail.get_connection()
         connection1.open()
-        connection2 = mail.get_connection(host='smtp.sendgrid.net',
+        connection2 = mail.get_connection(host='smtp.gmail.com',
                                           port=587,
-                                          username='domainexpert',
-                                          password='sbb12345',
+                                          username='support@webdomainexpert.com',
+                                          password='asdQWE123',
                                           use_tls=True)
+
         emails1 = []
         emails2 = []
 
@@ -68,22 +69,24 @@ class CronJobs:
                 to_send = None
 
             if to_send:
-                if offer.phase > 1:
-                    to_email = 'edomainexpert@gmail.com'
+                if offer.phase > 0:
+                    fr_email = 'support@webdomainexpert.com'
+                    bcc = "w.expert@yahoo.com"
                 else:
-                    to_email = settings.EMAIL_HOST_USER
+                    fr_email = settings.EMAIL_HOST_USER
+                    bcc = "bcc-webdomainexpert@outlook.com"
 
                 email = mail.EmailMultiAlternatives(
                     sub,
                     '',
-                    'Web Domain Expert <' + to_email + '>',
+                    'Web Domain Expert <' + fr_email + '>',
                     [offer.remail, offer.email],
                     reply_to=("support@webdomainexpert.com", ),
-                    bcc=["w.expert@yahoo.com"],
+                    bcc=[bcc],
                 )
                 email.attach_alternative(msg, "text/html")
 
-                if offer.phase > 1:
+                if offer.phase > 0:
                     emails2.append(email)
                 else:
                     emails1.append(email)
