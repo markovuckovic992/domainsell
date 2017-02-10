@@ -21,12 +21,19 @@ class CronJobs:
         two_days_ago = (datetime.now() - timedelta(days=1)).date()
         last_id = Setting.objects.get(id=1).last_id
         offers = Offer.objects.filter(
-            Q(id__gt=last_id, done=0, phase=0),
-            Q(last_email_date__lt=two_days_ago)
+            Q(id__gt=last_id, done=0, phase=0, last_email_date__lt=two_days_ago) |
+            Q(id__gt=last_id, done=0, phase__in=[1, 2, 3])
         )[0:15]  # | Q(phase__in=[1, 2, 3], stage=1)
-        connection = mail.get_connection()
-        connection.open()
-        emails = []
+        connection1 = mail.get_connection()
+        connection1.open()
+        connection2 = get_connection(host='smtp.sendgrid.net',
+                                     port=587,
+                                     username='domainexpert',
+                                     password='sbb12345',
+                                     use_tls=True)
+        emails1 = []
+        emails2 = []
+
         tmp = 0
         for offer in offers:
             try:
@@ -61,22 +68,34 @@ class CronJobs:
                 to_send = None
 
             if to_send:
+                if offer.phase > 1:
+                    to_email = 'edomainexpert@gmail.com'
+                else:
+                    to_email = settings.EMAIL_HOST_USER
+
                 email = mail.EmailMultiAlternatives(
                     sub,
                     '',
-                    'Web Domain Expert <' + settings.EMAIL_HOST_USER + '>',
+                    'Web Domain Expert <' + to_email + '>',
                     [offer.remail, offer.email],
                     reply_to=("support@webdomainexpert.com", ),
                     bcc=["bcc-webdomainexpert@outlook.com"],
                 )
                 email.attach_alternative(msg, "text/html")
-                emails.append(email)
+
+                if offer.phase > 1:
+                    emails2.append(email)
+                else:
+                    emails1.append(email)
+
                 stage = offer.stage + 1
                 done = 1 if Max < stage else 0
                 Offer.objects.filter(id=offer.id).update(stage=stage, last_email_date=datetime.now().date(), done=done)
             tmp = offer.id
-        connection.send_messages(emails)
-        connection.close()
+        connection1.send_messages(emails1)
+        connection2.send_messages(emails2)
+        connection1.close()
+        connection2.close()
         Setting.objects.filter(id=1).update(last_id=tmp)
 
 

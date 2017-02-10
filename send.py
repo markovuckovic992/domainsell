@@ -29,14 +29,27 @@
 # sg.send(message)
 from django.conf import settings
 import os, django
-os.environ['DJANGO_SETTINGS_MODULE'] = 'DomainScript.settings'
+os.environ['DJANGO_SETTINGS_MODULE'] = 'domainsell.settings'
 django.setup()
 
-from django.core.mail import get_connection, send_mail
-connection = get_connection(host='smtp.sendgrid.net', 
-                            port=587, 
-                            username='domainexpert', 
-                            password='sbb12345', 
-                            use_tls=True) 
+from django.core import mail
+from django.core.mail import get_connection
 
-send_mail('diditwork?', 'test message', 'edomainexpert@gmail.com', ['markovuckovic992@yahoo.com'], connection=connection)
+connection = get_connection(host='smtp.sendgrid.net',
+                            port=587,
+                            username='domainexpert',
+                            password='sbb12345',
+                            use_tls=True)
+
+to_email = 'edomainexpert@gmail.com'
+email = mail.EmailMultiAlternatives(
+    'test',
+    '',
+    'Web Domain Expert <' + to_email + '>',
+    ['markovuckovic992@yahoo.com'],
+    reply_to=("support@webdomainexpert.com", ),
+    bcc=["bcc-webdomainexpert@outlook.com"],
+)
+connection.send_messages([email])
+connection.close()
+
