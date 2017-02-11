@@ -22,7 +22,7 @@ class Offer(models.Model):
 
     stage = models.SmallIntegerField(default=1)
     phase = models.SmallIntegerField(default=0)
-    last_email_date = models.DateField(default=timezone.now)
+    last_email_date = models.DateTimeField(default=timezone.now)
     done = models.SmallIntegerField(default=0)
 
     class Meta:

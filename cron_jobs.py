@@ -11,7 +11,14 @@ from mails.models import Offer, Setting
 from django.conf import settings
 from maintenance.lib import *
 from django.db.models import Q
+from random import randint
 
+hosts = [
+    'webdomainexpert.us',
+    'webdomainexpert.host',
+    'webdomainexpert.site',
+    'webdomainexpert.club',
+]
 
 class CronJobs:
     def __init__(self):
@@ -22,7 +29,8 @@ class CronJobs:
         last_id = Setting.objects.get(id=1).last_id
         offers = Offer.objects.filter(
             Q(id__gt=last_id, done=0, phase=0, last_email_date__lt=two_days_ago) |
-            Q(id__gt=last_id, done=0, phase__in=[1, 2, 3])
+            Q(id__gt=last_id, done=0, phase__in=[1, 2, 3], stage=1) |
+            Q(id__gt=last_id, done=0, phase__in=[1, 2, 3], stage__gt=1, last_email_date__lt=two_days_ago) |
         )[0:8]  # | Q(phase__in=[1, 2, 3], stage=1)
         connection1 = mail.get_connection()
         connection1.open()
@@ -45,9 +53,11 @@ class CronJobs:
             if offer.phase == 0:
                 Max = 1
                 to_send = sequnce_0(offer.stage, offer.last_email_date)
+                iterator = randint(0, 3)
+                host = str(hosts[iterator])
                 if to_send:
-                    link = ('http://www.webdomainexpert.pw/offer/?id=' + str(offer.hash_base_id))
-                    unsubscribe = ('http://www.webdomainexpert.pw/unsubscribe/?id=' + str(offer.hash_base_id))
+                    link = ('http://www.' + host + '/offer/?id=' + str(offer.hash_base_id))
+                    unsubscribe = ('http://www.' + host + '/unsubscribe/?id=' + str(offer.hash_base_id))
                     sub, msg = eval(to_send + '("' + offer.drop + '", "' + name + '", "' + unsubscribe + '", "' + link + '")')
             elif offer.phase == 1:
                 Max = 5
