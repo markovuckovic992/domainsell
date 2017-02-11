@@ -26,7 +26,7 @@ def sequnce_1(stage, last_email_date):
 
     elif stage == 2:
         margin = (today - timedelta(days=distance))
-        pytz.timezone('Europe/Belgrade').localize(margin)
+        margin = pytz.timezone('Europe/Belgrade').localize(margin)
         if margin > last_email_date:
             return "po_msg2"
         else:
@@ -34,7 +34,7 @@ def sequnce_1(stage, last_email_date):
 
     elif stage == 3:
         margin = (today - timedelta(days=distance))
-        pytz.timezone('Europe/Belgrade').localize(margin)
+        margin = pytz.timezone('Europe/Belgrade').localize(margin)
         if margin > last_email_date:
             return "po_msg3"
         else:
@@ -42,7 +42,7 @@ def sequnce_1(stage, last_email_date):
 
     elif stage == 4:
         margin = (today - timedelta(days=distance))
-        pytz.timezone('Europe/Belgrade').localize(margin)
+        margin = pytz.timezone('Europe/Belgrade').localize(margin)
         if margin > last_email_date:
             return "po_msg4"
         else:
@@ -50,7 +50,7 @@ def sequnce_1(stage, last_email_date):
 
     elif stage == 5:
         margin = (today - timedelta(days=distance))
-        pytz.timezone('Europe/Belgrade').localize(margin)
+        margin = pytz.timezone('Europe/Belgrade').localize(margin)
         if margin > last_email_date:
             return "po_msg5"
         else:
@@ -68,7 +68,7 @@ def sequnce_2(stage, last_email_date):
 
     elif stage == 2:
         margin = (today - timedelta(days=distance))
-        pytz.timezone('Europe/Belgrade').localize(margin)
+        margin = pytz.timezone('Europe/Belgrade').localize(margin)
         if margin > last_email_date:
             return "form_a_msg2"
         else:
@@ -76,7 +76,7 @@ def sequnce_2(stage, last_email_date):
 
     elif stage == 3:
         margin = (today - timedelta(days=distance))
-        pytz.timezone('Europe/Belgrade').localize(margin)
+        margin = pytz.timezone('Europe/Belgrade').localize(margin)
         if margin > last_email_date:
             return "form_a_msg3"
         else:
@@ -84,7 +84,7 @@ def sequnce_2(stage, last_email_date):
 
     elif stage == 4:
         margin = (today - timedelta(days=distance))
-        pytz.timezone('Europe/Belgrade').localize(margin)
+        margin = pytz.timezone('Europe/Belgrade').localize(margin)
         if margin > last_email_date:
             return "form_a_msg4"
         else:
@@ -92,7 +92,7 @@ def sequnce_2(stage, last_email_date):
 
     elif stage == 5:
         margin = (today - timedelta(days=distance))
-        pytz.timezone('Europe/Belgrade').localize(margin)
+        margin = pytz.timezone('Europe/Belgrade').localize(margin)
         if margin > last_email_date:
             return "form_a_msg5"
         else:
@@ -100,7 +100,7 @@ def sequnce_2(stage, last_email_date):
 
     elif stage == 6:
         margin = (today - timedelta(days=distance))
-        pytz.timezone('Europe/Belgrade').localize(margin)
+        margin = pytz.timezone('Europe/Belgrade').localize(margin)
         if margin > last_email_date:
             return "form_a_msg6"
         else:
@@ -108,7 +108,7 @@ def sequnce_2(stage, last_email_date):
 
     elif stage == 7:
         margin = (today - timedelta(days=distance))
-        pytz.timezone('Europe/Belgrade').localize(margin)
+        margin = pytz.timezone('Europe/Belgrade').localize(margin)
         if margin > last_email_date:
             return "form_a_msg7"
         else:
@@ -116,7 +116,7 @@ def sequnce_2(stage, last_email_date):
 
     elif stage == 8:
         margin = (today - timedelta(days=distance))
-        pytz.timezone('Europe/Belgrade').localize(margin)
+        margin = pytz.timezone('Europe/Belgrade').localize(margin)
         if margin > last_email_date:
             return "form_a_msg8"
         else:
@@ -124,7 +124,7 @@ def sequnce_2(stage, last_email_date):
 
     elif stage == 9:
         margin = (today - timedelta(days=distance))
-        pytz.timezone('Europe/Belgrade').localize(margin)
+        margin = pytz.timezone('Europe/Belgrade').localize(margin)
         if margin > last_email_date:
             return "form_a_msg9"
         else:
@@ -132,7 +132,7 @@ def sequnce_2(stage, last_email_date):
 
     elif stage == 10:
         margin = (today - timedelta(days=distance))
-        pytz.timezone('Europe/Belgrade').localize(margin)
+        margin = pytz.timezone('Europe/Belgrade').localize(margin)
         if margin > last_email_date:
             return "form_a_msg10"
         else:
@@ -140,7 +140,7 @@ def sequnce_2(stage, last_email_date):
 
     elif stage == 11:
         margin = (today - timedelta(days=distance))
-        pytz.timezone('Europe/Belgrade').localize(margin)
+        margin = pytz.timezone('Europe/Belgrade').localize(margin)
         if margin > last_email_date:
             return "form_a_msg11"
         else:
@@ -148,7 +148,7 @@ def sequnce_2(stage, last_email_date):
 
     elif stage == 12:
         margin = (today - timedelta(days=distance))
-        pytz.timezone('Europe/Belgrade').localize(margin)
+        margin = pytz.timezone('Europe/Belgrade').localize(margin)
         if margin > last_email_date:
             return "form_a_msg12"
         else:
