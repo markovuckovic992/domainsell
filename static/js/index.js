@@ -161,3 +161,44 @@ save_new_value = function(id) {
     });
 }
 
+save_settings = function(tip) {
+    var values1 = ($("#1_value").val());
+    var values2 = ($("#2_value").val());
+    var values3 = ($("#3_value").val());
+    var values4 = ($("#4_value").val());
+    var values5 = ($("#5_value").val());
+    var values6 = ($("#6_value").val());
+    var values7 = ($("#7_value").val());
+    var values8 = ($("#8_value").val());
+    var values9 = ($("#9_value").val());
+    var values10 = ($("#10_value").val());
+    var values11 = ($("#11_value").val());
+    var values12 = ($("#12_value").val());
+
+    var data = 'tip=' + tip;
+    data += '&1=' + values1;
+    data += '&2=' + values2;
+    data += '&3=' + values3;
+    data += '&4=' + values4;
+    data += '&5=' + values5;
+    data += '&6=' + values6;
+    data += '&7=' + values7;
+    data += '&8=' + values8;
+    data += '&9=' + values9;
+    data += '&10=' + values10;
+    data += '&11=' + values11;
+    data += '&12=' + values12;
+
+    $.ajax({
+        type: "POST",
+        url: "/save_settings/",
+        headers: {
+            'X-CSRFToken': csrftoken,
+        },
+        data: data,
+        success: function(msg) {
+            window.location.reload();
+        }
+    });
+
+}

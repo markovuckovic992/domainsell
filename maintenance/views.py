@@ -5,7 +5,7 @@ from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 from django.contrib.auth import authenticate, login, logout
 import hashlib, random, requests, traceback
 from datetime import datetime, timedelta
-from mails.models import Offer, BlackList
+from mails.models import Offer, BlackList, controlPanel
 from django.core import serializers
 import json
 from os import popen
@@ -152,4 +152,43 @@ def change_amount(request):
     id_ = request.POST['id']
     amount = request.POST['amount']
     Offer.objects.filter(id=id_).update(amount=amount)
+    return HttpResponse(json.dumps({"status": "success"}), content_type="application/json")
+
+@login_required
+def control_panel(request):
+    if 'type' not in request.GET.keys():
+            return HttpResponseRedirect("/control_panel/?type=post_offer")        
+    _type = request.GET['type']
+    if _type == 'post_offer':
+        settings = controlPanel.objects.filter(tip=1)
+        tip = 1
+    if _type == 'post_release':
+        settings = controlPanel.objects.filter(tip=2)
+        tip = 2
+    if _type == 'post_sale':
+        settings = controlPanel.objects.filter(tip=3)
+        tip = 3
+    return render_to_response('control_panel.html', {'settings': settings, 'tip': tip})
+
+def save_settings(request):
+    values = []
+    values.append(request.POST['1'])
+    values.append(request.POST['2'])
+    values.append(request.POST['3'])
+    values.append(request.POST['4'])
+    values.append(request.POST['5'])
+    values.append(request.POST['6'])
+    values.append(request.POST['7'])
+    values.append(request.POST['8'])
+    values.append( request.POST['9'])
+    values.append(request.POST['10'])
+    values.append(request.POST['11'])
+    values.append(request.POST['12'])
+
+    tip = request.POST['tip']
+    index = 1
+    for value in values:
+        if value != u'undefined':
+            controlPanel.objects.filter(tip=tip, order=index).update(distance=int(value))
+        index += 1
     return HttpResponse(json.dumps({"status": "success"}), content_type="application/json")
