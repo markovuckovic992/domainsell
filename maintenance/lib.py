@@ -6,7 +6,7 @@ from random import randint
 def sequnce_0(stage, last_email_date):
     today = datetime.now()
     case = randint(1, 10)
-    if stage == 1:        
+    if stage == 1:
         margin = (today - timedelta(days=2)).date()
         if margin > last_email_date:
             return "pr_msg" + str(case)
@@ -17,8 +17,8 @@ def sequnce_0(stage, last_email_date):
 
 def sequnce_1(stage, last_email_date):
     today = datetime.now()
-    if stage < 6:        
-        distance = int(controlPanel.objects.filter(tip=1, order=stage).distance)
+    if stage < 6:
+        distance = int(controlPanel.objects.get(tip=1, order=stage).distance)
 
     if stage == 1:
         return "po_msg1"
@@ -56,8 +56,8 @@ def sequnce_1(stage, last_email_date):
 
 def sequnce_2(stage, last_email_date):
     today = datetime.now()
-    if stage < 13:        
-        distance = int(controlPanel.objects.filter(tip=2, order=stage).distance)
+    if stage < 13:
+        distance = int(controlPanel.objects.get(tip=2, order=stage).distance)
     if stage == 1:
         return "form_a_msg1"
 
