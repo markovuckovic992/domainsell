@@ -44,6 +44,9 @@ urlpatterns = [
     url(r'^start_post_sale/', maintenance.views.start_post_sale),
     url(r'^del_hash/', maintenance.views.del_hash),
     url(r'^change_amount/', maintenance.views.change_amount),
+    # control_panel
+    url(r'^control_panel/', maintenance.views.control_panel),
+    url(r'^save_settings/', maintenance.views.save_settings),
     # sales
     url(r'^sales/', mails.views.sales_page),
 ]

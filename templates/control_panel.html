@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Control Panel</title>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="/static/js/index.js"></script>
+</head>
+<body>
+	<a href="/control_panel/?type=post_offer">Post Offer</a> |
+	<a href="/control_panel/?type=post_release">Post Release</a> |
+	<a href="/control_panel/?type=post_sale">Post Sale</a> |
+	<a href="/maintenance/">Maintenance</a>
+	<table border="1px">
+		<thead>
+			<tr>
+				<th>
+					Order of email
+				</th>
+				<th>
+					Distance in days from preveous
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for setting in settings %}
+			<tr>
+				<td>{{setting.order}}</td>
+				<td><input type="number" id="{{setting.order}}_value" value="{{setting.distance}}"/></td>
+			</tr>
+		{% endfor %}
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="2"><button onclick="save_settings({{tip}})">Save</button></td>
+			</tr>	
+		</tfoot>
+	</table>
+</body>
+</html>

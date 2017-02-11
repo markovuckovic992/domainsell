@@ -41,3 +41,11 @@ class Setting(models.Model):
 
     class Meta:
         db_table = 'Setting'
+
+class controlPanel(models.Model):
+    tip = models.IntegerField(default=0)
+    order = models.IntegerField(default=0)
+    distance = models.IntegerField(default=0)
+
+    class Meta:
+        db_table = 'controlPanel'
