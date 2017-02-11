@@ -103,7 +103,7 @@ class CronJobs:
 
                 stage = offer.stage + 1
                 done = 1 if Max < stage else 0
-                Offer.objects.filter(id=offer.id).update(stage=stage, last_email_date=datetime.now().date(), done=done)
+                Offer.objects.filter(id=offer.id).update(stage=stage, last_email_date=datetime.now(), done=done)
             tmp = offer.id
         connection1.send_messages(emails1)
         connection2.send_messages(emails2)
