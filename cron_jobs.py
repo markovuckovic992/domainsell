@@ -67,9 +67,13 @@ class CronJobs:
                     sub, msg = eval(to_send + '("' + offer.drop + '", "' + name + '", "' + str(offer.date_started.year) + '", "' + str(amount) + '")')
             elif offer.phase == 2:
                 Max = 12
+                to_send = sequnce_0(offer.stage, offer.last_email_date)
+                iterator = randint(0, 3)
+                host = str(hosts[iterator])
                 to_send = sequnce_2(offer.stage, offer.last_email_date)
                 if to_send:
-                    sub, msg = eval(to_send + '("' + offer.drop + '", "' + name + '")')
+                    link = ('http://www.' + host + '/sales/?id=' + str(offer.hash_base_id))
+                    sub, msg = eval(to_send + '("' + offer.drop + '", "' + name + '", "' + link +'")')
             elif offer.phase == 3:
                 Max = 5
                 to_send = sequnce_3(offer.stage, offer.last_email_date)
