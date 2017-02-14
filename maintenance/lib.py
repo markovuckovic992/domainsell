@@ -9,6 +9,7 @@ def sequnce_0(stage, last_email_date):
     case = randint(1, 10)
     if stage == 1:
         margin = (today - timedelta(days=2))
+        margin = pytz.timezone('Europe/Belgrade').localize(margin)
         if margin > last_email_date:
             return "pr_msg" + str(case)
         else:
