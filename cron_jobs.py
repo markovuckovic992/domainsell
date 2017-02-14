@@ -1,7 +1,7 @@
 #!/usr/bin/python
 import django
 import sys, traceback
-import os
+import os, pytz
 from datetime import datetime, timedelta
 from django.core import mail
 os.environ['DJANGO_SETTINGS_MODULE'] = 'domainsell.settings'
@@ -25,12 +25,14 @@ class CronJobs:
         pass
 
     def send(self):
-        two_days_ago = (datetime.now() - timedelta(days=1)).date()
+        two_days_ago = (datetime.now() - timedelta(days=2))
+        two_days_ago = pytz.timezone('Europe/Belgrade').localize(two_days_ago)
+
         last_id = Setting.objects.get(id=1).last_id
         offers = Offer.objects.filter(
-            Q(id__gt=last_id, done=0, phase=0, last_email_date__lt=two_days_ago) |
-            Q(id__gt=last_id, done=0, phase__in=[1, 2, 3], stage=1) |
-            Q(id__gt=last_id, done=0, phase__in=[1, 2, 3], stage__gt=1, last_email_date__lt=two_days_ago)
+            Q(id__gt=last_id, done=0, phase=0, last_email_date__lt=two_days_ago)
+            # | Q(id__gt=last_id, done=0, phase__in=[1, 2, 3], stage=1) |
+            # Q(id__gt=last_id, done=0, phase__in=[1, 2, 3], stage__gt=1, last_email_date__lt=two_days_ago)
         )[0:8]  # | Q(phase__in=[1, 2, 3], stage=1)
         connection1 = mail.get_connection()
         connection1.open()
