@@ -202,11 +202,19 @@ def search_results(request):
     name_redemption = request.POST['drop_domain']
     name_zone = request.POST['zone_domain']
     remail = request.POST['remail']     
-    email = request.POST['email']     
-    search_leads = Offer.objects.filter(
-        lead__contains=name_zone,
-        drop__contains=name_redemption,
-        remail__contains=remail,
-        email__contains=email
-    )[0:200]
+    email = request.POST['email'] 
+    if email:    
+        search_leads = Offer.objects.filter(
+            lead__contains=name_zone,
+            drop__contains=name_redemption,
+            remail__contains=remail,
+            email__contains=email
+        )[0:200]
+    else:
+        search_leads = Offer.objects.filter(
+            lead__contains=name_zone,
+            drop__contains=name_redemption,
+            remail__contains=remail
+        )[0:200]
+
     return render(request, 'search.html', {'search_leads': search_leads})
