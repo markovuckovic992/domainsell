@@ -180,7 +180,7 @@ def save_settings(request):
     values.append(request.POST['6'])
     values.append(request.POST['7'])
     values.append(request.POST['8'])
-    values.append( request.POST['9'])
+    values.append(request.POST['9'])
     values.append(request.POST['10'])
     values.append(request.POST['11'])
     values.append(request.POST['12'])
@@ -192,3 +192,26 @@ def save_settings(request):
             controlPanel.objects.filter(tip=tip, order=index).update(distance=int(value))
         index += 1
     return HttpResponse(json.dumps({"status": "success"}), content_type="application/json")
+
+
+# SEARCH
+def search(request):
+    return render(request, 'search.html', {})
+
+def search_results(request):
+    name_redemption = request.POST['drop_domain']
+    name_zone = request.POST['zone_domain']
+    datepicker = request.POST['datepicker']
+    try:
+        date = datetime.strptime(datepicker, '%d-%m-%Y').date()
+        search_leads = RawLeads.objects.filter(
+            name_zone__contains=name_zone,
+            name_redemption__contains=name_redemption,
+            date=date,
+        )[0:200]
+    except:      
+        search_leads = RawLeads.objects.filter(
+            name_zone__contains=name_zone,
+            name_redemption__contains=name_redemption
+        )[0:200]
+    return render(request, 'search.html', {'search_leads': search_leads})

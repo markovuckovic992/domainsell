@@ -1,1 +1,0 @@
-web: gunicorn domainsell.wsgi:application --log-file -
