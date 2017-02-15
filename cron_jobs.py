@@ -89,7 +89,7 @@ class CronJobs:
                     fr_email = 'support@webdomainexpert.com'
                     bcc = "w.expert@yahoo.com"
                 else:
-                    fr_email = settings.EMAIL_HOST_USER
+                    fr_email = "info@" + host
                     bcc = "bcc-webdomainexpert@outlook.com"
 
                 email = mail.EmailMultiAlternatives(
