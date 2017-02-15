@@ -56,7 +56,6 @@ def sequnce_1(stage, last_email_date):
             return "po_msg5"
         else:
             return None
-
     else:
         return None
 
