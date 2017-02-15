@@ -201,17 +201,12 @@ def search(request):
 def search_results(request):
     name_redemption = request.POST['drop_domain']
     name_zone = request.POST['zone_domain']
-    datepicker = request.POST['datepicker']
-    try:
-        date = datetime.strptime(datepicker, '%d-%m-%Y').date()
-        search_leads = RawLeads.objects.filter(
-            name_zone__contains=name_zone,
-            name_redemption__contains=name_redemption,
-            date=date,
-        )[0:200]
-    except:      
-        search_leads = RawLeads.objects.filter(
-            name_zone__contains=name_zone,
-            name_redemption__contains=name_redemption
-        )[0:200]
+    remail = request.POST['remail']     
+    email = request.POST['email']     
+    search_leads = Offer.objects.filter(
+        lead__contains=name_zone,
+        drop__contains=name_redemption,
+        remail__contains=remail,
+        email__contains=email
+    )[0:200]
     return render(request, 'search.html', {'search_leads': search_leads})

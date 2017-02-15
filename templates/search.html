@@ -17,7 +17,8 @@
             <form action="/search_results/" method="POST" style="margin-left: 20%; width: 60%;">{% csrf_token %}
             <input type="text" name="zone_domain" id="zone_domain" placeholder="lead"/>    
             <input type="text" name="drop_domain" id="drop_domain" placeholder="drop"/>    
-            <input type="text" name="datepicker" id="datepicker" placeholder="date">               
+            <input type="text" name="email" id="email" placeholder="form email">                
+            <input type="text" name="remail" id="remail" placeholder=" whois email">            
             <input type="submit" value="Search" />          
               </form>
               {% if search_leads %}
@@ -25,42 +26,27 @@
                 <thead>
                   <tr>
                     <th>
-                      Page number
+                      Lead
                     </th>
                     <th>
-                      Activated?
-                    </th>
+                      Drop
+                    </th>                            
                     <th>
-                      Lead, Drop
-                    </th>          
-                    <th>
-                      Date
+                      emails(form, whois)
                     </th>
                   </tr>
                 </thead>
                 <tbody>
                   {% for entry in search_leads %}
                   <tr>
-                    <td>{{entry.page}}</td>
-                    {% if entry.activated == 1 %}
-                      <td>yes</td>
-                    {% else %}
-                      <td>no</td>
-                    {% endif %}
-                    <td>{{entry.name_zone}},{{entry.name_redemption}} </td>
-                    <td>{{entry.date}} </td>
+                    <td>{{entry.lead}}</td>
+                    <td>{{entry.drop}} </td>
+                    <td>{{entry.email}}, {{entry.remail}}</td>
                   </tr>
                   {% endfor %}
                 </tbody>  
               </table>
                 {% endif %}
-              <script type="text/javascript">
-                $( function() {
-                  $( "#datepicker" ).datepicker();
-                  $( "#datepicker" ).datepicker("option", "dateFormat", 'dd-mm-yy');
-
-                } );
-              </script>
         </div>
     </body>
 </html>
