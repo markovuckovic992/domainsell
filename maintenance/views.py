@@ -160,7 +160,7 @@ def control_panel(request):
             return HttpResponseRedirect("/control_panel/?type=post_offer")        
     _type = request.GET['type']
     if _type == 'reminders':
-        settings = controlPanel.objects.filter(tip=1)
+        settings = controlPanel.objects.filter(tip=0)
         tip = 0        
     if _type == 'post_offer':
         settings = controlPanel.objects.filter(tip=1)
