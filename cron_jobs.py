@@ -66,7 +66,7 @@ class CronJobs:
                 to_send = sequnce_1(offer.stage, offer.last_email_date)
                 if to_send:
                     amount = "{0:.2f}".format(offer.amount)
-                    sub, msg = eval(to_send + '("' + offer.drop + '", "' + name + '", "' + str(offer.date_started.year) + '", "' + str(amount) + '")')
+                    sub, msg = eval(to_send + '("' + offer.drop + '", "' + name + '")')
             elif offer.phase == 2:
                 Max = 12
                 to_send = sequnce_0(offer.stage, offer.last_email_date)

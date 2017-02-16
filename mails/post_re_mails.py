@@ -6,8 +6,7 @@ import codecs
 ### post offer
 def po_msg1(domain_name, name, year, price):
     domain_name = domain_name.upper()
-
-    subject = domain_name + ' - Get The Premium Domain Today. Ready for free traffic?'
+    subject = 'Thank you for showing interest in ' + domain_name + '. Your free report is ready'
     file = codecs.open(settings.EMAIL_TEMPLATES + '/po1.html', 'r')
     content = file.read()
     htmly = Template(content)
@@ -15,8 +14,6 @@ def po_msg1(domain_name, name, year, price):
         "items": {
             'domain_name': domain_name,
             'name': name,
-            'year': year,
-            'price': price,
         }
     }
 
@@ -26,7 +23,7 @@ def po_msg1(domain_name, name, year, price):
 def po_msg2(domain_name, name, year, price):
     domain_name = domain_name.upper()
 
-    subject = domain_name + ' - Increase daily traffic by 81% with this premium name'
+    subject = 'Complimentary Guide - How To Choose The Perfect Domain For Your Brand'
     file = codecs.open(settings.EMAIL_TEMPLATES + '/po2.html', 'r')
     content = file.read()
     htmly = Template(content)
@@ -34,8 +31,6 @@ def po_msg2(domain_name, name, year, price):
         "items": {
             'domain_name': domain_name,
             'name': name,
-            'year': year,
-            'price': price,
         }
     }
 
@@ -46,7 +41,7 @@ def po_msg2(domain_name, name, year, price):
 def po_msg3(domain_name, name, year, price):
     domain_name = domain_name.upper()
 
-    subject = domain_name + ' - Have questions regarding domain acquisition? Let\'s set up a meeting'
+    subject = 'Domain Acquisition Simple As 1-2-3. Watch This Short Video Made For You'
     file = codecs.open(settings.EMAIL_TEMPLATES + '/po3.html', 'r')
     content = file.read()
     htmly = Template(content)
@@ -54,8 +49,6 @@ def po_msg3(domain_name, name, year, price):
         "items": {
             'domain_name': domain_name,
             'name': name,
-            'year': year,
-            'price': price,
         }
     }
 
@@ -66,7 +59,7 @@ def po_msg3(domain_name, name, year, price):
 def po_msg4(domain_name, name, year, price):
     domain_name = domain_name.upper()
 
-    subject = domain_name + ' - Did you forget something?'
+    subject = 'Top 6 Reasons Why Google Canz\'t Find You - Must Read!'
     file = codecs.open(settings.EMAIL_TEMPLATES + '/po4.html', 'r')
     content = file.read()
     htmly = Template(content)
@@ -74,8 +67,6 @@ def po_msg4(domain_name, name, year, price):
         "items": {
             'domain_name': domain_name,
             'name': name,
-            'year': year,
-            'price': price,
         }
     }
 
@@ -86,7 +77,7 @@ def po_msg4(domain_name, name, year, price):
 def po_msg5(domain_name, name, year, price):
     domain_name = domain_name.upper()
 
-    subject = name + ', We want you to cut a Sweet Deal'
+    subject = 'Your Brand New Premium Domain Would Be Ready Soon! Let’s get ready for more traffic'
     file = codecs.open(settings.EMAIL_TEMPLATES + '/po5.html', 'r')
     content = file.read()
     htmly = Template(content)
@@ -94,8 +85,6 @@ def po_msg5(domain_name, name, year, price):
         "items": {
             'domain_name': domain_name,
             'name': name,
-            'year': year,
-            'price': price,
         }
     }
 
