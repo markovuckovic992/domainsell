@@ -33,6 +33,9 @@
                     </th>                            
                     <th>
                       emails(form, whois)
+                    </th>                        
+                    <th>
+                      hash
                     </th>
                   </tr>
                 </thead>
@@ -41,7 +44,10 @@
                   <tr>
                     <td>{{entry.lead}}</td>
                     <td>{{entry.drop}} </td>
-                    <td>{{entry.email}}, {{entry.remail}}</td>
+                    <td>{{entry.email}}, {{entry.remail}}</td>                     
+                    <th>
+                      {{entry.hash_base_id}}
+                    </th>
                   </tr>
                   {% endfor %}
                 </tbody>  

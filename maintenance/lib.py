@@ -4,11 +4,13 @@ from mails.models import controlPanel
 from random import randint
 import pytz
 
-def sequnce_0(stage, last_email_date):
+def sequnce_0(stage, last_email_date):    
     today = datetime.now()
+    if stage < 2:
+        distance = int(controlPanel.objects.get(tip=0, order=stage).distance)
     case = randint(1, 10)
     if stage == 1:
-        margin = (today - timedelta(days=2))
+        margin = (today - timedelta(days=distance))
         margin = pytz.timezone('Europe/Belgrade').localize(margin)
         if margin > last_email_date:
             return "pr_msg" + str(case)

@@ -159,6 +159,9 @@ def control_panel(request):
     if 'type' not in request.GET.keys():
             return HttpResponseRedirect("/control_panel/?type=post_offer")        
     _type = request.GET['type']
+    if _type == 'reminders':
+        settings = controlPanel.objects.filter(tip=1)
+        tip = 0        
     if _type == 'post_offer':
         settings = controlPanel.objects.filter(tip=1)
         tip = 1
