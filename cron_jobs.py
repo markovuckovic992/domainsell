@@ -36,7 +36,8 @@ class CronJobs:
         )[0:2],Offer.objects.filter(
             Q(id__gt=last_id, done=0, phase=0, last_email_date__lt=two_days_ago)            
         )[0:6]))
-        print offers
+        for offer in offers:
+            print offer.phase
 
         # connection1 = mail.get_connection()
         # connection1.open()
