@@ -48,9 +48,9 @@ def process_offer(request):
         email=email,
         contact=contact,
         code=code,
-        done=1
-        # phase=1,
-        # stage=1
+        done=1,
+        phase=1,
+        stage=1
     )
 
     offr = Offer.objects.get(base_id=base_id)

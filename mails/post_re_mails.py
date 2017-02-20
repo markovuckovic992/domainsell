@@ -4,22 +4,6 @@ from django.conf import settings
 import codecs
 
 ### post offer
-def po_msg1(domain_name, name):
-    domain_name = domain_name.upper()
-    subject = 'Thank you for showing interest in ' + domain_name + '. Your free report is ready'
-    file = codecs.open(settings.EMAIL_TEMPLATES + '/po1.html', 'r')
-    content = file.read()
-    htmly = Template(content)
-    d = {
-        "items": {
-            'domain_name': domain_name,
-            'name': name,
-        }
-    }
-
-    html_content = htmly.render(Context(d))
-    return [subject, html_content]
-
 def po_msg2(domain_name, name):
     domain_name = domain_name.upper()
 
