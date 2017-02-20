@@ -4,7 +4,7 @@ import sys, traceback
 import os, pytz
 from datetime import datetime, timedelta
 from django.core import mail
-from operator import itertools
+from itertools import chain
 os.environ['DJANGO_SETTINGS_MODULE'] = 'domainsell.settings'
 django.setup()
 
@@ -32,7 +32,7 @@ class CronJobs:
         last_id = Setting.objects.get(id=1).last_id
         print len(offers)
 
-        offers = itertools.chain(Offer.objects.filter(
+        offers = chain(Offer.objects.filter(
             Q(id__gt=last_id, done=0, phase__in=[1, 2, 3], stage__gt=1, last_email_date__lt=two_days_ago)
         )[0:2],Offer.objects.filter(
             Q(id__gt=last_id, done=0, phase=0, last_email_date__lt=two_days_ago)            
