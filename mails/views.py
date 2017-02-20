@@ -50,7 +50,7 @@ def process_offer(request):
         code=code,
         done=1,
         phase=1,
-        stage=1
+        stage=2
     )
 
     offr = Offer.objects.get(base_id=base_id)
