@@ -34,11 +34,11 @@ class CronJobs:
         )[0:6]  
         print len(offers)
 
-        offers += Offer.objects.filter(
+        offers |= Offer.objects.filter(
             Q(id__gt=last_id, done=0, phase__in=[1, 2, 3], stage__gt=1, last_email_date__lt=two_days_ago)
         )[0:2]        
         print len(offers)
-        
+
         # connection1 = mail.get_connection()
         # connection1.open()
         # connection2 = mail.get_connection(host='smtp.gmail.com',
