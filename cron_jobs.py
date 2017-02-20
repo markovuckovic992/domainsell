@@ -30,7 +30,6 @@ class CronJobs:
         two_days_ago = pytz.timezone('Europe/Belgrade').localize(two_days_ago)
 
         last_id = Setting.objects.get(id=1).last_id
-        print len(offers)
 
         offers = chain(Offer.objects.filter(
             Q(id__gt=last_id, done=0, phase__in=[1, 2, 3], stage__gt=1, last_email_date__lt=two_days_ago)
