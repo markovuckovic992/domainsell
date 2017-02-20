@@ -77,7 +77,7 @@ def po_msg4(domain_name, name, year, price):
 def po_msg5(domain_name, name, year, price):
     domain_name = domain_name.upper()
 
-    subject = 'Your Brand New Premium Domain Would Be Ready Soon! Let’s get ready for more traffic'
+    subject = 'Your Brand New Premium Domain Would Be Ready Soon! Let\'s get ready for more traffic'
     file = codecs.open(settings.EMAIL_TEMPLATES + '/po5.html', 'r')
     content = file.read()
     htmly = Template(content)
