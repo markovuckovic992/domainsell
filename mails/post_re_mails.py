@@ -4,7 +4,7 @@ from django.conf import settings
 import codecs
 
 ### post offer
-def po_msg1(domain_name, name, year, price):
+def po_msg1(name, domain_name):
     domain_name = domain_name.upper()
     subject = 'Thank you for showing interest in ' + domain_name + '. Your free report is ready'
     file = codecs.open(settings.EMAIL_TEMPLATES + '/po1.html', 'r')
@@ -20,7 +20,7 @@ def po_msg1(domain_name, name, year, price):
     html_content = htmly.render(Context(d))
     return [subject, html_content]
 
-def po_msg2(domain_name, name, year, price):
+def po_msg2(name, domain_name):
     domain_name = domain_name.upper()
 
     subject = 'Complimentary Guide - How To Choose The Perfect Domain For Your Brand'
@@ -38,7 +38,7 @@ def po_msg2(domain_name, name, year, price):
     return [subject, html_content]
 
 
-def po_msg3(domain_name, name, year, price):
+def po_msg3(name, domain_name):
     domain_name = domain_name.upper()
 
     subject = 'Domain Acquisition Simple As 1-2-3. Watch This Short Video Made For You'
@@ -56,7 +56,7 @@ def po_msg3(domain_name, name, year, price):
     return [subject, html_content]
 
 
-def po_msg4(domain_name, name, year, price):
+def po_msg4(name, domain_name):
     domain_name = domain_name.upper()
 
     subject = 'Top 6 Reasons Why Google Canz\'t Find You - Must Read!'
@@ -74,7 +74,7 @@ def po_msg4(domain_name, name, year, price):
     return [subject, html_content]
 
 
-def po_msg5(domain_name, name, year, price):
+def po_msg5(name, domain_name):
     domain_name = domain_name.upper()
 
     subject = 'Your Brand New Premium Domain Would Be Ready Soon! Let\'s get ready for more traffic'
