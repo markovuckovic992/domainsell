@@ -48,7 +48,7 @@ def process_offer(request):
         email=email,
         contact=contact,
         code=code,
-        done=1,
+        done=0,
         phase=1,
         stage=2
     )
