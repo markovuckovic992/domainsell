@@ -39,6 +39,7 @@ def po_msg2(name, domain_name):
 
 
 def po_msg3(name, domain_name):
+    print name, domain_name
     domain_name = domain_name.upper()
 
     subject = 'Domain Acquisition Simple As 1-2-3. Watch This Short Video Made For You'
