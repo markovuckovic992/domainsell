@@ -8,6 +8,7 @@ from datetime import datetime
 from geoip import geolite2
 from mails.models import Offer, BlackList
 from mails.apps import *
+from django.utils import timezone
 
 @ensure_csrf_cookie
 def receive_mails(request):
@@ -50,7 +51,8 @@ def process_offer(request):
         code=code,
         done=0,
         phase=1,
-        stage=2
+        stage=2,
+        last_email_date=timezone.now()
     )
 
     offr = Offer.objects.get(base_id=base_id)
