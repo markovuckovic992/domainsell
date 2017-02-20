@@ -30,92 +30,97 @@ class CronJobs:
 
         last_id = Setting.objects.get(id=1).last_id
         offers = Offer.objects.filter(
-            Q(id__gt=last_id, done=0, phase=0, last_email_date__lt=two_days_ago)
-            # | Q(id__gt=last_id, done=0, phase__in=[1, 2, 3], stage=1) |
-            # Q(id__gt=last_id, done=0, phase__in=[1, 2, 3], stage__gt=1, last_email_date__lt=two_days_ago)
-        )[0:8]  # | Q(phase__in=[1, 2, 3], stage=1)
-        connection1 = mail.get_connection()
-        connection1.open()
-        connection2 = mail.get_connection(host='smtp.gmail.com',
-                                          port=587,
-                                          username='support@webdomainexpert.com',
-                                          password='asdQWE123',
-                                          use_tls=True)
+            Q(id__gt=last_id, done=0, phase=0, last_email_date__lt=two_days_ago)            
+        )[0:6]  
+        print len(offers)
 
-        emails1 = []
-        emails2 = []
+        offers += Offer.objects.filter(
+            Q(id__gt=last_id, done=0, phase__in=[1, 2, 3], stage__gt=1, last_email_date__lt=two_days_ago)
+        )[0:2]        
+        print len(offers)
+        
+        # connection1 = mail.get_connection()
+        # connection1.open()
+        # connection2 = mail.get_connection(host='smtp.gmail.com',
+        #                                   port=587,
+        #                                   username='support@webdomainexpert.com',
+        #                                   password='asdQWE123',
+        #                                   use_tls=True)
 
-        tmp = 0
-        for offer in offers:
-            try:
-                name = offer.name.split()[0]
-            except:
-                name = ''
-            Max = 1
-            if offer.phase == 0:
-                Max = 1
-                to_send = sequnce_0(offer.stage, offer.last_email_date)
-                iterator = randint(0, 3)
-                host = str(hosts[iterator])
-                if to_send:
-                    link = ('http://www.' + host + '/offer/?id=' + str(offer.hash_base_id))
-                    unsubscribe = ('http://www.' + host + '/unsubscribe/?id=' + str(offer.hash_base_id))
-                    sub, msg = eval(to_send + '("' + offer.drop + '", "' + name + '", "' + unsubscribe + '", "' + link + '")')
-            elif offer.phase == 1:
-                Max = 5
-                to_send = sequnce_1(offer.stage, offer.last_email_date)
-                if to_send:
-                    amount = "{0:.2f}".format(offer.amount)
-                    sub, msg = eval(to_send + '("' + offer.drop + '", "' + name + '")')
-            elif offer.phase == 2:
-                Max = 12
-                to_send = sequnce_0(offer.stage, offer.last_email_date)
-                iterator = randint(0, 3)
-                host = str(hosts[iterator])
-                to_send = sequnce_2(offer.stage, offer.last_email_date)
-                if to_send:
-                    link = ('http://www.' + host + '/sales/?id=' + str(offer.hash_base_id))
-                    sub, msg = eval(to_send + '("' + offer.drop + '", "' + name + '", "' + link +'")')
-            elif offer.phase == 3:
-                Max = 5
-                to_send = sequnce_3(offer.stage, offer.last_email_date)
-                if to_send:
-                    sub, msg = eval(to_send + '("' + offer.drop + '", "' + name + '")')
-            else:
-                to_send = None
+        # emails1 = []
+        # emails2 = []
 
-            if to_send:
-                if offer.phase > 0:
-                    fr_email = 'support@webdomainexpert.com'
-                    bcc = "w.expert@yahoo.com"
-                else:
-                    fr_email = settings.EMAIL_HOST_USER
-                    bcc = "bcc-webdomainexpert@outlook.com"
+        # tmp = 0
+        # for offer in offers:
+        #     try:
+        #         name = offer.name.split()[0]
+        #     except:
+        #         name = ''
+        #     Max = 1
+        #     if offer.phase == 0:
+        #         Max = 1
+        #         to_send = sequnce_0(offer.stage, offer.last_email_date)
+        #         iterator = randint(0, 3)
+        #         host = str(hosts[iterator])
+        #         if to_send:
+        #             link = ('http://www.' + host + '/offer/?id=' + str(offer.hash_base_id))
+        #             unsubscribe = ('http://www.' + host + '/unsubscribe/?id=' + str(offer.hash_base_id))
+        #             sub, msg = eval(to_send + '("' + offer.drop + '", "' + name + '", "' + unsubscribe + '", "' + link + '")')
+        #     elif offer.phase == 1:
+        #         Max = 5
+        #         to_send = sequnce_1(offer.stage, offer.last_email_date)
+        #         if to_send:
+        #             amount = "{0:.2f}".format(offer.amount)
+        #             sub, msg = eval(to_send + '("' + offer.drop + '", "' + name + '")')
+        #     elif offer.phase == 2:
+        #         Max = 12
+        #         to_send = sequnce_0(offer.stage, offer.last_email_date)
+        #         iterator = randint(0, 3)
+        #         host = str(hosts[iterator])
+        #         to_send = sequnce_2(offer.stage, offer.last_email_date)
+        #         if to_send:
+        #             link = ('http://www.' + host + '/sales/?id=' + str(offer.hash_base_id))
+        #             sub, msg = eval(to_send + '("' + offer.drop + '", "' + name + '", "' + link +'")')
+        #     elif offer.phase == 3:
+        #         Max = 5
+        #         to_send = sequnce_3(offer.stage, offer.last_email_date)
+        #         if to_send:
+        #             sub, msg = eval(to_send + '("' + offer.drop + '", "' + name + '")')
+        #     else:
+        #         to_send = None
 
-                email = mail.EmailMultiAlternatives(
-                    sub,
-                    '',
-                    'Web Domain Expert <' + fr_email + '>',
-                    [offer.remail, offer.email],
-                    reply_to=("support@webdomainexpert.com", ),
-                    bcc=[bcc],
-                )
-                email.attach_alternative(msg, "text/html")
+        #     if to_send:
+        #         if offer.phase > 0:
+        #             fr_email = 'support@webdomainexpert.com'
+        #             bcc = "w.expert@yahoo.com"
+        #         else:
+        #             fr_email = settings.EMAIL_HOST_USER
+        #             bcc = "bcc-webdomainexpert@outlook.com"
 
-                if offer.phase > 0:
-                    emails2.append(email)
-                else:
-                    emails1.append(email)
+        #         email = mail.EmailMultiAlternatives(
+        #             sub,
+        #             '',
+        #             'Web Domain Expert <' + fr_email + '>',
+        #             [offer.remail, offer.email],
+        #             reply_to=("support@webdomainexpert.com", ),
+        #             bcc=[bcc],
+        #         )
+        #         email.attach_alternative(msg, "text/html")
 
-                stage = offer.stage + 1
-                done = 1 if Max < stage else 0
-                Offer.objects.filter(id=offer.id).update(stage=stage, last_email_date=datetime.now(), done=done)
-            tmp = offer.id
-        connection1.send_messages(emails1)
-        connection2.send_messages(emails2)
-        connection1.close()
-        connection2.close()
-        Setting.objects.filter(id=1).update(last_id=tmp)
+        #         if offer.phase > 0:
+        #             emails2.append(email)
+        #         else:
+        #             emails1.append(email)
+
+        #         stage = offer.stage + 1
+        #         done = 1 if Max < stage else 0
+        #         Offer.objects.filter(id=offer.id).update(stage=stage, last_email_date=datetime.now(), done=done)
+        #     tmp = offer.id
+        # connection1.send_messages(emails1)
+        # connection2.send_messages(emails2)
+        # connection1.close()
+        # connection2.close()
+        # Setting.objects.filter(id=1).update(last_id=tmp)
 
 
 c_j = CronJobs()
