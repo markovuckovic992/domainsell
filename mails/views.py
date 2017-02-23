@@ -101,7 +101,7 @@ def process_offer(request):
     connection.send_messages(emails)
     connection.close()
 
-    return HttpResponse('{"status": "success"}', content_type="application/json")
+    return HttpResponseRedirect('/thank-you/')
 
 def process_offer_redirect(request):
     hash_base_id = request.GET['id']
@@ -113,6 +113,9 @@ def contact(request):
     hash_base_id = request.POST['hash']
     Offer.objects.filter(hash_base_id=hash_base_id).update(contact=contact, email=email)
     return HttpResponse('{"status": "success"}', content_type="application/json")
+
+def thank(request):
+    return render(request, 'ty.html', {})
 
 def farewell(request):
     hash_base_id = request.GET['id']

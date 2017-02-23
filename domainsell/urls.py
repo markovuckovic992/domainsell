@@ -32,6 +32,7 @@ urlpatterns = [
     url(r'^process_offer_redirect/', mails.views.process_offer_redirect),
     url(r'^contact/', mails.views.contact),
     url(r'^farewell/', mails.views.farewell),
+    url(r'^thank-you/', mails.views.thank),
     url(r'^unsubscribe/', mails.views.unsubscribe),
     # add offer
     url(r'^add_offer/', mails.views.addoffer),
@@ -50,6 +51,6 @@ urlpatterns = [
     # sales
     url(r'^sales/', mails.views.sales_page),
     # search
-    url(r'^search/', maintenance.views.search),    
-    url(r'^search_results/', maintenance.views.search_results),   
+    url(r'^search/', maintenance.views.search),
+    url(r'^search_results/', maintenance.views.search_results),
 ]
