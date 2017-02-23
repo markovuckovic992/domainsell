@@ -508,7 +508,7 @@ Do For Your Business
 <script>
     $(document).ready(function(){
 
-        
+
 $("#submit_offer").click(function(e){
     if(!($.isNumeric($("#lead_offer").val())) || $("#lead_offer").val()<100){
         $("#msg").html("Sorry, this domain has a reserve of $100, please adjust your offer.");
@@ -537,7 +537,8 @@ $("#userinfo").submit(function(e) {
         $("#lead_offer").val('');
     }, "jsonp");
 
-    $("#userinfoform").html("Thank you for submitting your offer. One of our Domain Experts will get in touch with you within the next 24 hours.");
+    location.href = '/thank-you/'
+    // $("#userinfoform").html("Thank you for submitting your offer. One of our Domain Experts will get in touch with you within the next 24 hours.");
 });
     });
 </script>

@@ -101,7 +101,7 @@ def process_offer(request):
     connection.send_messages(emails)
     connection.close()
 
-    return HttpResponseRedirect('/thank-you/')
+    return HttpResponse('{"status": "success"}', content_type="application/json")
 
 def process_offer_redirect(request):
     hash_base_id = request.GET['id']
