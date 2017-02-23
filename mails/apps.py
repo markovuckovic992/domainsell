@@ -5,6 +5,11 @@ import codecs
 
 
 def form_a_msg(domain_name, name):
+    try:
+        name = name.split()[0]
+    except:
+        name = ''
+
     domain_name = domain_name.upper()
     subject = 'Thank you for showing interest in ' + domain_name + '. Your free report is ready'
     file = codecs.open(settings.EMAIL_TEMPLATES + '/po1.html', 'r')
