@@ -84,7 +84,7 @@ def process_offer(request):
     else:
         sender = [offer.remail]
 
-    connection = mail.mail.get_connection(host='smtp.gmail.com',
+    connection = mail.get_connection(host='smtp.gmail.com',
                                           port=587,
                                           username='support@webdomainexpert.com',
                                           password='asdQWE123',
