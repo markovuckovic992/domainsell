@@ -95,7 +95,7 @@ def process_offer(request):
     email = mail.EmailMultiAlternatives(
         msg[0],  # Title
         '',  # Body
-        'Web Domain Expert <' + settings.EMAIL_HOST_USER + '>',
+        'Web Domain Expert <support@webdomainexpert.com>',
         [offer.remail, offer.email],
         reply_to=("support@webdomainexpert.com", ),
     )
