@@ -34,8 +34,8 @@ class CronJobs:
         offers = list(chain(Offer.objects.filter(
             Q(id__gt=last_id, done=0, phase__in=[1], stage__gt=1, last_email_date__lt=two_days_ago)
         )[0:2],Offer.objects.filter(
-            Q(id__gt=last_id, done=0, phase=0, last_email_date__lt=two_days_ago)            
-        )[0:6])) #, 2, 3
+            Q(id__gt=last_id, done=0, phase=0, last_email_date__lt=two_days_ago)
+        )[0:6]))  # , 2, 3
 
         connection1 = mail.get_connection()
         connection1.open()
