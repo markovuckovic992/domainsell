@@ -32,7 +32,8 @@ class CronJobs:
         last_id = Setting.objects.get(id=1).last_id
 
         offers = list(chain(Offer.objects.filter(
-            Q(id__gt=last_id, done=0, phase__in=[1], stage__gt=1, last_email_date__lt=two_days_ago)
+            Q(id__gt=last_id, done=0, phase=1, stage__gt=1, last_email_date__lt=two_days_ago) |
+            Q(id__gt=last_id, done=0, phase__in=[2], last_email_date__lt=two_days_ago)
         )[0:2],Offer.objects.filter(
             Q(id__gt=last_id, done=5, phase=0, last_email_date__lt=two_days_ago)
         )[0:6]))  # , 2, 3
@@ -78,7 +79,7 @@ class CronJobs:
                 to_send = sequnce_2(offer.stage, offer.last_email_date)
                 if to_send:
                     link = ('http://www.' + host + '/sales/?id=' + str(offer.hash_base_id))
-                    sub, msg = eval(to_send + '("' + offer.drop + '", "' + name + '", "' + link +'")')
+                    sub, msg = eval(to_send + '("' + offer.drop + '", "' + name + '", "' + link + '")')
             elif offer.phase == 3:
                 Max = 5
                 to_send = sequnce_3(offer.stage, offer.last_email_date)

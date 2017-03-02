@@ -75,7 +75,8 @@ def po_msg5(domain_name, name):
 
     html_content = htmly.render(Context(d))
     return [subject, html_content]
-### post release
+
+# post release
 def form_a_msg1(domain_name, name, link):
     domain_name = domain_name.upper()
 
