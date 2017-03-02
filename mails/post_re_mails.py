@@ -77,7 +77,7 @@ def po_msg5(domain_name, name):
     return [subject, html_content]
 
 # post release
-def form_a_msg1(domain_name, name, link):
+def form_a_msg1(domain_name, name, link, price):
     domain_name = domain_name.upper()
 
     subject = domain_name + ' - Get The Premium Domain Today. Ready for free traffic?'
@@ -89,13 +89,14 @@ def form_a_msg1(domain_name, name, link):
             'domain_name': domain_name,
             'name': name,
             'link_sales': link,
+            'price': price,
         }
     }
 
     html_content = htmly.render(Context(d))
     return [subject, html_content]
 
-def form_a_msg2(domain_name, name, link):
+def form_a_msg2(domain_name, name, link, price):
     domain_name = domain_name.upper()
 
     subject = domain_name + ' - Increase daily traffic by 81% with this premium name'
@@ -107,6 +108,7 @@ def form_a_msg2(domain_name, name, link):
             'domain_name': domain_name,
             'name': name,
             'link_sales': link,
+            'price': price,
         }
     }
 
@@ -114,7 +116,7 @@ def form_a_msg2(domain_name, name, link):
     return [subject, html_content]
 
 
-def form_a_msg3(domain_name, name, link):
+def form_a_msg3(domain_name, name, link, price):
     domain_name = domain_name.upper()
 
     subject = domain_name + ' - Have questions regarding domain acquisition? Let\'s set up a meeting'
@@ -126,6 +128,7 @@ def form_a_msg3(domain_name, name, link):
             'domain_name': domain_name,
             'name': name,
             'link_sales': link,
+            'price': price,
         }
     }
 
@@ -133,7 +136,7 @@ def form_a_msg3(domain_name, name, link):
     return [subject, html_content]
 
 
-def form_a_msg4(domain_name, name, link):
+def form_a_msg4(domain_name, name, link, price):
     domain_name = domain_name.upper()
 
     subject = domain_name + ' - Did you forget something?'
@@ -145,6 +148,7 @@ def form_a_msg4(domain_name, name, link):
             'domain_name': domain_name,
             'name': name,
             'link_sales': link,
+            'price': price,
         }
     }
 
@@ -152,7 +156,7 @@ def form_a_msg4(domain_name, name, link):
     return [subject, html_content]
 
 
-def form_a_msg5(domain_name, name, link):
+def form_a_msg5(domain_name, name, link, price):
     domain_name = domain_name.upper()
 
     subject = name + ', We want you to cut a Sweet Deal'
@@ -164,13 +168,14 @@ def form_a_msg5(domain_name, name, link):
             'domain_name': domain_name,
             'name': name,
             'link_sales': link,
+            'price': price,
         }
     }
 
     html_content = htmly.render(Context(d))
     return [subject, html_content]
 
-def form_a_msg6(domain_name, name, link):
+def form_a_msg6(domain_name, name, link, price):
     domain_name = domain_name.upper()
 
     subject = 'Been busy? Your traffic generator ' + domain_name + ' is in your shopping cart'
@@ -182,6 +187,7 @@ def form_a_msg6(domain_name, name, link):
             'domain_name': domain_name,
             'name': name,
             'link_sales': link,
+            'price': price,
         }
     }
 
@@ -189,7 +195,7 @@ def form_a_msg6(domain_name, name, link):
     return [subject, html_content]
 
 
-def form_a_msg7(domain_name, name, link):
+def form_a_msg7(domain_name, name, link, price):
     domain_name = domain_name.upper()
 
     subject = 'I do not want your competitor to get ' + domain_name
@@ -201,6 +207,7 @@ def form_a_msg7(domain_name, name, link):
             'domain_name': domain_name,
             'name': name,
             'link_sales': link,
+            'price': price,
         }
     }
 
@@ -208,7 +215,7 @@ def form_a_msg7(domain_name, name, link):
     return [subject, html_content]
 
 
-def form_a_msg8(domain_name, name, link):
+def form_a_msg8(domain_name, name, link, price):
     domain_name = domain_name.upper()
 
     subject = 'Can we talk about possible acquisition of alvarezinternational.com'
@@ -220,6 +227,7 @@ def form_a_msg8(domain_name, name, link):
             'domain_name': domain_name,
             'name': name,
             'link_sales': link,
+            'price': price,
         }
     }
 
@@ -227,7 +235,7 @@ def form_a_msg8(domain_name, name, link):
     return [subject, html_content]
 
 
-def form_a_msg9(domain_name, name, link):
+def form_a_msg9(domain_name, name, link, price):
     domain_name = domain_name.upper()
 
     subject = 'Close your file? Or are you still interested in acquiring ' + domain_name
@@ -239,6 +247,7 @@ def form_a_msg9(domain_name, name, link):
             'domain_name': domain_name,
             'name': name,
             'link_sales': link,
+            'price': price,
         }
     }
 
@@ -246,7 +255,7 @@ def form_a_msg9(domain_name, name, link):
     return [subject, html_content]
 
 
-def form_a_msg10(domain_name, name, link):
+def form_a_msg10(domain_name, name, link, price):
     domain_name = domain_name.upper()
 
     subject = 'Your file closes in 10 days.'
@@ -258,6 +267,7 @@ def form_a_msg10(domain_name, name, link):
             'domain_name': domain_name,
             'name': name,
             'link_sales': link,
+            'price': price,
         }
     }
 
@@ -265,7 +275,7 @@ def form_a_msg10(domain_name, name, link):
     return [subject, html_content]
 
 
-def form_a_msg11(domain_name, name, link):
+def form_a_msg11(domain_name, name, link, price):
     domain_name = domain_name.upper()
 
     subject = 'Your file closes in 8 days. ' + domain_name + ' will no longer be available after that'
@@ -277,6 +287,7 @@ def form_a_msg11(domain_name, name, link):
             'domain_name': domain_name,
             'name': name,
             'link_sales': link,
+            'price': price,
         }
     }
 
@@ -284,7 +295,7 @@ def form_a_msg11(domain_name, name, link):
     return [subject, html_content]
 
 
-def form_a_msg12(domain_name, name, link):
+def form_a_msg12(domain_name, name, link, price):
     domain_name = domain_name.upper()
 
     subject = 'Your file closes in 6 days. ' + domain_name + ' will no longer be available after that'
@@ -296,6 +307,7 @@ def form_a_msg12(domain_name, name, link):
             'domain_name': domain_name,
             'name': name,
             'link_sales': link,
+            'price': price,
         }
     }
 
