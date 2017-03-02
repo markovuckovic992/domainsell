@@ -7,6 +7,7 @@ import hashlib, random, requests, traceback
 from datetime import datetime, timedelta
 from mails.models import Offer, BlackList, controlPanel
 from django.core import serializers
+from operator import attrgetter
 import json
 from os import popen
 
@@ -78,6 +79,7 @@ def check_status(request):
         msg += ('DROP: ' + str(offer.drop) + str(statuses) + str(date))
         msg += '\n --------------------- \n'
     return HttpResponse(json.dumps({"status": "success"}), content_type="application/json")
+
 
 @csrf_exempt
 def delete_old_data(request):
@@ -157,11 +159,11 @@ def change_amount(request):
 @login_required
 def control_panel(request):
     if 'type' not in request.GET.keys():
-            return HttpResponseRedirect("/control_panel/?type=post_offer")        
+            return HttpResponseRedirect("/control_panel/?type=post_offer")
     _type = request.GET['type']
     if _type == 'reminders':
         settings = controlPanel.objects.filter(tip=0)
-        tip = 0        
+        tip = 0
     if _type == 'post_offer':
         settings = controlPanel.objects.filter(tip=1)
         tip = 1
@@ -196,6 +198,13 @@ def save_settings(request):
         index += 1
     return HttpResponse(json.dumps({"status": "success"}), content_type="application/json")
 
+@csrf_exempt
+def check_for_offers(request):
+    ids = map(attrgetter('hash_base_id'), Offer.objects.filter(amount__isnull=False))
+    response = {
+        'ids': ids,
+    }
+    return HttpResponse(json.dumps(response), content_type="application/json")
 
 # SEARCH
 def search(request):
@@ -204,9 +213,9 @@ def search(request):
 def search_results(request):
     name_redemption = request.POST['drop_domain']
     name_zone = request.POST['zone_domain']
-    remail = request.POST['remail']     
-    email = request.POST['email'] 
-    if email:    
+    remail = request.POST['remail']
+    email = request.POST['email']
+    if email:
         search_leads = Offer.objects.filter(
             lead__contains=name_zone,
             drop__contains=name_redemption,
