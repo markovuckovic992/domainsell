@@ -20,7 +20,7 @@ make_offer = function (base_id, hash, ip, name, contact, email) {
     $.ajax({
 		type: "POST",
 		url: "/process_offer/",
-		data: "base_id=" + base_id
+		data: "hash=" + hash
         + "&amount=" + amount
         + "&name=" + name
         + "&contact=" + contact

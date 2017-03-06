@@ -31,7 +31,7 @@ def sales_page(request):
     return render_to_response('sales.html', {'drop': entry.drop, 'base_id': entry.base_id, 'hash': hash_base_id, 'amount':entry.amount})
 
 def process_offer(request):
-    base_id = request.POST['base_id']
+    hash_ = request.POST['hash']
     amount = request.POST['amount']
     name = request.POST['name'].lower().capitalize()
     email = request.POST['email']
@@ -41,7 +41,7 @@ def process_offer(request):
     code = match.country
     offer_id = random.randint(1000000, 9999999)
     date = datetime.now().date()
-    Offer.objects.filter(base_id=base_id).update(
+    Offer.objects.filter(hash_base_id=hash_).update(
         amount=amount,
         offer_id=offer_id,
         date=date,
@@ -55,7 +55,7 @@ def process_offer(request):
         last_email_date=timezone.now()
     )
 
-    offr = Offer.objects.get(base_id=base_id)
+    offr = Offer.objects.get(hash_base_id=hash_)
     msg = '''
         lead= ''' + str(offr.lead) + '\n' + ''',
         drop= ''' + str(offr.drop) + '\n' + ''',
@@ -76,7 +76,7 @@ def process_offer(request):
         fail_silently=False,
     )
 
-    offer = Offer.objects.get(base_id=base_id)
+    offer = Offer.objects.get(hash_base_id=hash_)
     msg = form_a_msg(offer.drop, name)
 
     if offer.email != offer.remail:
