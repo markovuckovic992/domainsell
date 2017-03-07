@@ -133,7 +133,7 @@ def unsubscribe(request):
         lead = Offer.objects.get(hash_base_id=hash_base_id).lead
         new = BlackList(email=email)
         new.save()
-    Offer.objects.filter(hash_base_id=hash_base_id).delete()
+    # Offer.objects.filter(hash_base_id=hash_base_id).delete()
     return render(request, 'unsubscribe.html', {})
 
 @csrf_exempt
