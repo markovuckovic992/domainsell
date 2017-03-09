@@ -54,4 +54,6 @@ urlpatterns = [
     # search
     url(r'^search/', maintenance.views.search),
     url(r'^search_results/', maintenance.views.search_results),
+    # .NET
+    url(r'^hello/', mails.views.hello),
 ]

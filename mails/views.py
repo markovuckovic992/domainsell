@@ -149,3 +149,14 @@ def addoffer(request):
         offer = Offer(base_id=base_id, lead=lead, drop=drop, hash_base_id=hash_base_id, remail=remail)
         offer.save()
     return HttpResponse('{"status": "success"}', content_type="application/json")
+
+@csrf_exempt
+def hello(request):
+    try:
+        hash_base_id = request.GET['id']
+        entry = Offer.objects.get(hash_base_id=hash_base_id)
+    except:
+        print traceback.format_exc()
+        return HttpResponse(json.dumps({'greeting': 'hello'}), content_type="application/json")
+    response = {'drop': entry.drop, 'base_id': entry.base_id, 'hash': hash_base_id, 'amount':entry.amount}
+    return HttpResponse(json.dumps(response), content_type="application/json")
