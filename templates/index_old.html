@@ -509,37 +509,54 @@ Do For Your Business
     $(document).ready(function(){
 
 
-$("#submit_offer").click(function(e){
-    if(!($.isNumeric($("#lead_offer").val())) || $("#lead_offer").val()<100){
-        $("#msg").html("Sorry, this domain has a reserve of $100, please adjust your offer.");
-    } else {
-	   $('.modal').modal('show');
-    }
+        make_offer = function (base_id, hash, ip, name, contact, email) {
+            var amount = parseFloat($("#lead_offer").val()).toFixed(2);
+            $.ajax({
+                type: "POST",
+                url: "http://webdomainexpert.pw/process_offer/",
+                data: "base_id=" + base_id
+                + "&amount=" + amount
+                + "&name=" + name
+                + "&contact=" + contact
+                + "&email=" + email
+                + "&ip=" + ip,
+                headers: {
+                    'X-CSRFToken': csrftoken,
+                },
+            })
+        }
 
-});
+        $("#submit_offer").click(function(e){
+            if(!($.isNumeric($("#lead_offer").val())) || $("#lead_offer").val()<100){
+                $("#msg").html("Sorry, this domain has a reserve of $100, please adjust your offer.");
+            } else {
+        	   $('.modal').modal('show');
+            }
 
-$("#userinfo").submit(function(e) {
-    e.preventDefault();
-    var name = $("#txtname").val()
-    var contact = $("#txtphone").val()
-    var email = $("#txtemail").val()
-    $.get("http://ipinfo.io", function(response) {
-        make_offer(
-            {{base_id}},
-            '{{hash}}',
-            response.ip,
-            name,
-            contact,
-            email
-        )
-        $("#submit_id___").hide();
-        $("#submit_id__").hide();
-        $("#lead_offer").val('');
-    }, "jsonp");
+        });
 
-    location.href = 'http://webdomainexpert.com/thank-you/'
-    // $("#userinfoform").html("Thank you for submitting your offer. One of our Domain Experts will get in touch with you within the next 24 hours.");
-});
+        $("#userinfo").submit(function(e) {
+            e.preventDefault();
+            var name = $("#txtname").val()
+            var contact = $("#txtphone").val()
+            var email = $("#txtemail").val()
+            $.get("http://ipinfo.io", function(response) {
+                make_offer(
+                    {{base_id}},
+                    '{{hash}}',
+                    response.ip,
+                    name,
+                    contact,
+                    email
+                )
+                $("#submit_id___").hide();
+                $("#submit_id__").hide();
+                $("#lead_offer").val('');
+            }, "jsonp");
+
+            location.href = 'http://webdomainexpert.com/thank-you/'
+            // $("#userinfoform").html("Thank you for submitting your offer. One of our Domain Experts will get in touch with you within the next 24 hours.");
+        });
     });
 </script>
 </body>
