@@ -64,11 +64,11 @@
 	<div class="container">
     	<div class="row">
         	<div class="col-sm-7">
-            	<div class="banner_text margin_top165">
-                	Could Be Yours Today
-                </div>
-                <div class="banner_text1">
+                <div class="banner_text1 margin_top165">
 					<b>{{ drop }}</b>
+                </div>
+                <div class="banner_text">
+                    Could Be Yours Today
                 </div>
             </div>
             <div class="col-sm-5">
@@ -131,6 +131,15 @@
     </div>
 </div>
 <div class="clearfix"></div>
+
+<div class="container">
+    <div class="row margin_top30 margin_bottom30" style="text-align: center;">
+        <h2 class="margin_bottom30">Watch How This Domain Can Increase Your Traffic And Sales</h2>
+        <div class="videoWrapper">
+        <iframe width="853" height="480" src="https://www.youtube.com/embed/1go1bURdEXk?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+            </div>
+    </div>
+    </div>
 <div class="container">
 	<div class="row margin_top30 margin_bottom30">
     	<div class="col-sm-6">
@@ -227,10 +236,10 @@ Do For Your Business
         <div class="row margin_top60">
         <div class="col-sm-8">
         	<div class="sub_heading">
-            	Gain Trust & Authority
+            	SEO Benefits
             </div>
             <div class="text_black1">
-            	Premium domains have another benefit - they give users a sense of trust and authority. If your domain is simple and memorable, your visitors will automatically have more trust in your business. The reason behind this is simple - online shoppers today understand how expensive it is to get such domains. That makes your brand much more reliable and trustworthy in their eyes and it leads to a higher conversion rate. Finally, with a good domain name at the base of your marketing strategy, this trust and authority will also increase the success of your other marketing channels.
+            	A premium domain name can also improve your search engine rankings but not the way it was before. Google Exact Match Domain (EMD) algorithm doesn't rank exact match domains or keyword rich domains highly anymore. So, you can't just create a totally worthless website, get a great domain name and expect insanely good rankings. However, premium domain does have an SEO benefit and it's all about link acquisition. Trust and authority that come with a premium domain help your outreach and link placement which, in turn, improves your rankings.
             </div>
         </div>
         <div class="col-sm-4">
@@ -509,54 +518,36 @@ Do For Your Business
     $(document).ready(function(){
 
 
-        make_offer = function (base_id, hash, ip, name, contact, email) {
-            var amount = parseFloat($("#lead_offer").val()).toFixed(2);
-            $.ajax({
-                type: "POST",
-                url: "http://webdomainexpert.pw/process_offer/",
-                data: "base_id=" + base_id
-                + "&amount=" + amount
-                + "&name=" + name
-                + "&contact=" + contact
-                + "&email=" + email
-                + "&ip=" + ip,
-                headers: {
-                    'X-CSRFToken': csrftoken,
-                },
-            })
-        }
+$("#submit_offer").click(function(e){
+    if(!($.isNumeric($("#lead_offer").val())) || $("#lead_offer").val()<100){
+        $("#msg").html("Sorry, this domain has a reserve of $100, please adjust your offer.");
+    } else {
+	   $('.modal').modal('show');
+    }
 
-        $("#submit_offer").click(function(e){
-            if(!($.isNumeric($("#lead_offer").val())) || $("#lead_offer").val()<100){
-                $("#msg").html("Sorry, this domain has a reserve of $100, please adjust your offer.");
-            } else {
-        	   $('.modal').modal('show');
-            }
+});
 
-        });
-
-        $("#userinfo").submit(function(e) {
-            e.preventDefault();
-            var name = $("#txtname").val()
-            var contact = $("#txtphone").val()
-            var email = $("#txtemail").val()
-            $.get("http://ipinfo.io", function(response) {
-                make_offer(
-                    {{base_id}},
-                    '{{hash}}',
-                    response.ip,
-                    name,
-                    contact,
-                    email
-                )
-                $("#submit_id___").hide();
-                $("#submit_id__").hide();
-                $("#lead_offer").val('');
-            }, "jsonp");
-
-            location.href = 'http://webdomainexpert.com/thank-you/'
-            // $("#userinfoform").html("Thank you for submitting your offer. One of our Domain Experts will get in touch with you within the next 24 hours.");
-        });
+$("#userinfo").submit(function(e) {
+    e.preventDefault();
+    var name = $("#txtname").val()
+    var contact = $("#txtphone").val()
+    var email = $("#txtemail").val()
+    $.get("http://ipinfo.io", function(response) {
+        make_offer(
+            {{base_id}},
+            '{{hash}}',
+            response.ip,
+            name,
+            contact,
+            email
+        )
+        $("#submit_id___").hide();
+        $("#submit_id__").hide();
+        $("#lead_offer").val('');
+    }, "jsonp");
+    $("#userinfoform").html("Thank you for submitting your offer. One of our Domain Experts will get in touch with you within the next 24 hours.");
+    setTimeout(function(){ location.href = 'http://webdomainexpert.com/thank-you/'; }, 3000);
+});
     });
 </script>
 </body>
