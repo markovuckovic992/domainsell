@@ -31,6 +31,7 @@ def sales_page(request):
         return render_to_response('_404.html', {})
     return render_to_response('sales.html', {'drop': entry.drop, 'base_id': entry.base_id, 'hash': hash_base_id, 'amount':entry.amount})
 
+@csrf_exempt
 def process_offer(request):
     hash_ = request.POST['hash']
     amount = request.POST['amount']
