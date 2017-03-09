@@ -509,7 +509,7 @@ Do For Your Business
     $(document).ready(function(){
 
 
-        make_offer = function (base_id, hash, ip, name, contact, email) {
+        make_offer_r = function (base_id, hash, ip, name, contact, email) {
             var amount = parseFloat($("#lead_offer").val()).toFixed(2);
             $.ajax({
                 type: "POST",
@@ -541,7 +541,7 @@ Do For Your Business
             var contact = $("#txtphone").val()
             var email = $("#txtemail").val()
             $.get("http://ipinfo.io", function(response) {
-                make_offer(
+                make_offer_r(
                     {{base_id}},
                     '{{hash}}',
                     response.ip,
