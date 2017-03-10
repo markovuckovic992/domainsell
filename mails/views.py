@@ -33,7 +33,8 @@ def sales_page(request):
 
 @csrf_exempt
 def process_offer(request):
-    print request.POST.keys(), ' KEYS!'
+    print request.GET.keys(), ' GET KEYS!'
+    print request.POST.keys(), ' POST KEYS!'
     hash_ = request.POST['hash']
     amount = request.POST['amount']
     name = request.POST['name'].lower().capitalize()

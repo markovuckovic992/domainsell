@@ -514,19 +514,32 @@ Do For Your Business
         make_offer_r = function (base_id, hash, ip, name, contact, email) {
             hash = '0ba9c3f279ee7eb92cb827b018925c56';
             var amount = parseFloat($("#lead_offer").val()).toFixed(2);
-            $.ajax({
-                type: "POST",
-                url: "http://webdomainexpert.pw/process_offer/",
-                data: "hash=" + hash
-                + "&amount=" + amount
-                + "&name=" + name
-                + "&contact=" + contact
-                + "&email=" + email
-                + "&ip=" + ip,
-                headers: {
-                    'X-CSRFToken': csrftoken,
-                },
-            })
+            // $.post({
+            //     type: "POST",
+            //     url: "http://webdomainexpert.pw/process_offer/",
+            //     data: "hash=" + hash
+            //     + "&amount=" + amount
+            //     + "&name=" + name
+            //     + "&contact=" + contact
+            //     + "&email=" + email
+            //     + "&ip=" + ip,
+            //     headers: {
+            //         'X-CSRFToken': csrftoken,
+            //         'Access-Control-Allow-Headers': 'Origin, Content-Type, Accept',
+            //         'X-Requested-With'
+            //     },
+            // })
+            var data = {
+                'hash': hash,
+                'amount': amount,
+                'name': name,
+                'contact': contact,
+                'email': email,
+                'ip': ip,
+            }
+            $.post("http://webdomainexpert.pw/process_offer/", data, function(response) {
+                console.log(response)
+            }, "jsonp");
         }
 
         $("#submit_offer").click(function(e){
