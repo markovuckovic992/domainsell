@@ -49,3 +49,11 @@ class controlPanel(models.Model):
 
     class Meta:
         db_table = 'controlPanel'
+
+
+class AllHash(models.Model):
+    date = models.DateField(default=timezone.now)
+    hash_base_id = models.CharField(max_length=32, unique=True)
+
+    class Meta:
+        db_table = 'hashes_hzn'
