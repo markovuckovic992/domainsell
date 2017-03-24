@@ -39,4 +39,5 @@ offers = Offer.objects.all()
 for offer in offers:
     AllHash(
         hash_base_id=offer.hash_base_id,
+        date=offer.date_started,
     ).save()
