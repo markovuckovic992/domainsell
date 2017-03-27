@@ -54,6 +54,7 @@ urlpatterns = [
     url(r'^save_settings/', maintenance.views.save_settings),
     # sales
     url(r'^sales/', mails.views.sales_page),
+    url(r'^sales_test/', mails.views.sales_page_test),
     # search
     url(r'^search/', maintenance.views.search),
     url(r'^search_results/', maintenance.views.search_results),

@@ -31,6 +31,16 @@ def sales_page(request):
         return render_to_response('_404.html', {})
     return render_to_response('sales.html', {'drop': entry.drop, 'base_id': entry.base_id, 'hash': hash_base_id, 'amount':entry.amount})
 
+@ensure_csrf_cookie
+def sales_page_test(request):
+    try:
+        hash_base_id = request.GET['id']
+        entry = Offer.objects.get(hash_base_id=hash_base_id)
+    except:
+        print traceback.format_exc()
+        return render_to_response('_404.html', {})
+    return render_to_response('sales_test.html', {'drop': entry.drop, 'base_id': entry.base_id, 'hash': hash_base_id, 'amount':entry.amount})
+
 def process_offer(request):
     hash_ = request.POST['hash']
     amount = request.POST['amount']
