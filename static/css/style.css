@@ -376,3 +376,17 @@
 .modal-dialog .row input {width: 70%; text-align: center; padding: 5px 0; font-size: 16px; color: #333333; font-family: "Lato", Arial, sans-serif; border-top: none; border-right: none; border-left: none;}
     .modal-dialog .row input#submit_id___ {color: #ffffff; font-weight:700; margin-top: 20px; background-color: #7EB001; border: none;transition: all 0.3s ease 0s;}
         .modal-dialog .row input#submit_id___:hover {background-color: #6d9900;}
+
+
+
+#test_submit {
+  width: 60%;
+  font-size: 24px;
+  background-color: #7EB001;
+  color: #ffffff;
+  border: none;
+  transition: all 0.3s ease 0s;
+  margin-top: 10px;
+  padding: 5px 0;
+  font-weight: bold;
+}

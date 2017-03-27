@@ -71,15 +71,3 @@ table.sortable > tbody > tr {
 .green {
     background: green;
 }
-
-#test_submit {
-  width: 60%;
-  font-size: 24px;
-  background-color: #7EB001;
-  color: #ffffff;
-  border: none;
-  transition: all 0.3s ease 0s;
-  margin-top: 10px;
-  padding: 5px 0;
-  font-weight: bold;
-}
