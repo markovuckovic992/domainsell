@@ -150,6 +150,18 @@ def del_hash(request):
     return HttpResponse(json.dumps({"status": "success"}), content_type="application/json")
 
 @login_required
+def stop_hash(request):
+    id_ = request.POST['id']
+    Offer.objects.filter(id=id_).update(done=1)
+    return HttpResponse(json.dumps({"status": "success"}), content_type="application/json")
+
+@login_required
+def start_hash(request):
+    id_ = request.POST['id']
+    Offer.objects.filter(id=id_).update(done=0)
+    return HttpResponse(json.dumps({"status": "success"}), content_type="application/json")
+
+@login_required
 def change_amount(request):
     id_ = request.POST['id']
     amount = request.POST['amount']

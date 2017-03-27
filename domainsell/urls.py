@@ -44,6 +44,8 @@ urlpatterns = [
     url(r'^start_post_release/', maintenance.views.start_post_release),
     url(r'^start_post_sale/', maintenance.views.start_post_sale),
     url(r'^del_hash/', maintenance.views.del_hash),
+    url(r'^stop_hash/', maintenance.views.stop_hash),
+    url(r'^start_hash/', maintenance.views.start_hash),
     url(r'^change_amount/', maintenance.views.change_amount),
     url(r'^check_for_offers/', maintenance.views.check_for_offers),
     # control_panel

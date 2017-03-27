@@ -30,6 +30,7 @@
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
+                        <td>&nbsp;</td>
                     </tr>
                 </thead>
             {% for offer in offers %}
@@ -78,6 +79,13 @@
                         {% endif %}
                     </td>
                     <td><button  onclick="Del({{offer.id}})">Del</button></td>
+                    <td>    
+                    {% if offer.done == 0 %}                
+                        <button  onclick="Stop({{offer.id}})">Stop</button>
+                    {% else %}
+                        <button  onclick="Start({{offer.id}})">Start</button>
+                    {% endif %}
+                    </td>
                 </tr>
             {% endfor %}
             </table>

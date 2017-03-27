@@ -142,6 +142,39 @@ Del = function (id) {
     }
 }
 
+Stop = function (id) {
+    var r = confirm("Are you sure?");
+    if (r == true) {
+        $.ajax({
+            type: "POST",
+            url: "/stop_hash/",
+            headers: {
+                'X-CSRFToken': csrftoken,
+            },
+            data: "id=" + id,
+            success: function(msg) {
+                window.location.reload();
+            }
+        })
+    }
+}
+
+Start =  function(id) {    
+    var r = confirm("Are you sure?");
+    if (r == true) {
+        $.ajax({
+            type: "POST",
+            url: "/start_hash/",
+            headers: {
+                'X-CSRFToken': csrftoken,
+            },
+            data: "id=" + id,
+            success: function(msg) {
+                window.location.reload();
+            }
+        })
+    }
+}
 
 change_amount = function (id) {
     var html = '<input type="number" id="new_value" placeholder="new offer"/><button onclick="save_new_value(' + id + ')">Save</button>';
