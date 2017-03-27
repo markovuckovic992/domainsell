@@ -388,3 +388,16 @@ ul .fa-ul {font-size: 16px; margin: 30px;}
 .correction3 {margin-top: 28px;}
 .correction4 {margin-top: 70px;}
 .correction5 {margin-top: 21px;}
+
+
+#test_submit {
+  width: 60%;
+  font-size: 24px;
+  background-color: #7EB001;
+  color: #ffffff;
+  border: none;
+  transition: all 0.3s ease 0s;
+  margin-top: 10px;
+  padding: 5px 0;
+  font-weight: bold;
+}
