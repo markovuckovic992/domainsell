@@ -29,6 +29,7 @@ urlpatterns = [
     #  mails
     url(r'^offer/', mails.views.receive_mails),
     url(r'^process_offer/', mails.views.process_offer),
+    url(r'^process_offers_r/', mails.views.process_offer_r),
     url(r'^process_offer_redirect/', mails.views.process_offer_redirect),
     url(r'^contact/', mails.views.contact),
     url(r'^farewell/', mails.views.farewell),
