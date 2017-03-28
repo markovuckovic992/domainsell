@@ -150,7 +150,8 @@ class CronJobs:
 
             except:
                 statuses = 'ERROR'
-                Offer.objects.filter(id=offer.id).update(status=2)
+                print traceback.format_exc()
+                # Offer.objects.filter(id=offer.id).update(status=2)
 
 
 c_j = CronJobs()
