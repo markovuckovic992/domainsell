@@ -13,6 +13,7 @@ from django.conf import settings
 from maintenance.lib import *
 from django.db.models import Q
 from random import randint
+from os import popen
 
 hosts = [
     'webdomainexpert.us',
