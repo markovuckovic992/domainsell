@@ -80,12 +80,12 @@
                         <h3 id="amount_h3">$ {{ amount|floatformat:2 }}</h3>
 
                         <form action='https://www.2checkout.com/checkout/purchase' method='post'>
-                          <input type='hidden' name='sid' value='1303908' />
+                          <input type='hidden' name='sid' value='103220998' />
                           <input type='hidden' name='mode' value='2CO' />
                           <input type='hidden' name='li_0_type' value='product' />
-                          <input type='hidden' name='li_0_name' value='Monthly Subscription' />
-                          <input type='hidden' name='li_0_price' value='1.00' />
-                          <input type='hidden' name='li_0_recurrence' value='1 Month' />
+                          <input type='hidden' name='li_0_name' value='Domain purchase' />
+                          <input type='hidden' name='li_0_price' value="{{ amount|floatformat:2 }}" />
+                          <input type='hidden' name='li_0_recurrence' value='Domain' />
                           <input name='submit' id="test_submit" type='submit' value='Buy Now' />
                         </form>
 
