@@ -121,8 +121,41 @@ class CronJobs:
         connection2.close()
         Setting.objects.filter(id=1).update(last_id=tmp)
 
+    def whois(self):
+        offers = Offer.objects.filter(~Q(status=1), date__isnull=False)
+        for offer in offers:
+            try:
+                tube = popen("whois '" + str(offer.drop) + "' | egrep -i 'Status|Updated Date'", 'r')
+                resp = tube.read()
+                resp = resp.replace('Status:', '').replace('\n', '').replace('\r', '')
+                tube.close()
+                statuses = resp.split(' ')
+
+                index = len(statuses) - 1 - statuses[::-1].index('Date:')
+                try:
+                    date = datetime.strptime((statuses[index + 1])[0:10], '%Y-%m-%d').date()
+                except:
+                    try:
+                        date = datetime.strptime((statuses[index + 1])[0:11], '%d-%b-%Y').date()
+                    except:
+                        date = None
+
+                if 'pendingDelete' in str(statuses):
+                    if date:
+                        Offer.objects.filter(id=offer.id).update(status=1, updated=date, phase=2, stage=1, done=0)
+                    else:
+                        Offer.objects.filter(id=offer.id).update(status=1, updated=datetime.now().date(), phase=2, stage=1, done=0)
+                else:
+                    Offer.objects.filter(id=offer.id).update(status=0)
+
+            except:
+                statuses = 'ERROR'
+                Offer.objects.filter(id=offer.id).update(status=2)
+
 
 c_j = CronJobs()
 if len(sys.argv) > 1:
     if sys.argv[1] == 'send':
         c_j.send()
+    if sys.argv[1] == 'whois':
+        c_j.whois()
