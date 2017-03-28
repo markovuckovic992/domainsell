@@ -76,9 +76,13 @@ def check_status(request):
             statuses = 'ERROR'
             msg += (traceback.format_exc() + '\n')
             Offer.objects.filter(id=offer.id).update(status=2)
-        msg += ('DROP: ' + str(offer.drop) + str(statuses) + str(date))
+        msg += ('DROP: ' + str(offer.drop) + str(statuses))
+        try:
+            msg += str(date)
+        except:
+            pass
         msg += '\n --------------------- \n'
-    return HttpResponse(json.dumps({"status": "success"}), content_type="application/json")
+    return HttpResponse(json.dumps({"msg": msg}), content_type="application/json")
 
 
 @csrf_exempt
