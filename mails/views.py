@@ -84,7 +84,7 @@ def process_offer(request):
         msg,  # Body
         'Report <' + settings.EMAIL_HOST_USER + '>',
         ['support@webdomainexpert.com'],
-        fail_silently=False,
+        fail_silently=True,
     )
 
     offer = Offer.objects.get(hash_base_id=hash_)
