@@ -31,6 +31,9 @@ make_offer = function (base_id, hash, ip, name, contact, email) {
         },
         sucess: function(msg) {
             location.href = 'http://webdomainexpert.com/thank-you/';
+        },
+        error: function(data) {
+            location.href = 'http://webdomainexpert.com/thank-you/';
         }
 	})
 }
@@ -159,7 +162,7 @@ Stop = function (id) {
     }
 }
 
-Start =  function(id) {    
+Start =  function(id) {
     var r = confirm("Are you sure?");
     if (r == true) {
         $.ajax({
