@@ -30,9 +30,11 @@ make_offer = function (base_id, hash, ip, name, contact, email) {
             'X-CSRFToken': csrftoken,
         },
         sucess: function(msg) {
+            console.log('---');
             window.location.href= 'http://webdomainexpert.com/thank-you/';
         },
         error: function(data) {
+            console.log('---');
             window.location.href= 'http://webdomainexpert.com/thank-you/';
         }
 	})
