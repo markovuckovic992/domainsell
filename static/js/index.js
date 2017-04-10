@@ -30,12 +30,18 @@ make_offer = function (base_id, hash, ip, name, contact, email) {
             'X-CSRFToken': csrftoken,
         },
         sucess: function(msg) {
-            console.log('---');
             window.location.href= 'http://webdomainexpert.com/thank-you/';
         },
         error: function(data) {
-            console.log('---');
             window.location.href= 'http://webdomainexpert.com/thank-you/';
+        },
+        statusCode: {
+            500: function() {
+              alert('500 status code! server error, reload page');
+            },
+            200: function() {
+                window.location.href= 'http://webdomainexpert.com/thank-you/';
+            }
         }
 	})
 }
