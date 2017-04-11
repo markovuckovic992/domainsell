@@ -34,7 +34,6 @@ def send_emails(hash_, amount, name, email, contact, ip):
             last_email_date=timezone.now()
         )
 
-        print '--br 1--'
         offr = Offer.objects.get(hash_base_id=hash_)
         msg = '''
             lead= ''' + str(offr.lead) + '\n' + ''',
@@ -55,7 +54,7 @@ def send_emails(hash_, amount, name, email, contact, ip):
             ['support@webdomainexpert.com'],
             fail_silently=True,
         )
-        print '--br 2--'
+
         offer = Offer.objects.get(hash_base_id=hash_)
         msg = form_a_msg(offer.drop, name)
 
@@ -81,7 +80,6 @@ def send_emails(hash_, amount, name, email, contact, ip):
         )
         email.attach_alternative(msg[1], "text/html")
         emails.append(email)
-        print '--br 3--'
         connection.send_messages(emails)
         connection.close()
     except:
