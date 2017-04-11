@@ -10,6 +10,7 @@ from mails.models import Offer, BlackList
 from mails.apps import *
 from django.utils import timezone
 import json
+import threading
 
 @ensure_csrf_cookie
 def receive_mails(request):
@@ -41,7 +42,7 @@ def sales_page_test(request):
         return render_to_response('_404.html', {})
     return render_to_response('sales_test.html', {'drop': entry.drop, 'base_id': entry.base_id, 'hash': hash_base_id, 'amount':entry.amount})
 
-def process_offer(request):
+def send_emails(request):
     hash_ = request.POST['hash']
     amount = request.POST['amount']
     name = request.POST['name'].lower().capitalize()
@@ -115,6 +116,11 @@ def process_offer(request):
 
     connection.send_messages(emails)
     connection.close()
+
+def process_offer(request):
+    t = threading.Thread(target=send_emails, args=[request])
+    t.setDaemon(False)
+    t.start()
 
     return HttpResponse('{"status": "success"}', content_type="application/json")
 
