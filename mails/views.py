@@ -117,12 +117,13 @@ def send_emails(request):
 
     connection.send_messages(emails)
     connection.close()
+    print '---------2----------'
 
 def process_offer(request):
     t = threading.Thread(target=send_emails, args=[request])
     t.setDaemon(False)
     t.start()
-    print '------------------'
+    print '---------0----------'
     return HttpResponse('{"status": "success"}', content_type="application/json")
 
 def process_offer_redirect(request):
