@@ -156,9 +156,11 @@ def addoffer(request):
     remail = request.POST['remail']
     if Offer.objects.filter(hash_base_id=hash_base_id).exists():
         return HttpResponse(status=204)
-    if not Offer.objects.filter(base_id=base_id, lead=lead, drop=drop, hash_base_id=hash_base_id, remail=remail).exists():
+    if not Offer.objects.filter(base_id=base_id, lead=lead, drop=drop, remail=remail).exists():
         offer = Offer(base_id=base_id, lead=lead, drop=drop, hash_base_id=hash_base_id, remail=remail)
         offer.save()
+    else:
+        return HttpResponse(status=204)
     return HttpResponse('{"status": "success"}', content_type="application/json")
 
 @csrf_exempt
