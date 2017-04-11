@@ -43,6 +43,7 @@ def sales_page_test(request):
     return render_to_response('sales_test.html', {'drop': entry.drop, 'base_id': entry.base_id, 'hash': hash_base_id, 'amount':entry.amount})
 
 def send_emails(request):
+    print '---------1----------'
     hash_ = request.POST['hash']
     amount = request.POST['amount']
     name = request.POST['name'].lower().capitalize()
@@ -121,7 +122,7 @@ def process_offer(request):
     t = threading.Thread(target=send_emails, args=[request])
     t.setDaemon(False)
     t.start()
-
+    print '------------------'
     return HttpResponse('{"status": "success"}', content_type="application/json")
 
 def process_offer_redirect(request):
