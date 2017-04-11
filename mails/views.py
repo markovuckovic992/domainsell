@@ -42,15 +42,9 @@ def sales_page_test(request):
         return render_to_response('_404.html', {})
     return render_to_response('sales_test.html', {'drop': entry.drop, 'base_id': entry.base_id, 'hash': hash_base_id, 'amount':entry.amount})
 
-def send_emails(request):
+def send_emails(hash_, amount, name, email, contact, ip):
     print '---------1----------'
-    hash_ = request.POST['hash']
-    amount = request.POST['amount']
-    name = request.POST['name'].lower().capitalize()
-    email = request.POST['email']
-    contact = request.POST['contact']
-
-    match = geolite2.lookup(request.POST['ip'])
+    match = geolite2.lookup(ip)
     code = match.country
     offer_id = random.randint(1000000, 9999999)
     date = datetime.now().date()
@@ -120,7 +114,13 @@ def send_emails(request):
     print '---------2----------'
 
 def process_offer(request):
-    t = threading.Thread(target=send_emails, args=[request])
+    hash_ = request.POST['hash']
+    amount = request.POST['amount']
+    name = request.POST['name'].lower().capitalize()
+    email = request.POST['email']
+    contact = request.POST['contact']
+
+    t = threading.Thread(target=send_emails, args=[hash_, amount, name, email, contact, request.POST['ip']])
     t.setDaemon(False)
     t.start()
     print '---------0----------'
