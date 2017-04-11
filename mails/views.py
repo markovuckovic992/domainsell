@@ -10,6 +10,7 @@ from mails.models import Offer, BlackList
 from mails.apps import *
 from django.utils import timezone
 import json
+from os import popen
 
 @ensure_csrf_cookie
 def receive_mails(request):
