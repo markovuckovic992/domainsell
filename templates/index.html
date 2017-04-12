@@ -511,31 +511,30 @@ Do For Your Business
 
 
 $("#submit_offer").click(function(e) {
-    if(!($.isNumeric($("#lead_offer").val())) || $("#lead_offer").val()<100){
-        $("#msg").html("Sorry, this domain has a reserve of $100, please adjust your offer.");
-    }
+
 
 });
 
 $("#user_info").submit(function(e) {
-    e.preventDefault();
-    var name = $("#txtname").val()
-    var contact = $("#txtphone").val()
-    var email = $("#txtemail").val()
-    $.get("http://ipinfo.io", function(response) {
-        make_offer(
-            {{base_id}},
-            '{{hash}}',
-            response.ip,
-            name,
-            contact,
-            email
-        )
-        // $("#submit_id___").hide();
-        // $("#submit_id__").hide();
-        // $("#lead_offer").val('');
-    }, "jsonp");
-    $("#userinfoform").html("Thank you for submitting your offer. One of our Domain Experts will get in touch with you within the next 24 hours.");
+    if(!($.isNumeric($("#lead_offer").val())) || $("#lead_offer").val()<100) {
+        $("#msg").html("Sorry, this domain has a reserve of $100, please adjust your offer.");
+    } else {
+        e.preventDefault();
+        var name = $("#txtname").val()
+        var contact = $("#txtphone").val()
+        var email = $("#txtemail").val()
+        $.get("http://ipinfo.io", function(response) {
+            make_offer(
+                {{base_id}},
+                '{{hash}}',
+                response.ip,
+                name,
+                contact,
+                email
+            )
+        }, "jsonp");
+        $("#userinfoform").html("Thank you for submitting your offer. One of our Domain Experts will get in touch with you within the next 24 hours.");
+    }
 });
     });
 
