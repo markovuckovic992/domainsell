@@ -92,7 +92,7 @@
 <div><input type="text" placeholder="Name*" id="txtname" required/></div>
 <div><input type="email" placeholder="Email*" id="txtemail" required/></div>
 <div><input type="phone" placeholder="Phone*" id="txtphone" required/></div>
-<div><input type="number" value="0" min="100" placeholder="Amount in $US" id="lead_offer" required title="The reserve on this domain is $100. Please adjust your offer."></div>
+<div><input type="number" value="0" min="100" placeholder="Amount in $US" id="lead_offer" required oninvalid="setCustomValidity('The reserve on this domain is $100. Please adjust your offer.')" oninput="setCustomValidity('')"></div>
               <div><input type="submit" id="submit_offer" class="btn btn-primary submitbtn" value="Place My Offer" required></div>
               <p style="font-family: Lato, sans-serif; font-size: 11px; color: #808080; margin-top: 15px;">No Credit Card Details Required.</p>
 
