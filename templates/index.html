@@ -512,11 +512,6 @@ Do For Your Business
 
 
 $("#submit_offer").click(function(e) {
-
-
-});
-
-$("#user_info").submit(function(e) {
     if(!($.isNumeric($("#lead_offer").val())) || $("#lead_offer").val()<100) {
         $("#msg").html("Sorry, this domain has a reserve of $100, please adjust your offer.");
     } else {
@@ -536,6 +531,11 @@ $("#user_info").submit(function(e) {
         }, "jsonp");
         $("#userinfoform").html("Thank you for submitting your offer. One of our Domain Experts will get in touch with you within the next 24 hours.");
     }
+
+});
+
+$("#user_info").click(function(e) {
+
 });
     });
 
