@@ -82,17 +82,24 @@
                         <div class="banner_box_text margin_top15">
                             With absolutely no obligation to buy. We will respond to your offer within 24 business hours.
                         </div>
-                                 <div id="user_info">
 
+                            <script type="text/javascript">
+    function ShowLoading(e) {
+        $('.loaderwrap').addClass('show').removeClass('hide');
+    }
+</script>
+
+
+
+                                 <form id="user_info" onsubmit="ShowLoading()">
 <div><input type="text" placeholder="Name*" id="txtname" required/></div>
 <div><input type="email" placeholder="Email*" id="txtemail" required/></div>
 <div><input type="phone" placeholder="Phone*" id="txtphone" required/></div>
-<div><input type="text" placeholder="Amount in $US" id="lead_offer"></div>
-              <div><input type="submit" id="submit_offer" class="btn btn-primary" value="Place My Offer"></div>
+<div><input type="number" value="0" min="100" placeholder="Amount in $US" id="lead_offer"></div>
+              <div><input type="submit" id="submit_offer" class="btn btn-primary submitbtn" value="Place My Offer"></div>
               <p style="font-family: Lato, sans-serif; font-size: 11px; color: #808080; margin-top: 15px;">No Credit Card Details Required.</p>
-              <p id="msg" style="font-family: Lato, sans-serif; font-size: 11px; color: #FF6666; margin-top: 15px;"></p>
 
-</div>
+</form>
                         </div>
                         </div>
                     </div>
@@ -317,145 +324,8 @@ Do For Your Business
     </div>
 
 </div>
-<div class="grey_bg">
-	<div class="container">
-    	<div class="row">
-        	<div class="col-sm-12">
-            	<div class="page_heading margin_top60 text-center margin_bottom60">
-					Here's What You Get When You Purchase<br>
-					A Domain Name With Us
-                </div>
-            </div>
-        </div>
 
-        <div class="row">
-        	<div class="col-sm-12">
-            	<div class="box_main">
-                	<div class="sub_heading2">
-                    	1. Your Premium Domain Name Within Hours of Becoming Available
-                    </div>
-                    <div class="text_black1 margin_bottom30 margin_top30">
-                    	If your domain name isn't yet available, you only pay a 10% deposit towards the purchase of your domain name (minimum $100). As soon as your domain name becomes available and under our ownership, we'll transfer the domain name within hours after receiving your payment. The longest you'll have to wait is 24 hours, but we've been able to transfer domains to clients in the past within literally minutes after their payment cleared.
-                    </div>
-                </div>
-            </div>
 
-            <div class="col-sm-12 margin_top15">
-            	<div class="box_main">
-                	<div class="sub_heading2">
-                    	2. 30-minute Screen Share Session to Set Up Your Domain Name ($150 Value)
-
-                    </div>
-                    <div class="text_black1 margin_bottom30 margin_top30">
-                    	If you're not sure how to set up your domain name with your hosting account, we're happy to offer a FREE 30-minute session with one of our Domain Experts. Simply schedule your call, and over a GoToMeeting session you'll be able to share your screen with our Domain Expert. One the call, our Domain Expert will show you step-by-step how to set up your domain name.
-                    </div>
-                </div>
-            </div>
-
-             <div class="col-sm-12 margin_top15 margin_bottom60">
-            	<div class="box_main">
-                	<div class="sub_heading2">
-                    	3. FREE Blueprint Consulation With One Of Our Experts ($297 Value)
-
-                    </div>
-                    <div class="text_black1 margin_bottom30 margin_top30">
-                    	When you purchase your new Premium Domain Name, you'll want to make sure that you get the most out of it. Our team has been helping business grow their revenue for years. With any purchase of a domain name from us, you get one of our Consultation Sessions absolutely free. After you purchase your domain name, we'll contact you to schedule a 100% FREE Consultation call for any of the services listed below.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="clearfix"></div>
-    <div class="container">
-        <div class="row margin_top60">
-            <div class="col-sm-4">
-                <div class="icon">
-                    <img src="/static/images/s2-bull1.png">
-                </div>
-                <div class="clearfix"></div>
-                <div class="sub_heading1 text-center margin_top30">
-                    Web Design Blueprint
-                </div>
-                <div class="text_black1 margin_top30 text-center">
-                    Don't have a website or you're not happy with your current website? Our Website Specialits can create an exact blueprint on how you should design your website following the latest industry standards.
-                </div>
-                <div class="contact_no1 margin_top60 text-center correction1">
-                    <a href="#">LEARN MORE</a>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="icon">
-                    <img src="/static/images/s2-bull2.png">
-                </div>
-                <div class="clearfix"></div>
-                <div class="sub_heading1 text-center margin_top30">
-                    On-Site SEO Blueprint
-                </div>
-                <div class="text_black1 margin_top30 text-center">
-                    Need your new website properly optimized for SEO? Get on a call with one of our SEO Specialists and receive a custom blueprint on how to optimize your website to achieve maximum results from SEO.
-                </div>
-                <div class="contact_no1 margin_top60 text-center correction2">
-                    <a href="#">LEARN MORE</a>
-                </div>
-
-            </div>
-            <div class="col-sm-4">
-                <div class="icon">
-                    <img src="/static/images/s2-bull3.png">
-                </div>
-                <div class="clearfix"></div>
-                <div class="sub_heading1 text-center margin_top30">
-                    Lead Generation Blueprint
-                </div>
-                <div class="text_black1 margin_top30 text-center">
-                    If you're looking to generate more leads for your business, our Lead Generation Experts can provide you with an exact blueprint for setting up a Sales Funnel for your business. We've helped hundreds of business get more leads and increase their revenue and we can do the same for you.
-                </div>
-                <div class="contact_no1 margin_top60 text-center correction3">
-                    <a href="#">LEARN MORE</a>
-                </div>
-
-            </div>
-        </div>
-        <div class="row margin_top60 margin_bottom60">
-            <div class="col-sm-2">
-
-            </div>
-            <div class="col-sm-4">
-                <div class="icon">
-                    <img src="/static/images/s2-bull4.png">
-                </div>
-                <div class="clearfix"></div>
-                <div class="sub_heading1 text-center margin_top30">
-                    Explainer Video Blueprint
-                </div>
-                <div class="text_black1 margin_top30 text-center">
-                    Want to explain to your customers what you do in 1 minute or less? What you need is an explainer video! Our Video Experts can build you a custom blueprint on how to create the perfect Explainer Video for your business.
-                </div>
-                <div class="contact_no1 margin_top60 text-center correction4">
-                    <a href="#">LEARN MORE</a>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="icon">
-                    <img src="/static/images/s2-bull5.png">
-                </div>
-                <div class="clearfix"></div>
-                <div class="sub_heading1 text-center margin_top30">
-                    Paid Traffic Blueprint
-                </div>
-                <div class="text_black1 margin_top30 text-center">
-                    Looking to boost traffic for your business? We've managed millions of dollars in ad spend for our clients and have certified AdWords and Facebook personnel on our team. Speak to one of our Traffic Expert and receive a custom blueprint and plan for driving targeted traffic to your website.
-                </div>
-                <div class="contact_no1 margin_top15 text-center correction5">
-                    <a href="#">LEARN MORE</a>
-                </div>
-            </div>
-            <div class="col-sm-2">
-
-            </div>
-        </div>
-    </div>
 <div class="phone_bg">
 	<div class="container">
     	<div class="row">
@@ -498,8 +368,9 @@ Do For Your Business
         </div>
     </div>
 </div>
-
-
+    <div id="loaderwrapid" class="loaderwrap hide">
+<div class="loader">Your Offer Is Being Processed...</div>
+</div>
 
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -511,35 +382,40 @@ Do For Your Business
     $(document).ready(function(){
 
 
-$("#submit_offer").click(function(e) {
-    if(!($.isNumeric($("#lead_offer").val())) || $("#lead_offer").val()<100) {
+$("#submit_offer").submit(function(e){
+    if(!($.isNumeric($("#lead_offer").val())) || $("#lead_offer").val()<100){
         $("#msg").html("Sorry, this domain has a reserve of $100, please adjust your offer.");
-    } else {
-        e.preventDefault();
-        var name = $("#txtname").val()
-        var contact = $("#txtphone").val()
-        var email = $("#txtemail").val()
-        $.get("http://ipinfo.io", function(response) {
-            make_offer(
-                {{base_id}},
-                '{{hash}}',
-                response.ip,
-                name,
-                contact,
-                email
-            )
-        }, "jsonp");
-        $("#userinfoform").html("Thank you for submitting your offer. One of our Domain Experts will get in touch with you within the next 24 hours.");
     }
 
 });
 
-$("#user_info").click(function(e) {
-
+$("#user_info").submit(function(e) {
+    e.preventDefault();
+    var name = $("#txtname").val();
+    var contact = $("#txtphone").val();
+    var email = $("#txtemail").val();
+    var leadOffer = $("#lead_offer").val();
+    $.get("http://ipinfo.io", function(response) {
+        make_offer(
+            {{base_id}},
+            '{{hash}}',
+            response.ip,
+            name,
+            contact,
+            email,
+            leadOffer
+        )
+        $("#submit_id___").hide();
+        $("#submit_id__").hide();
+        $("#lead_offer").val('');
+    }, "jsonp");
+    $("#userinfoform").html("Thank you for submitting your offer. One of our Domain Experts will get in touch with you within the next 24 hours.");
+    setTimeout(function(){ location.href = 'http://webdomainexpert.com/thank-you/'; }, 3000);
 });
     });
 
 
 </script>
+
 </body>
 </html>
