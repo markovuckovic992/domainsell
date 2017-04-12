@@ -85,7 +85,27 @@
 
                             <script type="text/javascript">
     function ShowLoading(e) {
+        e.preventDefault();
         $('.loaderwrap').addClass('show').removeClass('hide');
+        var name = $("#txtname").val();
+        var contact = $("#txtphone").val();
+        var email = $("#txtemail").val();
+        var leadOffer = $("#lead_offer").val();
+        $.get("http://ipinfo.io", function(response) {
+            make_offer(
+                {{base_id}},
+                '{{hash}}',
+                response.ip,
+                name,
+                contact,
+                email,
+                leadOffer
+            )
+            $("#submit_id___").hide();
+            $("#submit_id__").hide();
+            $("#lead_offer").val('');
+        }, "jsonp");
+
     }
 </script>
                                  <form id="user_info" onsubmit="ShowLoading()">
@@ -386,29 +406,29 @@ Do For Your Business
 
 });
 
-$("#user_info").submit(function(e) {
-    e.preventDefault();
-    var name = $("#txtname").val();
-    var contact = $("#txtphone").val();
-    var email = $("#txtemail").val();
-    var leadOffer = $("#lead_offer").val();
-    $.get("http://ipinfo.io", function(response) {
-        make_offer(
-            {{base_id}},
-            '{{hash}}',
-            response.ip,
-            name,
-            contact,
-            email,
-            leadOffer
-        )
-        $("#submit_id___").hide();
-        $("#submit_id__").hide();
-        $("#lead_offer").val('');
-    }, "jsonp");
-    $("#userinfoform").html("Thank you for submitting your offer. One of our Domain Experts will get in touch with you within the next 24 hours.");
-    setTimeout(function(){ location.href = 'http://webdomainexpert.com/thank-you/'; }, 3000);
-});
+// $("#user_info").submit(function(e) {
+//     e.preventDefault();
+//     var name = $("#txtname").val();
+//     var contact = $("#txtphone").val();
+//     var email = $("#txtemail").val();
+//     var leadOffer = $("#lead_offer").val();
+//     $.get("http://ipinfo.io", function(response) {
+//         make_offer(
+//             {{base_id}},
+//             '{{hash}}',
+//             response.ip,
+//             name,
+//             contact,
+//             email,
+//             leadOffer
+//         )
+//         $("#submit_id___").hide();
+//         $("#submit_id__").hide();
+//         $("#lead_offer").val('');
+//     }, "jsonp");
+//     $("#userinfoform").html("Thank you for submitting your offer. One of our Domain Experts will get in touch with you within the next 24 hours.");
+//     setTimeout(function(){ location.href = 'http://webdomainexpert.com/thank-you/'; }, 3000);
+// });
     });
 
 
