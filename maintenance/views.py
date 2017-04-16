@@ -89,6 +89,7 @@ def check_status(request):
 def delete_old_data(request):
     offers = Offer.objects.filter(~Q(status=1), date__isnull=False)
     msg = ''
+    date = ''
     for offer in offers:
         try:
             tube = popen("whois '" + str(offer.drop) + "' | egrep -i 'Status|Updated Date'", 'r')
