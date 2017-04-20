@@ -13,6 +13,7 @@ from django.conf import settings
 from maintenance.lib import *
 from django.db.models import Q
 from random import randint
+from os import popen
 
 hosts = [
     'webdomainexpert.us',
@@ -34,7 +35,7 @@ class CronJobs:
         offers = list(chain(Offer.objects.filter(
             Q(id__gt=last_id, done=0, phase=1, stage__gt=1, last_email_date__lt=two_days_ago) |
             Q(id__gt=last_id, done=0, phase__in=[2])
-        )[0:2],Offer.objects.filter(
+        )[0:7],Offer.objects.filter(
             Q(id__gt=last_id, done=5, phase=0, last_email_date__lt=two_days_ago)
         )[0:6]))  # , 2, 3
 
@@ -73,7 +74,7 @@ class CronJobs:
                     sub, msg = eval(to_send + '("' + offer.drop + '", "' + name + '")')
             elif offer.phase == 2:
                 Max = 12
-                to_send = sequnce_0(offer.stage, offer.last_email_date)
+                # to_send = sequnce_0(offer.stage, offer.last_email_date)
                 iterator = randint(0, 3)
                 host = str(hosts[iterator])
                 to_send = sequnce_2(offer.stage, offer.last_email_date)
@@ -121,8 +122,41 @@ class CronJobs:
         connection2.close()
         Setting.objects.filter(id=1).update(last_id=tmp)
 
+    def whois(self):
+        offers = Offer.objects.filter(~Q(status=1), date__isnull=False)
+        for offer in offers:
+            try:
+                tube = popen("whois '" + str(offer.drop) + "' | egrep -i 'Status|Updated Date'", 'r')
+                resp = tube.read()
+                resp = resp.replace('Status:', '').replace('\n', '').replace('\r', '')
+                tube.close()
+                statuses = resp.split(' ')
+
+                index = len(statuses) - 1 - statuses[::-1].index('Date:')
+                try:
+                    date = datetime.strptime((statuses[index + 1])[0:10], '%Y-%m-%d').date()
+                except:
+                    try:
+                        date = datetime.strptime((statuses[index + 1])[0:11], '%d-%b-%Y').date()
+                    except:
+                        date = None
+
+                if 'pendingDelete' in str(statuses):
+                    if date:
+                        Offer.objects.filter(id=offer.id).update(status=1, updated=date, phase=10, stage=1, done=1)
+                    else:
+                        Offer.objects.filter(id=offer.id).update(status=1, updated=datetime.now().date(), phase=10, stage=1, done=1)
+                else:
+                    Offer.objects.filter(id=offer.id).update(status=0)
+
+            except:
+                statuses = 'ERROR'
+                Offer.objects.filter(id=offer.id).update(status=2)
+
 
 c_j = CronJobs()
 if len(sys.argv) > 1:
     if sys.argv[1] == 'send':
         c_j.send()
+    if sys.argv[1] == 'whois':
+        c_j.whois()

@@ -20,7 +20,7 @@ make_offer = function (base_id, hash, ip, name, contact, email) {
     $.ajax({
 		type: "POST",
 		url: "/process_offer/",
-		data: "hash=" + hash
+		data: "base_id=" + base_id
         + "&amount=" + amount
         + "&name=" + name
         + "&contact=" + contact
@@ -29,20 +29,6 @@ make_offer = function (base_id, hash, ip, name, contact, email) {
 		headers: {
             'X-CSRFToken': csrftoken,
         },
-        sucess: function(msg) {
-            window.location.href= 'http://webdomainexpert.com/thank-you/';
-        },
-        error: function(data) {
-            window.location.href= 'http://webdomainexpert.com/thank-you/';
-        },
-        statusCode: {
-            500: function() {
-              alert('500 status code! server error, reload page');
-            },
-            200: function() {
-                window.location.href= 'http://webdomainexpert.com/thank-you/';
-            }
-        }
 	})
 }
 
@@ -153,39 +139,6 @@ Del = function (id) {
     }
 }
 
-Stop = function (id) {
-    var r = confirm("Are you sure?");
-    if (r == true) {
-        $.ajax({
-            type: "POST",
-            url: "/stop_hash/",
-            headers: {
-                'X-CSRFToken': csrftoken,
-            },
-            data: "id=" + id,
-            success: function(msg) {
-                window.location.reload();
-            }
-        })
-    }
-}
-
-Start =  function(id) {
-    var r = confirm("Are you sure?");
-    if (r == true) {
-        $.ajax({
-            type: "POST",
-            url: "/start_hash/",
-            headers: {
-                'X-CSRFToken': csrftoken,
-            },
-            data: "id=" + id,
-            success: function(msg) {
-                window.location.reload();
-            }
-        })
-    }
-}
 
 change_amount = function (id) {
     var html = '<input type="number" id="new_value" placeholder="new offer"/><button onclick="save_new_value(' + id + ')">Save</button>';

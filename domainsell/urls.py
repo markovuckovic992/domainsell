@@ -29,6 +29,7 @@ urlpatterns = [
     #  mails
     url(r'^offer/', mails.views.receive_mails),
     url(r'^process_offer/', mails.views.process_offer),
+    url(r'^process_offers_r/', mails.views.process_offer_r),
     url(r'^process_offer_redirect/', mails.views.process_offer_redirect),
     url(r'^contact/', mails.views.contact),
     url(r'^farewell/', mails.views.farewell),
@@ -44,6 +45,8 @@ urlpatterns = [
     url(r'^start_post_release/', maintenance.views.start_post_release),
     url(r'^start_post_sale/', maintenance.views.start_post_sale),
     url(r'^del_hash/', maintenance.views.del_hash),
+    url(r'^stop_hash/', maintenance.views.stop_hash),
+    url(r'^start_hash/', maintenance.views.start_hash),
     url(r'^change_amount/', maintenance.views.change_amount),
     url(r'^check_for_offers/', maintenance.views.check_for_offers),
     # control_panel
@@ -51,7 +54,10 @@ urlpatterns = [
     url(r'^save_settings/', maintenance.views.save_settings),
     # sales
     url(r'^sales/', mails.views.sales_page),
+    url(r'^sales_test/', mails.views.sales_page_test),
     # search
     url(r'^search/', maintenance.views.search),
     url(r'^search_results/', maintenance.views.search_results),
+    # .NET
+    url(r'^hello/', mails.views.hello),
 ]

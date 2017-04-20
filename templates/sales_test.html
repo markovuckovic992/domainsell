@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Web Domain Expert</title>
+<link href="/static/css/bootstrap.min.css" rel="stylesheet">
+<link href="/static/css/style2.css" rel="stylesheet" type="text/css">
+<link href="/static/css/media2.css" rel="stylesheet" type="text/css">
+<link rel="shortcut icon" href="/static/img/favicon.ico" />
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89985363-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</head>
+<body>
+{% load static %}
+<div class="container">
+	<div class="row">
+    	<div class="col-sm-3">
+        	<div class="logo margin_top15">
+            	<img src="/static/images/WebDomainExpert-Logo.png" class="img-responsive">
+            </div>
+        </div>
+        <div class="col-sm-9">
+        	<div class="menu margin_top10">
+                  <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                      <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                          <span class="sr-only">Toggle navigation</span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                        </button>
+                      </div>
+                      <div id="navbar" class="navbar-collapse collapse">
+
+                        <ul class="nav navbar-nav navbar-right">
+                          <li><a href="http://webdomainexpert.com/" target="_blank">Home </a></li>
+                          <li><a href="http://webdomainexpert.com/about-us/" target="_blank">About</a></li>
+                          <li><a href="http://webdomainexpert.com/blog/" target="_blank">Blog</a></li>
+                          <li><a href="tel:+12394448573">Call Us Now: + 1 239 444 8573</a></li>
+                        </ul>
+
+                      </div>
+                    </div>
+                  </nav>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="banner margin_top15 margin_bottom30">
+	<div class="container">
+    	<div class="row">
+        	<div class="col-sm-7">
+            	<div class="banner_text1 margin_top165">
+                	<b>{{ drop }}</b>
+                </div>
+                <div class="banner_text">
+                    Make It Yours Today
+                </div>
+            </div>
+            <div class="col-sm-5">
+            	<div class="banner_box_main margin_top165 margin_bottom165">
+                	<div class="submit-box">
+                    <div class="ribbon">
+                        <h2 id="titleee">This domain is on sale</h2>
+                        </div>
+                        <div>
+                        <h3 id="amount_h3">$ {{ amount|floatformat:2 }}</h3>
+
+                        <form action='https://www.2checkout.com/checkout/purchase' method='post'>
+                          <input type='hidden' name='sid' value='103220998' />
+                          <input type='hidden' name='mode' value='2CO' />
+                          <input type='hidden' name='li_0_type' value='product' />
+                          <input type='hidden' name='li_0_name' value='Domain purchase' />
+                          <input type='hidden' name='li_0_price' value="{{ amount|floatformat:2 }}" />
+                          <input type='hidden' name='li_0_recurrence' value='Domain' />
+                          <input name='submit' id="test_submit" type='submit' value='Buy Now' />
+                        </form>
+
+                        <!-- <button id="buy_now">Buy Now</button> -->
+                        <ul class="fa-ul margin_top15 bullet">
+                        <li><i class="fa-li fa fa-check-circle-o" aria-hidden="true"></i>Buyer Protection</li>
+                        <li><i class="fa-li fa fa-check-circle-o" aria-hidden="true"></i>Transfer Service</li></ul>
+                        <!-- Begin ScanVerify Seal Code -->
+                        <script src='https://scanverify.com/javascript.js'> </script>
+                        <a target=_blank href="https://scanverify.com/siteverify.php?ref=stp&site=webdomainexpert.com/">
+                        <img src='https://scanverify.com/seal/seal.php?site=webdomainexpert.com/' border=0 ALT='ScanVerify.com Trust Seal' class="seal"></a>
+                        <!-- End ScanVerify Seal Code -->
+                        <!-- Begin Good Business Commission Seal Code -->
+                        <script src='http://www.goodbusinesscomm.com/javascript.js'> </script>
+                        <a target=_blank href="http://www.goodbusinesscomm.com/siteverify.php?ref=stp&site=webdomainexpert.com/">
+                        <img src='http://www.goodbusinesscomm.com/seal/seal.php?site=webdomainexpert.com/' border=0 ALT='GoodBusinessComm.com Trust Seal' class="seal"></a>
+                        <!-- End Good Business Commission Seal Code -->
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+	<div class="row">
+    	<div class="col-sm-12">
+        	<div class="icon margin_top30 text-center">
+            	<img src="/static/images/phone-call.png">
+            </div>
+            <div class="clearfix"></div>
+            <div class="page_heading text-center margin_top15">
+            	Need help?
+            </div>
+            <div class="page_sub_heading text-center">
+            	Talk to One of Our Domain Experts Today:
+            </div>
+            <div class="contact_no text-center margin_top30 margin_bottom30">
+            	<a href="#">+1 239 444 8573</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="phone_bg">
+	<div class="container">
+    	<div class="row">
+    	<div class="col-sm-12">
+        	<div class="icon">
+            	<img src="/static/images/guaratee.png" class="img-responsive">
+            </div>
+            <div class="clearfix"></div>
+            <div class="banner_text margin_top30 text-center">
+            	14-day 100% Moneyback Guarantee
+            </div>
+            <div class="text_white text-center margin_top30">
+            	We want you to shop with confidence. In case you are not happy with your domain name purchase, you have 14 days from the day you purchased to change your mind and ask for your money back. Simply get in touch with us and we'll issue a full refund, no questions asked.
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+
+<div class="container">
+    <div class="row margin_top30 margin_bottom30" style="text-align: center;">
+        <h2 class="margin_bottom30">Watch How This Domain Can Increase Your Traffic And Sales</h2>
+        <div class="videoWrapper">
+        <iframe width="853" height="480" src="https://www.youtube.com/embed/1go1bURdEXk?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+            </div>
+    </div>
+    </div>
+<div class="container">
+	<div class="row margin_top30 margin_bottom30">
+    	<div class="col-sm-6">
+        	<div class="sub_heading">
+            	This domain is instantly available
+            </div>
+            <div class="text_black margin_top30">
+                <ul class="fa-ul margin_top15 av">
+                    <li><i class="fa-li fa fa-check-circle" aria-hidden="true"></i>The purchase price listed is a one time payment.</li>
+                    <li><i class="fa-li fa fa-check-circle" aria-hidden="true"></i>.COM and NET renewal costs are approximately $10 - $15 depending on
+your registrar.</li>
+                    <li><i class="fa-li fa fa-check-circle" aria-hidden="true"></i>Get full ownership instantly.</li>
+                   <li><i class="fa-li fa fa-check-circle" aria-hidden="true"></i>Ownership transfer takes 25
+minutes or a maximum of 2 business days*</li></ul>
+</div>
+
+        </div>
+        <div class="col-sm-6">
+        	<img src="/static/images/Depositphotos_104302282_original.jpg" class="img-responsive">
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+<div class="grey_bg">
+	<div class="container">
+    	<div class="row">
+        	<div class="col-sm-12">
+            	<div class="page_heading margin_bottom30 margin_top30 text-center">
+                	How It Works
+                </div>
+            </div>
+        </div>
+        <div class="row margin_top30">
+        	<div class="col-sm-4">
+            	<div class="icon">
+                	<img src="/static/images/bull1-1.png">
+                </div>
+                <div class="clearfix"></div>
+                <div class="sub_heading1 text-center margin_top15">
+                	Find Premium Domain
+                </div>
+                <div class="text_black1 text-center margin_top30 margin_bottom30">
+                	Get in touch with our Domain Expert to find a premium domain for your business. Our Experts will be able to help you find a brandable premium domain that will help you maximize your SEO.
+                </div>
+            </div>
+            <div class="col-sm-4">
+            	<div class="icon">
+                	<img src="/static/images/bull2.png">
+                </div>
+                <div class="clearfix"></div>
+                <div class="sub_heading1 margin_top15 text-center">
+                	Purchase Securely
+                </div>
+                <div class="text_black1 text-center margin_top30 margin_bottom30">
+                	We offer simple, quick and secure methods of payment. You can make your purchase via PayPal, with your Debit or Credit Card or via wire transfer.
+                </div>
+            </div>
+            <div class="col-sm-4">
+            	<div class="icon">
+                	<img src="/static/images/bull3.png">
+                </div>
+                <div class="clearfix"></div>
+                <div class="sub_heading1 margin_top15 text-center">
+                	Start Using Within Hours
+                </div>
+                <div class="text_black1 text-center margin_top30 margin_bottom30">
+                	Our Domain Experts will help you transfer and set-up your new domain name within hours after becoming available. You'll receive full technical support and our team will go above and beyond to help you get your new domain name up and running.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+	<div class="row">
+    	<div class="col-sm-12">
+        	<div class="page_heading text-center margin_top60 margin_bottom60">
+            	What a Premium Domain Name Can<br>
+Do For Your Business
+            </div>
+        </div>
+    </div>
+    <div class="row margin_top30">
+    	<div class="col-sm-4">
+        	<div class="icon">
+            	<img src="/static/images/IntantBrandRecognition.png" class="img-responsive">
+            </div>
+        </div>
+        <div class="col-sm-8">
+        	<div class="sub_heading">
+            	Instant Brand Recognition
+            </div>
+            <div class="text_black1">
+            	A "premium" domain should be memorable and easy to spell, but such a domain is usually really expensive to get. Still, acquiring a premium domain is essential because it shapes the users' perception and tells them exactly what you're offering. You can imagine how this saves you a substantial amount of money and how it creates instant brand recognition. Just think about domains such as translators.com, cheapflights.com, etc. - they make the offer and value proposition very clear.
+            </div>
+        </div>
+    </div>
+        <div class="row margin_top60">
+        <div class="col-sm-8">
+        	<div class="sub_heading">
+            	Gain Trust & Authority
+            </div>
+            <div class="text_black1">
+            	Premium domains have another benefit - they give users a sense of trust and authority. If your domain is simple and memorable, your visitors will automatically have more trust in your business. The reason behind this is simple - online shoppers today understand how expensive it is to get such domains. That makes your brand much more reliable and trustworthy in their eyes and it leads to a higher conversion rate. Finally, with a good domain name at the base of your marketing strategy, this trust and authority will also increase the success of your other marketing channels.
+            </div>
+        </div>
+        <div class="col-sm-4">
+        	<div class="icon">
+            	<img src="/static/images/GainTrustAuthority.png" class="img-responsive">
+            </div>
+        </div>
+    </div>
+    <div class="row margin_top30">
+    	<div class="col-sm-4">
+        	<div class="icon">
+            	<img src="/static/images/SEOBenefits.png" class="img-responsive">
+            </div>
+        </div>
+        <div class="col-sm-8">
+        	<div class="sub_heading">
+            	SEO Benefits
+            </div>
+            <div class="text_black1">
+            	A premium domain name can also improve your search engine rankings but not the way it was before. Google Exact Match Domain (EMD) algorithm doesn't rank exact match domains or keyword rich domains highly anymore. So, you can't just create a totally worthless website, get a great domain name and expect insanely good rankings. However, premium domain does have an SEO benefit and it's all about link acquisition. Trust and authority that come with a premium domain help your outreach and link placement which, in turn, improves your rankings.
+            </div>
+        </div>
+    </div>
+    <div class="row margin_top60">
+        <div class="col-sm-8">
+        	<div class="sub_heading">
+            	Direct Traffic
+            </div>
+            <div class="text_black1">
+            	Some premium domains drive huge amounts of direct type-in traffic. Those are the people who search for something and just type in the full domain name directly in the browser, skipping the search engine altogether. This usually leads to instant high-quality traffic and incredibly high conversion rates because these visitors already know what they want and they are ready to buy.
+            </div>
+        </div>
+        <div class="col-sm-4">
+        	<div class="icon">
+            	<img src="/static/images/DirectTraffic.png" class="img-responsive">
+            </div>
+        </div>
+    </div>
+    <div class="row margin_top30 margin_bottom30">
+    	<div class="col-sm-4">
+        	<div class="icon">
+            	<img src="/static/images/PMA.png" class="img-responsive">
+            </div>
+        </div>
+        <div class="col-sm-8">
+        	<div class="sub_heading">
+            	Physical Marketing Advantages
+            </div>
+            <div class="text_black1">
+            	A premium domain name combines perfectly with all non-digital advertising strategies like TV, radio and print ads, billboards, etc. Physical advertising tactics combined with a short and memorable premium domain have amazing success rates. The users remember them much more easily and then visit the website when they're ready to buy.
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="grey_bg">
+	<div class="container">
+    	<div class="row">
+        	<div class="col-sm-12">
+            	<div class="page_heading margin_top60 text-center margin_bottom60">
+					Here's What You Get When You Purchase<br>
+					A Domain Name With Us
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+        	<div class="col-sm-12">
+            	<div class="box_main">
+                	<div class="sub_heading2">
+                    	1. Your Premium Domain Name Within Hours of Becoming Available
+                    </div>
+                    <div class="text_black1 margin_bottom30 margin_top30">
+                    	If your domain name isn't yet available, you only pay a 10% deposit towards the purchase of your domain name (minimum $100). As soon as your domain name becomes available and under our ownership, we'll transfer the domain name within hours after receiving your payment. The longest you'll have to wait is 24 hours, but we've been able to transfer domains to clients in the past within literally minutes after their payment cleared.
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 margin_top15">
+            	<div class="box_main">
+                	<div class="sub_heading2">
+                    	2. 30-minute Screen Share Session to Set Up Your Domain Name ($150 Value) 
+                    </div>
+                    <div class="text_black1 margin_bottom30 margin_top30">
+                    	If you're not sure how to set up your domain name with your hosting account, we're happy to offer a FREE 30-minute session with one of our Domain Experts. Simply schedule your call, and over a GoToMeeting session you'll be able to share your screen with our Domain Expert. One the call, our Domain Expert will show you step-by-step how to set up your domain name.
+                    </div>
+                </div>
+            </div>
+
+             <div class="col-sm-12 margin_top15">
+            	<div class="box_main">
+                	<div class="sub_heading2">
+                    	3. FREE Blueprint Consulation With One Of Our Experts ($297 Value) 
+                    </div>
+                    <div class="text_black1 margin_bottom30 margin_top30">
+                    	When you purchase your new Premium Domain Name, you'll want to make sure that you get the most out of it. Our team has been helping business grow their revenue for years. With any purchase of a domain name from us, you get one of our Consultation Sessions absolutely free. After you purchase your domain name, we'll contact you to schedule a 100% FREE Consultation call for any of the services listed below.
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 margin_top15 margin_bottom60">
+            	<div class="box_main">
+                	<div class="sub_heading2">
+                    	4. And Don't Forget To Claim Your Free Bonus Material ($795 value)
+                    </div>
+                    <div class="text_black1 margin_bottom30 margin_top30">
+                    	Delivery of your eBook, Blueprint and Downloads will start within 24 hours of domain transfer.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+<div class="container">
+	<div class="row margin_top60">
+    	<div class="col-sm-4">
+        	<div class="icon">
+            	<img src="/static/images/s2-bull1.png">
+            </div>
+            <div class="clearfix"></div>
+            <div class="sub_heading1 text-center margin_top30">
+            	Web Design Blueprint
+            </div>
+            <div class="text_black1 margin_top30 text-center">
+Don't have a website or you're not happy with your current website? Our Website Specialits can create an exact blueprint on how you should design your website following the latest industry standards.
+            </div>
+            <div class="contact_no1 margin_top60 text-center correction1">
+            	<a href="#">LEARN MORE</a>
+            </div>
+           </div>
+        <div class="col-sm-4">
+        	<div class="icon">
+            	<img src="/static/images/s2-bull2.png">
+            </div>
+            <div class="clearfix"></div>
+            <div class="sub_heading1 text-center margin_top30">
+            	On-Site SEO Blueprint
+            </div>
+            <div class="text_black1 margin_top30 text-center">
+Need your new website properly optimized for SEO? Get on a call with one of our SEO Specialists and receive a custom blueprint on how to optimize your website to achieve maximum results from SEO.
+            </div>
+            <div class="contact_no1 margin_top60 text-center correction2">
+            	<a href="#">LEARN MORE</a>
+            </div>
+
+        </div>
+        <div class="col-sm-4">
+        	<div class="icon">
+            	<img src="/static/images/s2-bull3.png">
+            </div>
+            <div class="clearfix"></div>
+            <div class="sub_heading1 text-center margin_top30">
+            	Lead Generation Blueprint
+            </div>
+            <div class="text_black1 margin_top30 text-center">
+If you're looking to generate more leads for your business, our Lead Generation Experts can provide you with an exact blueprint for setting up a Sales Funnel for your business. We've helped hundreds of business get more leads and increase their revenue and we can do the same for you.
+            </div>
+            <div class="contact_no1 margin_top60 text-center correction3">
+            	<a href="#">LEARN MORE</a>
+            </div>
+
+        </div>
+    </div>
+    <div class="row margin_top60 margin_bottom60">
+    	<div class="col-sm-2">
+
+        </div>
+        <div class="col-sm-4">
+        	<div class="icon">
+            	<img src="/static/images/s2-bull4.png">
+            </div>
+            <div class="clearfix"></div>
+            <div class="sub_heading1 text-center margin_top30">
+            	Explainer Video Blueprint
+            </div>
+            <div class="text_black1 margin_top30 text-center">
+Want to explain to your customers what you do in 1 minute or less? What you need is an explainer video! Our Video Experts can build you a custom blueprint on how to create the perfect Explainer Video for your business.
+            </div>
+            <div class="contact_no1 margin_top60 text-center correction4">
+            	<a href="#">LEARN MORE</a>
+            </div>
+             </div>
+        <div class="col-sm-4">
+        	<div class="icon">
+            	<img src="/static/images/s2-bull5.png">
+            </div>
+            <div class="clearfix"></div>
+            <div class="sub_heading1 text-center margin_top30">
+            	Paid Traffic Blueprint
+            </div>
+            <div class="text_black1 margin_top30 text-center">
+Looking to boost traffic for your business? We've managed millions of dollars in ad spend for our clients and have certified AdWords and Facebook personnel on our team. Speak to one of our Traffic Expert and receive a custom blueprint and plan for driving targeted traffic to your website.
+            </div>
+            <div class="contact_no1 margin_top15 text-center correction5">
+            	<a href="#">LEARN MORE</a>
+            </div>
+           </div>
+        <div class="col-sm-2">
+
+        </div>
+    </div>
+</div>
+<div class="phone_bg">
+	<div class="container">
+    	<div class="row">
+        	<div class="col-sm-12">
+            	<div class="banner_text text-center">
+                	Own Your Premium <span><h1>{{ drop }}</h1></span><br>
+					Domain Name Today
+                </div>
+                <div class="contact_no1 margin_top30 text-center">
+                    <a href="#">I WANT MY PREMIUM DOMAIN</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer">
+	<div class="container">
+    	<div class="row">
+        	<div class="col-sm-12">
+            	<div class="logo">
+                	<img src="/static/images/WebDomainExpert-.png">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+        	<div class="col-sm-6">
+            	<div class="copyright margin_top30">
+                	Copyright 2016 - Web Domain Expert - All Rights Reserved
+                </div>
+            </div>
+            <div class="col-sm-6">
+            	<div class="footer_menu margin_top30 text-right">
+                	<ul>
+                    	<li><a href="#">Tearm of Use</a></li>
+                        <li><a href="#">Privacy Polciy</a></li>
+                        <li><a href="#">Website Desclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+  <form id="userinfo">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Submit Your Information</h4>
+      </div>
+      <div class="modal-body" id="userinfoform">
+
+        <div class="row" style="margin-top: 10px;">
+          <div class="col-md-4">Name</div>
+          <div class="col-md-8"><input type="text" id="txtname" required/></div>
+        </div>
+		<div class="row" style="margin-top: 10px;">
+          <div class="col-md-4">Email </div>
+          <div class="col-md-8"><input type="email" id="txtemail" required/></div>
+        </div>
+		<div class="row" style="margin-top: 10px;">
+          <div class="col-md-4">Phone</div>
+          <div class="col-md-8"><input type="text" id="txtphone" required/></div>
+        </div>
+		</form>
+      </div>
+      <div class="modal-footer" style="position: relative;">
+        <span id="submit_id__" style="position: absolute; left: 10px; color: #FF851B;">* All fields are required</span>
+        <input type="submit" id="submit_id___" class="btn btn-primary">
+      </div>
+	  </form>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript" src="/static/js/index.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+<script>
+$(document).ready(function(){
+    $("#buy_now").click(function(e){
+        // write bank request
+        location.href = 'http://webdomainexpert.com/thank-you/'
+    });
+});
+</script>
+
+</body>
+</html>

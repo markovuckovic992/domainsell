@@ -76,15 +76,20 @@ def check_status(request):
             statuses = 'ERROR'
             msg += (traceback.format_exc() + '\n')
             Offer.objects.filter(id=offer.id).update(status=2)
-        msg += ('DROP: ' + str(offer.drop) + str(statuses) + str(date))
+        msg += ('DROP: ' + str(offer.drop) + str(statuses))
+        try:
+            msg += str(date)
+        except:
+            pass
         msg += '\n --------------------- \n'
-    return HttpResponse(json.dumps({"status": "success"}), content_type="application/json")
+    return HttpResponse(json.dumps({"msg": msg}), content_type="application/json")
 
 
 @csrf_exempt
 def delete_old_data(request):
     offers = Offer.objects.filter(~Q(status=1), date__isnull=False)
     msg = ''
+    date = ''
     for offer in offers:
         try:
             tube = popen("whois '" + str(offer.drop) + "' | egrep -i 'Status|Updated Date'", 'r')
@@ -147,6 +152,18 @@ def start_post_sale(request):
 def del_hash(request):
     id_ = request.POST['id']
     Offer.objects.filter(id=id_).delete()
+    return HttpResponse(json.dumps({"status": "success"}), content_type="application/json")
+
+@login_required
+def stop_hash(request):
+    id_ = request.POST['id']
+    Offer.objects.filter(id=id_).update(done=1)
+    return HttpResponse(json.dumps({"status": "success"}), content_type="application/json")
+
+@login_required
+def start_hash(request):
+    id_ = request.POST['id']
+    Offer.objects.filter(id=id_).update(done=0)
     return HttpResponse(json.dumps({"status": "success"}), content_type="application/json")
 
 @login_required
