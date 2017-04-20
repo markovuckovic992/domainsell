@@ -7,7 +7,7 @@ import codecs
 def po_msg2(domain_name, name):
     domain_name = domain_name.upper()
 
-    subject = 'Complimentary Guide - How To Choose The Perfect Domain For Your Brand'
+    subject = 'Ultimate Short Guide - How To Choose The Perfect Domain For Your Brand'
     file = codecs.open(settings.EMAIL_TEMPLATES + '/po2.html', 'r')
     content = file.read()
     htmly = Template(content)
@@ -44,7 +44,7 @@ def po_msg4(domain_name, name):
     print domain_name, name
     domain_name = domain_name.upper()
 
-    subject = 'Top 6 Reasons Why Google Canz\'t Find You - Must Read!'
+    subject = 'Top 6 Reasons Why Google Doesnt Show You - Must Read!'
     file = codecs.open(settings.EMAIL_TEMPLATES + '/po4.html', 'r')
     content = file.read()
     htmly = Template(content)
@@ -62,7 +62,7 @@ def po_msg4(domain_name, name):
 def po_msg5(domain_name, name):
     domain_name = domain_name.upper()
 
-    subject = 'Your Brand New Premium Domain Would Be Ready Soon! Let\'s get ready for more traffic'
+    subject = 'Your Brand New Premium Domain Would Be Ready Soon! Lets get ready for more traffic'
     file = codecs.open(settings.EMAIL_TEMPLATES + '/po5.html', 'r')
     content = file.read()
     htmly = Template(content)
@@ -119,7 +119,7 @@ def form_a_msg2(domain_name, name, link, price):
 def form_a_msg3(domain_name, name, link, price):
     domain_name = domain_name.upper()
 
-    subject = domain_name + ' - Have questions regarding domain acquisition? Let\'s set up a meeting'
+    subject = domain_name + ' - Have questions regarding domain acquisition? Lets set up a meeting'
     file = codecs.open(settings.EMAIL_TEMPLATES + '/pr3.html', 'r')
     content = file.read()
     htmly = Template(content)
@@ -159,7 +159,7 @@ def form_a_msg4(domain_name, name, link, price):
 def form_a_msg5(domain_name, name, link, price):
     domain_name = domain_name.upper()
 
-    subject = name + ', We want you to cut a Sweet Deal'
+    subject = domain_name + ', We want you to cut a Sweet Deal'
     file = codecs.open(settings.EMAIL_TEMPLATES + '/pr5.html', 'r')
     content = file.read()
     htmly = Template(content)
@@ -198,7 +198,7 @@ def form_a_msg6(domain_name, name, link, price):
 def form_a_msg7(domain_name, name, link, price):
     domain_name = domain_name.upper()
 
-    subject = 'I do not want your competitor to get ' + domain_name
+    subject = 'I do not want your competitor to get ' + domain_name 
     file = codecs.open(settings.EMAIL_TEMPLATES + '/pr7.html', 'r')
     content = file.read()
     htmly = Template(content)
@@ -218,7 +218,7 @@ def form_a_msg7(domain_name, name, link, price):
 def form_a_msg8(domain_name, name, link, price):
     domain_name = domain_name.upper()
 
-    subject = 'Can we talk about possible acquisition of alvarezinternational.com'
+    subject = 'Can we talk about possible acquisition of ' + domain_name 
     file = codecs.open(settings.EMAIL_TEMPLATES + '/pr8.html', 'r')
     content = file.read()
     htmly = Template(content)
@@ -238,7 +238,7 @@ def form_a_msg8(domain_name, name, link, price):
 def form_a_msg9(domain_name, name, link, price):
     domain_name = domain_name.upper()
 
-    subject = 'Close your file? Or are you still interested in acquiring ' + domain_name
+    subject = 'Close your file for ' + domain_name
     file = codecs.open(settings.EMAIL_TEMPLATES + '/pr9.html', 'r')
     content = file.read()
     htmly = Template(content)
@@ -258,7 +258,7 @@ def form_a_msg9(domain_name, name, link, price):
 def form_a_msg10(domain_name, name, link, price):
     domain_name = domain_name.upper()
 
-    subject = 'Your file closes in 10 days.'
+    subject = domain_name + '- Your file closes in 10 days.'
     file = codecs.open(settings.EMAIL_TEMPLATES + '/pr10.html', 'r')
     content = file.read()
     htmly = Template(content)
@@ -336,7 +336,7 @@ def pr_msg1(domain_name, name, link_un, link_offer):
 def pr_msg2(domain_name, name, link_un, link_offer):
     domain_name = domain_name.upper()
 
-    subject = domain_name + ' - Don\'t rue on missing the chance to grab this traffic enhancer'
+    subject = domain_name + ' - Dont rue on missing the chance to grab this traffic enhancer'
     file = codecs.open(settings.EMAIL_TEMPLATES + '/template2r.html', 'r')
     content = file.read()
     htmly = Template(content)
@@ -355,7 +355,7 @@ def pr_msg2(domain_name, name, link_un, link_offer):
 def pr_msg3(domain_name, name, link_un, link_offer):
     domain_name = domain_name.upper()
 
-    subject = domain_name + ' - Traffic Overload Is On It\'s Way'
+    subject = domain_name + ' - Traffic Overload Is On Its Way'
     file = codecs.open(settings.EMAIL_TEMPLATES + '/template3r.html', 'r')
     content = file.read()
     htmly = Template(content)
@@ -470,7 +470,7 @@ def pr_msg8(domain_name, name, link_un, link_offer):
 def pr_msg9(domain_name, name, link_un, link_offer):
     domain_name = domain_name.upper()
 
-    subject = domain_name + ' - There is nothing called \'Too Much Traffic\''
+    subject = domain_name + ' - There is nothing called Too Much Traffic '
     file = codecs.open(settings.EMAIL_TEMPLATES + '/template9r.html', 'r')
     content = file.read()
     htmly = Template(content)
