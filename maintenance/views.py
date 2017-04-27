@@ -49,7 +49,7 @@ def check_status(request):
     msg = ''
     for offer in offers:
         try:
-            tube = popen("whois '" + str(offer.drop) + "' | egrep -i 'Status|Updated Date'", 'r')
+            tube = popen("whois '" + str(offer.drop) + "' | egrep -i '  Status|Updated Date'", 'r')
             resp = tube.read()
             resp = resp.replace('Status:', '').replace('\n', '').replace('\r', '')
             tube.close()
@@ -66,9 +66,9 @@ def check_status(request):
 
             if 'pendingDelete' in str(statuses):
                 if date:
-                    Offer.objects.filter(id=offer.id).update(status=1, updated=date, phase=2, stage=1, done=0)
+                    Offer.objects.filter(id=offer.id).update(status=1, updated=date, phase=2, stage=1, done=1)
                 else:
-                    Offer.objects.filter(id=offer.id).update(status=1, updated=datetime.now().date(), phase=2, stage=1, done=0)
+                    Offer.objects.filter(id=offer.id).update(status=1, updated=datetime.now().date(), phase=2, stage=1, done=1)
             else:
                 Offer.objects.filter(id=offer.id).update(status=0)
 
