@@ -45,7 +45,7 @@ def revert_state(request):
 
 @login_required
 def check_status(request):
-    offers = Offer.objects.filter(~Q(status=1), date__isnull=False)
+    offers = Offer.objects.filter(~Q(status=1), date__isnull=False, amount__isnull=False)
     msg = ''
     for offer in offers:
         try:
@@ -66,9 +66,9 @@ def check_status(request):
 
             if 'pendingDelete' in str(statuses):
                 if date:
-                    Offer.objects.filter(id=offer.id).update(status=1, updated=date, phase=2, stage=1, done=1)
+                    Offer.objects.filter(id=offer.id).update(status=1, updated=date, phase=10, stage=1, done=1)
                 else:
-                    Offer.objects.filter(id=offer.id).update(status=1, updated=datetime.now().date(), phase=2, stage=1, done=1)
+                    Offer.objects.filter(id=offer.id).update(status=1, updated=datetime.now().date(), phase=10, stage=1, done=1)
             else:
                 Offer.objects.filter(id=offer.id).update(status=0)
 
