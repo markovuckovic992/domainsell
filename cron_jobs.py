@@ -128,7 +128,7 @@ class CronJobs:
             try:
                 tube = popen("whois '" + str(offer.drop) + "' | egrep -i 'Status|Updated Date'", 'r')
                 resp = tube.read()
-                resp = resp.replace('Status:', '').replace('\n', '').replace('\r', '')
+                resp = resp.replace('Status:', '').replace('\n', '').replace('\r', '').lstrip().rstrip()
                 tube.close()
                 statuses = resp.split(' ')
 
@@ -141,7 +141,7 @@ class CronJobs:
                     except:
                         date = None
 
-                if 'pendingDelete' in str(statuses):
+                if 'pendingDelete' in str(statuses[0]):
                     if date:
                         Offer.objects.filter(id=offer.id).update(status=1, updated=date, phase=10, stage=1, done=1)
                     else:
