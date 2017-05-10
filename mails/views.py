@@ -42,13 +42,22 @@ def sales_page_test(request):
         return render_to_response('_404.html', {})
     return render_to_response('sales_test.html', {'drop': entry.drop, 'base_id': entry.base_id, 'hash': hash_base_id, 'amount':entry.amount})
 
+def get_client_ip(request):
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    return ip
+
 def process_offer(request):
     hash_ = request.POST['hash']
     amount = request.POST['amount']
     name = request.POST['name'].lower().capitalize()
     email = request.POST['email']
     contact = request.POST['contact']
-    popen('python send.py ' + hash_ + ' "' +  amount + '" "' + name + '" "' + email + '" "' + contact + '" "' + request.POST['ip'] + '"')
+    ip = get_client_ip(request)
+    popen('python send.py ' + hash_ + ' "' +  amount + '" "' + name + '" "' + email + '" "' + contact + '" "' + unicode(ip) + '"')
     # t = threading.Thread(target=send_emails, args=[hash_, amount, name, email, contact, request.POST['ip']])
     # t.setDaemon(True)
     # t.start()

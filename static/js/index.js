@@ -15,7 +15,7 @@ function getCookie(name) {
 
 var csrftoken = getCookie('csrftoken');
 
-make_offer = function (base_id, hash, ip, name, contact, email) {
+make_offer = function (base_id, hash, name, contact, email) {
     var amount = parseFloat($("#lead_offer").val()).toFixed(2);
     $.ajax({
 		type: "POST",
@@ -24,8 +24,7 @@ make_offer = function (base_id, hash, ip, name, contact, email) {
         + "&amount=" + amount
         + "&name=" + name
         + "&contact=" + contact
-        + "&email=" + email
-        + "&ip=" + ip,
+        + "&email=" + email,
 		headers: {
             'X-CSRFToken': csrftoken,
         },

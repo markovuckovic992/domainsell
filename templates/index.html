@@ -376,33 +376,23 @@ Do For Your Business
 <script src="/static/js/bootstrap.min.js"></script>
 
 <script>
-    $(document).ready(function(){
+    $(document).ready(function() {
+        $("#user_info").submit(function(e) {
+            e.preventDefault();
+            var name = $("#txtname").val();
+            var contact = $("#txtphone").val();
+            var email = $("#txtemail").val();
+            var leadOffer = $("#lead_offer").val();
 
-
-//$("#submit_offer").submit(function(e){
-    // if(!($.isNumeric($("#lead_offer").val())) || $("#lead_offer").val()<100 || $.isemptyobject("#lead_offer").val(){
-    //     $("#msg").html("Sorry, this domain has a reserve of $100, please adjust your offer.");
-    // }
-// });
-
-$("#user_info").submit(function(e) {
-    e.preventDefault();
-    var name = $("#txtname").val();
-    var contact = $("#txtphone").val();
-    var email = $("#txtemail").val();
-    var leadOffer = $("#lead_offer").val();
-    $.get("http://ipinfo.io", function(response) {
-        make_offer(
-            {{base_id}},
-            '{{hash}}',
-            response.ip,
-            name,
-            contact,
-            email,
-            leadOffer
-        )
-    }, "jsonp");
-});
+            make_offer(
+                {{base_id}},
+                '{{hash}}',
+                name,
+                contact,
+                email,
+                leadOffer
+            )
+        });
     });
 
 
